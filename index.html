@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diego Chávez — UX/UI Portfolio</title>
+<meta name="description" content="UX/UI Designer & Front-End Developer from Guadalajara, Mexico. Case studies: Kiko, Mi Primer Huracán, Tixal, Coppi, Rendo and Aura.">
+<meta property="og:title" content="Diego Chávez — UX/UI Portfolio">
+<meta property="og:description" content="UX/UI Designer & Front-End Developer · Guadalajara, Mexico">
+<meta property="og:image" content="og.jpg">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#000;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+.top{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 20px;
+     background:rgba(11,11,13,.72);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);color:#f5f5f7;font-size:14px}
+.top b{font-weight:600;letter-spacing:-.01em}
+.top nav{display:flex;gap:18px;flex-wrap:wrap}
+.top a{color:#d1d1d6;text-decoration:none}.top a:hover{color:#fff}
+.frame{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden}
+.stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+section{width:1920px;height:1080px;position:relative;overflow:hidden}
+section:not([style*="display"]){display:flex;flex-direction:column}
+section>:not(iframe){position:relative}
+section>[style*="position:absolute"],section>[style*="position: absolute"]{position:absolute}
+section div:not([style*="display"]){display:flex;flex-direction:column}
+h1{font-size:96px;font-weight:600;line-height:1.1}h2{font-size:64px;font-weight:600;line-height:1.15}
+h3{font-size:44px;font-weight:600;line-height:1.2}p{font-size:32px;line-height:1.4}
+a{color:inherit;text-decoration:none}
+img{display:block;flex-shrink:0}
+iframe{border:0;background:transparent}
+footer{color:#8e8e93;text-align:center;font-size:13px;padding:28px 16px 40px;background:#0b0b0d}
+footer a{color:#d1d1d6}
+@media (max-width:640px){.top{font-size:12px;padding:10px 14px}.top nav{gap:12px}.top nav a:nth-child(n+3){display:none}.top b{white-space:nowrap}}
+</style>
+</head>
+<body>
+<header class="top"><b>Diego Chávez · UX/UI Portfolio</b>
+<nav><a href="#f-indice">Projects</a><a href="#f-contacto">Contact</a><a href="https://www.linkedin.com/in/diego-cha" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:diego.gtz.chavez21@gmail.com">Email</a></nav></header>
+<main>
+<div class="frame" id="f-cover"><div class="stage"><section id="cover" data-transition="fade" style="background:radial-gradient(circle at 50% 50%, #1f2a44 0%, #0b0b0d 65%), #0b0b0d;color:#ffffff;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px">
+<iframe title="Animated software logos" style="position:absolute;left:0px;top:0px;width:1920px;height:1080px" srcdoc="&lt;!doctype html&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;color-scheme&quot; content=&quot;dark&quot;&gt;&lt;style&gt;
+:root{color-scheme:dark}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:radial-gradient(circle at 50% 50%,#1f2a44 0%,#0b0b0d 65%) #0b0b0d}
+#s{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+.t{position:absolute;left:0;top:0;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:36px;background:linear-gradient(160deg,#ffffff,#e6e6eb);box-shadow:0 24px 50px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;will-change:transform,opacity}
+.t img{width:100px;height:100px;object-fit:contain}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;s&quot;&gt;&lt;/div&gt;&lt;script&gt;
+var L=[&quot;data:image/webp;base64,UklGRnwFAABXRUJQVlA4WAoAAAAQAAAAPwAAPwAAQUxQSNMCAAABoLVtmyFJ1v9GfDE21rZt20e2bXuPbNu2bdu2bXszIr53VZlfREXEBMDQSRDjEBwqdIKi4op5YMzqR1x0Xc/rr7vgvJaHrzEW8IUEww76lAU/O2IUpIhgtpfJFGNqGVsn8o0FIAU85vyajbKgNvxhIXgz50e9w8jCkZ9O5L2V4Dg2LB55FsTIYZKfVctp/mNqeJuAzZlYYeKuCDaC8zXWEPUqiI3HvUw1ZD4JZ/VALc/C2OOWOhLvh7cJOFxjDVFPRbARLMlcQ+JqEBu48LymclnfGuRgLFiZUYs1XAtiBcHxbLSMNjwbAnMnOIuMWa00R/Jy8c4OzmHnb1j0xz3hHEo6j8n2uPcbI/363j2nhnMoK8BsR72pNvmtI2YFBGUF897DovfMAyki2OB3alIrTcrf14MUEKxDRhZN5BrwZt7N8ItmFs766/TOm+E6RhaPvAZWHrMlZYUaZ4a3CdiHsYbIPRBsBNfWcgXExuMBphoS74e3etBELR6wEtxgYhh5JcQm4ADGbr9+pdptHwQbj7k1d1F+dhZzF02zwdvA43amTr8s8W3Wdom3wsNYMFeTcpc0wU5sWuX8x2xOrCDYmjl1+GsGXMcm90rKzSCwF+wUmZO2mhGDLidjyqo5ZsZtICgpWPQxtlX+NQMcdviUPR9dDIKyAix80uu5xR/TQRzGbnXta59/+tyZKwOCYiPXv+J9bfHLJHAQAGH4MADwKOyx3nts2wMuCACIoLTgMDIm7QbAOYfyggMZM9u2qlKwKKOyj7x7iIl95DG/ZvZTwIGMfSW4iqmvPO7vu7ssfp6oooCzNXbJfHdQVVswdUl6DQTVOkz8s2oXrlMTBCewaZf4+mDnKnJ+7IeMbTRxOQhq9ljgBzb6fxrJ3SGoW7DAG2SKKcVI/r4NBLULRh3xNf+3uXZOCOr3wEQbnXzt9efuMgsg6Ecn6Ok9+tSFICLBo1IAVlA4IIICAAAwDwCdASpAAEAAPtFWpEyoJKOiMfOaSQAaCWwAgyVFvsnmn3J/AcMjaXOg213mA82/+x+oDeM/QT/Yz03fZAX6y5GWBpUGaiDY/oI7SyagAR1g8uR27s2l0Z7AgaBH/hT23oAz/+jOEfoFv0YE26GntbmEpwEzaQgtW+oua/BDhYKAAP76X61hN/RxotBRq3cetP/ozgpfr4du2Xf/mVei0pEIBixu3hWl+XtvlQ05L8rQhFFFkfIiuDjJ51IkOeSleCVSHErZobrmFCvb53HFOHsIlB23xGqKWjUaeRvvofkrpen3vkBk5bWZRuPlFN1XdA/mmCKWAZjzTjufsg1rWnYcLruZ5Flb3QiocLsZwzc814DGD+Yr6wzGiiGcWiyVxn8izix5DVk8gGS3gXT4/a1+BOisHSrgfcbEC5AKYpcEq+ubFwQobXybN6fDgUf/E/yfjsxnFj7pcsF8aJGNCE9YPqSz97DdP9Rq1H4T+gTaM7ATnLtXx0IdrI5r9n7OsZV/PscFZHJtErnqXpZvBxQ9oZecFvd0VCzAY8QJHa5Td+wQ2I66YMJh5XJWhyRNxU4PjOKPQoWIN+xs0n50RJqceSeuFJYtpi/o2m/nLMm55+DOontQIoXbWJ77t8HpmbWny+ong1/H/GaSdnE+7mqimWpjvaMc/veeRD3KGRTBku8aSYFgswwnjG/5JNlcNG1yX8j3QElG3m4IXVN3mD8CeDB3Hw4Q8Cxh73Zv5cf8rip5qUW9s613kZ6y3UIjxHlWabd4V+Emh6tv/MES1ooEfis3/F8L4rlzDlMfevy0J7vZUxfQ/Us4SKQQ/0gf0/4Sqc+5tF+4srMiX1EZ4AA=&quot;, &quot;data:image/webp;base64,UklGRqoCAABXRUJQVlA4WAoAAAAQAAAAPwAAPwAAQUxQSOMAAAABgBzJtqvm/Hc/7GwkkAlbcoBoWHsnBUAQnwzkpTyeO/LmHdaqiGDkto0ja2Z7O1r7BHxLVQz8isrsl99T7BsNAFrtQrQAwH56NrqTRXNzf3dfgLv7m2Y56eLbRztg+sLCvEwB980cnMgYYipGDJE8Db6MynUahsTCpMCm4z6dNFzTU4DnNezTHDNQQuAY9rF/zlGTmM/vu4ZRyhSR0whWY8agSuAMdY25MnPUhq0yW5hhp8zuP5joe5u+N+p7q7g3D2Hy3q73Brm3XIY3waEv8za5Nwq9dfHJW9XefDHeLv9vAABWUDggoAEAAHALAJ0BKkAAQAA+0V6pTyglI6IqFmlxABoJZgDBEFFOZ0ov87bMZrbMbd2BmUM5jvkSNNqlmTySw88XCbrq61UTgfuKuqwdmANpJHwTusTQCRkPmn94/kN+E1Baxc3r2vUeI8AA/vkVXMgvS35JMaO4y+C7EmhvN/enYdBOAuyq1hLP8l1xJztF5oqDdV7u1ttI47386rRwznuph0oyQ9aj+cN0HRTCR/YOekygsmIORqUQ3HFM1IgvRYPKZpntx18s/crPzzWw94t2Z2MpK9qpi1ym6Ehm6cJIeMFREOFvbETJa+8JeZ6/MzZVqYqSC5DH+n9KFA4MHtP1F+F2TpCSwiQgwo1Ecl4iKLJd6eZWb/k8OtIuizhHPhwY7EBNyWRHMaS2qLVGowSAzLQhbK1LsMgChpzrnsJeDALF/dcRF0FPLVtvG6S6yxmLdacE4Swbi3E9yj6shXXbxS9UEdiLdbTIdvPvlUeffWpbfM+MCLZrR5E3R0IgzDEHYJYX5/UXvOxax0B74vkybqkpEtnCgNYkvKSE82UJAi3E1gAA&quot;, &quot;data:image/webp;base64,UklGRjoEAABXRUJQVlA4WAoAAAAQAAAAPwAAPwAAQUxQSFwCAAABoGxbu2nb+X7cG9u2bbtmm7WkaNtOqrZt204ewLa5T/455xdsrDXnC0TEBACwhvF/QcMCQLDVTY8+/EiDDz9604ZQKFYbsNlflhN1HMxBanTAfeGGDZgK20xlDzgUJzFa4Z5wiOEGRksQnfFFppagWPhj5pZgWP+PXFqCY29GaUfdZ8JpTM0Ihl5SUiOCJU46++xzz750wNKEyDzvs9Uhjt04FRGRWlGsylzY5hAojmU0BcXVjKbE/FmmlqAy3wfMLcGw+h+5tATDzkylHTWdAccyNyMYehFzI4q17nzkoUcefrywDZFFv2OriXvAHTtzKqWUcgtlX7jIYj8ws83ELWBQbJdTaSJ4ERSA4QhGC8F7RQUAHJcx6kt8d3YR/F9Mn2SqLfPb5aAYrjLXe8x1lfz3NjCMNqz0W8k1leAhcIxr2JapVBQ8G9MwvuMwRj2Jt8NlAjiuYNSS+NbMKphUbIZnmOrI/HIJKCZXLPQBUw0lDzaFoUvDur/kXEHwQDi6dexeovQWPAuOrqfhGEZfwTvh0hkcVzP6SXx3JhV0LzrD84w+Mr9eDIo+FQt9wNRdyVMbwdCvYZ1fcuksuB8cfTt2ZSodBc+Co3/HcYxugnfCpAI4rmV0kfjmLCqoUcxfYJos84slYKhTMf+HzJOUPNgYhloNa/yRywTBA+Co17AzUxkreBYcNTuOY4wTvE1MqoLjGsaoxNdmFUXdYtOfYxqW+dlSMNSumP8jxv9y+nMzGOo3rPknU6QgD4ajRcMmb5HkD4fC0abCdr3wlmMXhaJVxVBDu2JurugXVlA4ILgBAABQCwCdASpAAEAAPtFUoUuoJKMhsBn8AQAaCWwAx6XA2h5tUmO3O57HTJd5GIh/d6BtHJvQ0/l//N1U/A4pi3lk9UedUMd8gl50s+cxJAiBOLKapoapjshoVFji26tbjaiWnbAAyu00C6d/a2IlYr5H0WAQ8gJvURuhLKTZ34U8hHOJI7brCRNR/Kpa3eAf+Oh4Kr5vypqnk0hezuTvb1pF+wYDyo8SUDH6ApwIkkACoVHNAg3Kh2qr8/15R+hAfCIAC+dGJVLyvv3SUb89m0opPzm/vgaUIz96pyXfCnhN4H/58B958DWsI9MkH1ghdgV9M1wce2bweCiAaGXxMiQo52BNsrMFe6YLbHkCOjcFH9yKZ0UCsqzMnt/8kJQJRZwpTPAAKwYI0kJ8qUgczkqMsN3SfKNaTU6fiaAA05zC0rRV7kwPNKEmR4YeUK+BXpxpNQdzCv6WxUVfxqh+SR3Qx0LZCUbN62t83TZuax09ysfRL+B/FkqmLKIKHi7bWQMsU1ne637IykWLcUZu2g8xpJJeLe/1cxV+rHTqVvTGt/CdV1NYHaH4CqKvwHb/rPCLGRJHsgAAAA==&quot;, &quot;data:image/webp;base64,UklGRlACAABXRUJQVlA4WAoAAAAQAAAAPwAAPwAAQUxQSMQAAAABcNzYdqtc/FwFYh07+i0g2khVxApztPUuOfiyRhGBMG3bxC3rCfFOwDMhRitGjAFvCYbC2LvDgEY1niwKMRlXDcBe3+hMlyzKctpFeHn3t2ROBcnktg97sQMyOYviiRzAnrbHs7M4fmbvYUKteciCJT0fmrVwfxdMlJC4gCGgvnHXxH1TR4iomCkis0KMGHtSJfkY0TClLpzCDAtlFv+gou+N+t6q78363i73Br23yL1J7m0/4I3PI/JWuTf/irfL/w0AVlA4IGYBAAAwCgCdASpAAEAAPtFeqE6oJSOiKhM66QAaCWUA0CSp32AF+CtvlmaS9o4XrONm1mfuzC9JbAGGvTTPaLXHzieEEXkPiWx9ofyww9pWhBpXvcmpDGKDCn1HsAAA/vPfZ+ZQ8a7mtfd/6kqHAE/I+/bZZKLvVg2PUuIOiuKIJPJWOhPAI8TkJ9XsmY6OhVPSueUvtV8WOsE58+7lAhqq7hIOnTFYjnv6sWg9Dz+aD7Aj1K9HcdslAo3cl0X5fIWKXybb3KIUoqJLCxVswLBoNrhjFUlnE7vE8BxbEkQsIuh0FkiCvOQdhZHHLTN7uoHmRP1OY2e0WWc7OaameGEohoDCuJhSyD4qfjq/B5JYWlUK/3E/aDLqkn2Od5/dYB2LtiKykIrcCzPIGbrD7l2sk8pHrlWTfBsO++5OIzEjp6UH1jmhAEN7HbXxEB84D64bRFl9fIZgVzL4OOC/f+vJqDqvTzzXgAAA&quot;, &quot;data:image/webp;base64,UklGRsACAABXRUJQVlA4WAoAAAAQAAAAPwAAPwAAQUxQSI0BAAABAQdtJDmSqlWfnz/hSRQi+j8B7JMAOvwn3aG6A3UR5uFfFOjSKW2H6g7ULhDqp6CS/8GkjDfUAxvA0bZJkfJXN+4S7RmIiZ3UnWO52wHcIyd2DkDs7nQXPrVTuwtkERPAwG0jRZ05XB5+A0IMkZHmgaEKkqxDpWtJQgCzjuUAIgNETCsGodC5JOIHu3UHnnmeF+2NPGLyX0AsMAzlKRioEwNIogyi/iAQ/8TgD9hoJORGQn7+NAwgBhjKgko1p4oTppRyRXhBsJ7lGVdEsr8sRKrpJj1eWIF7eWINWZHjVSAnuQVMdjP6eRIxH6m1RyDeZ/IGRiRhsFABSGVZlp6hMHAccBwnvqOA94FXEN+vJAE4MfwFGz3wEsBkRFfbDBh40RhAOGJl5Fq1dfJgbkjYexG8kSQXWoCMHTJhWbJXwYLY1s5gQQ1OqltMKuAzjZYlCQ4v90po51pDVAmycH3L+xUC1H+9kQA4xhblKTxri3Zjki3KjR5sAGXOdgiUKd26FEy587kX6uYX9RMAAFZQOCAMAQAAcAgAnQEqQABAAD7RVqdNKCSjoiwSvMkAGglpAAgQOIFwPAUfLwG7s5Hs/IH1jrzPB8//mDxW/Do+xmNzn9RtQjbkOftd5LLgyvhSAAD++2UF0Ia4vGAIsgfr/yrzV/5Gj/7PuK6PbYfcv0RLt+Dni8azyRAVGa48T0Pn9ef4n01oAx/xbNKhAiGgOzQM7sYzEWtwOXIcph19sCOwswV2fYKA5YFUlT2UhL5g7IhhSH+EVbIxmga7IXa98MrsYI/LaVoqW0XYMQngi6Y/+30KPp285Tl6EtmSuWfd88gvdzoVayMIWCvyWX2nf8NUhSSi6w7899r6eZeZZqPvArZL5tCztzvSCOaUCGAAAA==&quot;, &quot;data:image/webp;base64,UklGRvICAABXRUJQVlA4WAoAAAAQAAAAPwAAPwAAQUxQSCEBAAABkGXbtmk7Y621n9+rh2uhGP82ymLbVgHs/NlJUW42Vviw939aREwAs5ZqmVexoFSrwWROBiBWqQDY7EToXXn4yftPlb5/cmR1PyKzENj41Sv/vgXkH0L/DfcUU642xeR+Zwj9i2jfQ4/ZK8/Rnw6o/KGc9Y43+MMvYYAx7dGbjL4UA+VJSW2k8lIEZTQWb7SkCTSw1WMr0XcRArtbOkAwzrd0ATMutnTx/zDOt3QBC+xuaT8hsMVTOzsJynAsrZQ0jqI8KqmNVJ6JgDHpsY3oizBAOemdFjp+DgUQ7b3rMdeWoz/sU/kDoe+qe44pV5tidr/ej/B3gTUfvfJP60H4tyhdi/fee/W20lf39y/tQYRZG9UbcxULWo8GE+ZXKmX2AFZQOCCqAQAAcAoAnQEqQABAAD7RaKhPKCajoigYCgEAGgloAMJCE10+jRDSAzbU3czvOhXqe/BoW9DjfCzliYAtoLGXtfeBICfRHn9yGUAwkt55J3sYmRWOT31YrD6UUQ+ZYjAA/vW/otBpHPEYtVhZGoI6POEyiKe7b5MWgAV/H5LTL+7w8D9bYlXzIgIATqDDxYCaWfuIy61otIwpVpGdXgRWFgWo1bizVjXDjvhX3QFn8Kbn10QIgTD3OkPozAGYm+Ku9GIfsRs7ol6+/w5mW4MLT37DZPAimBefX1fwgrwKPJ5tpQJTuzNSGKMaOtR2GZU4bqzaXNlP5vrdNSuVeoTuNa4uHGui66wf+kBKPjPTFzkqOBIkHlCRMmtMrhP+95BzcukrdjiXlrqXBazpDMXdm0C65fKEaxtW5pFATx52iRfPY85uvCfwcem77vIipETYoT0bamK1OLSOKFaiPPJjw4hfOsVInuZd343X7JlFD931hGu2d7T7r97w66sYJLvagBVeqYsErtbh85lSe6wMAa4OjVBDk0kC3S73uxwAYxLaKoq5+n4cWU2eGcgA&quot;, &quot;data:image/webp;base64,UklGRpYGAABXRUJQVlA4WAoAAAAQAAAAPwAAPwAAQUxQSCADAAABoERteyHB+v78mZlr27Zt27Zt27Zta2Xbtm3b6j/5v0VVd1elr5YRMQH431uCDJQoAJUBAkacYjQgDIrIkKM++vWLs0ZEHBDFiay+OAtUBgLyzl/mbvx5I0gYBMWxNCcTedoQxAGQEI4nM+mJD02BWB4g2OxPJpLGL1dGCAMQseCHNJKJPAzQ4oCIiR5gcjJn3jweYjuisV57HobhL2Kt8b1FoNKCoPnNv81O0tjZFdDGBFjhmDPOPOuss84+++yzz+163nnnnnfB8S+xwuy8cmTEhkTGu4fte+LLsyFKIyHcTmveu5DGXzcFQgMB02RzlpjIM4dC+xNM+Act9Ziboyc+MgViXwjY5if27M2Rxi8Wh/YFwcQrr7Xmmmusvvrqq6258rL3MDfHxD9WgPaFgF7l/E5mm4l/LAjtC0Fr4zDM9xbbTvxsfAl91Suwze+0tmi8CdpMxPAXkJntG1eHNiARMzzD5Cww+StDpb8gWO9HGsvMXAXajyKeTCYWmvz6viImf5DJWarzuzEgvYSAlb6gseDMJaE9KHAYmViycTfEbhHj38qcSTIXdHo3USz2Po3VxFxK4hXQGgX2NCaSdONtRzCXcm1dxGjX0TNJeuaVsietDOMFiAAUc79Oc5JM5H7A7uUcVlFs9QeNVeMPq2GorMRcRuK6iAjYnZ5ZNb4+M2LA5H/SS3D+NTVCwIwpZZJ04y1jIgIiT3kqIfkzQRBxLI0kM3mSQAFE7EMrwbgvIhTXpYqxszUkAEDABD+5t+f5pwkQEHEA/0yW+OliiIJaxQm09ozHQwGRMZ4lyXsnR0RXCWN+5rmt7J+OEQSAYKSdLjp1RUDRo2JVWlvGlaGoCmoDelYcy047HR4FRb1EjYo+RXEFO96cGy+BSpdmJYSLmXNT2Xk+gqBdERzkNG/CjXk/BEHbErDky2RK3punRL6wKFRQoGKEfT4lmSxld/ecLJH8cI/hoChTgTF2eNTYc+ehbUYDFKWKAph+64uf+Oin33//8cMnLtpqOgAqKFhUAGCEcSaZZJzhAUBUUHqIKqgVjQEDKhKCCP6XBlZQOCBQAwAAUA8AnQEqQABAAD7NUKFLp6SjIbP03VDwGYlsDbAFQ4Xd/v1DzJ7B/XNysPHCe2wHmA/Vz1qvQd/fPUA/tfUI8/N7FvlLNFLbigA9rj6Bvj/lnvYbT5tPj0vwyV4ojSZTpf0JTiQV0sckiZvHmmrzXdnS8Fc374I6OM8Xl+tv+398MiAA/vytFcARQQg6q94ypxFO6iEqBzHG+DiWdOKO3TkQLD3YqZEvxwT4rn3SoiFX5uPdKIa6MaXtHSmrSouCmZGYUe8oWDeVOoJP71OTHkKCr0YObguF98qgWOPN9qg4e0P/Rz7B/yjf3n7yHtDmNo+XYpTFXdBg7CKK6REjtUzt9EmRknTnWntQynl67//TGAlyc/jav3GvH1rxoIz/+TXK3UJKpeceOynazL0TsT08IvMUMA2kkY/ynB8SJ6poFIG5TtQaqShF7boGTqCnP8kIGB1uE5qR9LeJjv1s66MvyjU/TCJ549dTTQ3ziuTp3Z5sI4hW0osQob1m4ik/w825eqvv6+0mVroGR98WBRPx21Ucca1Q0FHioBSzuNIas6wl/wWLLjnXn83Vx540d7gB4HnFfzCaw1iEHImPq/ruBH9JIOUXi0CpCcwKeavqjEJvEmoHhgbuDx+7Aa6HF42/ybBsZHYC74456qxc8XtagTDndPq8Da5qe1gXpf7bN9j1fGiBRKLoahCDwl1Za/FhE6dYbADHxxoIJcJJwrzZpTFkB20nIcKk+2ZPNH357Lk23eYd6o27VGdCfbuaqXY/gqPlZjKSpKiPQTQNdSn9tnO5JP/YRa+gTT22c4dVfiNGYthos+NopjPhef6FRHK75gKz3ejEAPJU8Y5Kii+ZxucJ/1/48Xh/+2f/Fe93BC2h20fI+s01gtCRAKP/lXjZQlq8ZMbTbKnhO88TjecdppJYS4iKc+1u0nnw3PqSs/toVJOq7P3fYgZoOJayD/Yy/m7W5eSj3GX5HwZ96hUtP0nmgF4sCKvqZezqr3i/74Ncx1pR388fYwTWo8/dwV/kt+dSIA/JXjWnSBmarRZgIQlp2GBkvEFpkcmWDzNp/u7A7ZcAnUN0hw2Ne9A9954qg2VmB0j/wlOGPP4M/51Lr6r+UavwJzS0uYUAAAA=&quot;, &quot;data:image/webp;base64,UklGRowEAABXRUJQVlA4WAoAAAAQAAAAPwAAPwAAQUxQSHABAAABkGvb1rE9+5zzx7btdLwAtals27ZTu+Id2OlZs7U789EOv+//n6dMioiYAFQqVpOpCWpVDRmbVicGtBk+c8P6HGeOaA6YVKHAkKPPme3TI4MBrcjQ8pgjGXyWgeTH/fWhFSj63SF9YrbJk7f7QP+i6PuSLjHr5PiwL/QPos0f0DN7xxv1VX5TnKRngY77oAAUQ11MJaT4qT8UMJxkYJGe+2EQNH/GWEZMd2pEDCMZWWaiHwytwVyGQhg5FlaD9fSlBE5DTWFzihtf3IR/A9YVt5ChsAX/fVhY0mTUGMYxlpI4Gqbo75jKSPzYCSpid1IoI6TrEKAGu+gL4SrUAIoeb2MqIcZX7UQAGLbSleC4AgYAYvWv0eXneL6eyW9QtLpDn/JKnrcbQfBnQfsrpI8plxQ8eaolBH9XyJo3JGPIMpJ8vgwQVCqCThtuf2GmH66vag8RVGkAeo6ekOH4SWO6AjBUL4Z8xQS1Kmo1WZqiYlZQOCD2AgAAsBAAnQEqQABAAD7RVKNNKCQjIi4W24kAGglsAKdHHIN3w3mx1zsGRtoWe228y3nH+lH/Qemr1Fe8nf4RhBqY9oY7/snLKzPMPxD9t1SkxTVuACgwXOMl/XeHp6p+f92C8fhEQX35klZ1n6JEdG+nbzG+f+Ja3d36PAZkpBWPQ3suXy6EnX58hrXebGsgAAD+8E+2y5j6k/7BDEZNaq5J38VNgKdoJh0+PvdaMF0gPtOLXLTrtapRyS/yuLijtd2b/sarYudf7Hytw9mv7VR4ld4Crp4nIy5X5cSPG0UrrG1aCFvu5ZyhVW73Euw2WRMi8zu5N8cfjD7dcE/tNL3zCKzV6l12b0Pe/e9EDhrOONHn0KsOEpzx0I3bmFqy616upDLZzCyXEyEIR24SZzBEr7TCzZ7KxHTMMxkWi6WxO2p3OmO4tyBwPWvk/exZaMTntEZNBTZaz6DpA9xwK7uHCzk85Wl/R+JQkbRpRPbpxxzc/yiKNkHhazVfcx5mOVtCJsf8Wu+CATeHC5zKmEt2YO6/zN2xIHzuB/G5ABTVbkvCl4l/Jp43QSotLEYPou6kFOMsh4uj8u0hYDF3aENXQ/sNLEiIx2yn8bn7B1EoUrY1ePXtBFa1buqWcaqRcHSebAHGfZ9WsuBQET9PR5bttpgQJmDpMGXZmtUnCxfoXcT79wqms7wQtlz8XuG4t9j1o7Caaa0Rr/umtq5g0lIrnFAG6HNHsIrpvQ36dnvsWds+FkJ1jjuXgTWqyQvaqdGtbSh0i10iICSnUBK1MT933dJuVGKCH2eP36KvGA3YcmNmrnfl30ntd02ayHvA4JGi91uKPr3wL/ZQv5fjdpmxWgv8tiEOr+fXysU8KLT+qrJtl7IY4n/wdIZ5KODgwXuBf8EcuOvwktkjyWzmTbq3J7RLZZnprVwrlL4MtJ13Fc0BjN4Nm7c8aHyh/ejSpVdn+6ye3KUDbzzjiJ7j+4IHU6PqbVcD44ZJHiysWWb3FUDIlBa0rAA=&quot;];
+var s=document.getElementById(&quot;s&quot;),it=[],R=800,F=1700,cx=960,cy=540,h=Math.ceil(L.length/2);
+for(var i=0;i&lt;L.length;i++){var A=i&lt;h,n=A?h:L.length-h,j=A?i:i-h;var d=document.createElement(&quot;div&quot;);d.className=&quot;t&quot;;var m=new Image();m.alt=&quot;&quot;;m.src=L[i];d.appendChild(m);s.appendChild(d);it.push({el:d,a:(A?0:0.7)+j*2*Math.PI/n,T:A?0.42:-0.42,D:A?1:-1});}
+function fit(){var k=Math.min(innerWidth/1920,innerHeight/1080);s.style.transform=&quot;scale(&quot;+k+&quot;)&quot;;}
+addEventListener(&quot;resize&quot;,fit);fit();
+var still=window.matchMedia&amp;&amp;matchMedia(&quot;(prefers-reduced-motion: reduce)&quot;).matches;
+function f(t){var w=still?0:t*0.00018;
+for(var i=0;i&lt;it.length;i++){var o=it[i],a=o.a+w*o.D,x=R*Math.sin(a),z0=R*Math.cos(a),y=z0*Math.sin(o.T),z=z0*Math.cos(o.T),k=F/(F-z),dp=(z+R)/(2*R);
+o.el.style.transform=&quot;translate(&quot;+(cx+x*k)+&quot;px,&quot;+(cy+y*k)+&quot;px) scale(&quot;+(0.62*k)+&quot;) rotate(&quot;+(Math.sin(a*2)*8)+&quot;deg)&quot;;
+o.el.style.opacity=(0.35+0.65*dp).toFixed(3);o.el.style.zIndex=Math.round(dp*1000);}
+if(!still)requestAnimationFrame(f);}
+requestAnimationFrame(f);
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<p style="font-size:32px;font-weight:600;color:#4ba8ff;text-align:center;text-shadow:0 2px 20px rgba(0,0,0,0.8)">UX/UI Portfolio · 2026</p>
+<h1 style="font-size:180px;font-weight:800;letter-spacing:-6px;line-height:1.0;text-align:center;color:#ffffff;text-shadow:0 6px 40px rgba(0,0,0,0.85), 0 0 80px rgba(41,151,255,0.35)">Diego Chávez</h1>
+<p style="font-size:44px;font-weight:600;color:#d1d1d6;text-align:center;text-shadow:0 2px 20px rgba(0,0,0,0.8)">UX/UI Designer · Interactive Technologies</p>
+<p style="font-size:24px;color:#a1a1a6;text-align:center">Guadalajara, Mexico</p>
+
+</section>
+</div></div>
+<div class="frame" id="f-sobre-mi"><div class="stage"><section id="sobre-mi" data-transition="fade" style="display:flex; flex-direction:row; gap:96px; align-items:center; padding:128px; background:#0b0b0d">
+  <div style="width:560px;height:760px;border-radius:32px;overflow:hidden;flex-shrink:0;display:block"><img src="assets/dfaf6bb291e1.webp" alt="Diego Chávez" style="width:560px;height:760px;object-fit:cover;object-position:47% 30%;transform:scale(1.6);transform-origin:47% 30%"></div>
+  <div style="display:flex; flex-direction:column; gap:40px; flex:1">
+    <p style="font-family:Inter, sans-serif; font-size:28px; font-weight:600; color:#2997ff">About me</p>
+    <h2 style="font-family:Inter, sans-serif; font-size:80px; font-weight:700; line-height:1.05; letter-spacing:-2px; color:#f5f5f7">Design you can use. And build.</h2>
+    <p style="font-family:Inter, sans-serif; font-size:32px; line-height:1.45; color:#a1a1a6">I study Design, Art and Interactive Technologies at the University of Guadalajara. I blend branding, graphic design and UX/UI with SwiftUI development to speak the language of clients, creatives and developers.</p>
+    <div style="display:flex; flex-direction:row; gap:24px">
+      <div style="display:flex; flex-direction:column; gap:8px; flex:1; padding:32px; background:#1c1c1e; border-radius:28px">
+        <h3 style="font-family:Inter, sans-serif; font-size:56px; font-weight:700; letter-spacing:-1px; color:#f5f5f7">8</h3>
+        <p style="font-family:Inter, sans-serif; font-size:24px; color:#a1a1a6">hackathons and challenges since 2024</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px; flex:1; padding:32px; background:#1c1c1e; border-radius:28px">
+        <h3 style="font-family:Inter, sans-serif; font-size:56px; font-weight:700; letter-spacing:-1px; color:#f5f5f7">1st</h3>
+        <p style="font-family:Inter, sans-serif; font-size:24px; color:#a1a1a6">place, CUAAD Hackathon 2025</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px; flex:1; padding:32px; background:#1c1c1e; border-radius:28px">
+        <h3 style="font-family:Inter, sans-serif; font-size:56px; font-weight:700; letter-spacing:-1px; color:#f5f5f7">ES · EN</h3>
+        <p style="font-family:Inter, sans-serif; font-size:24px; color:#a1a1a6">fluent Spanish and English</p>
+      </div>
+    </div>
+  </div>
+  
+</section>
+</div></div>
+<div class="frame" id="f-proceso"><div class="stage"><section id="proceso" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:72px">
+<div style="display:flex;flex-direction:column;gap:16px;align-items:center">
+<p style="font-size:28px;font-weight:600;color:#0066cc">How I work</p>
+<h2 style="font-size:80px;font-weight:700;letter-spacing:-2px;line-height:1.05;text-align:center">From concept to code.</h2>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;padding:48px;background:#ffffff;border-radius:28px">
+<p style="font-size:56px;font-weight:700;color:#0066cc">01</p>
+<h3 style="font-size:40px;font-weight:700;letter-spacing:-0.5px">Research</h3>
+<p style="font-size:28px;line-height:1.4;color:#6e6e73">Users, context and client goals.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;padding:48px;background:#ffffff;border-radius:28px">
+<p style="font-size:56px;font-weight:700;color:#0066cc">02</p>
+<h3 style="font-size:40px;font-weight:700;letter-spacing:-0.5px">Define</h3>
+<p style="font-size:28px;line-height:1.4;color:#6e6e73">Flows, architecture and layouts.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;padding:48px;background:#ffffff;border-radius:28px">
+<p style="font-size:56px;font-weight:700;color:#0066cc">03</p>
+<h3 style="font-size:40px;font-weight:700;letter-spacing:-0.5px">Prototype</h3>
+<p style="font-size:28px;line-height:1.4;color:#6e6e73">Wireframes and interactive prototypes.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;padding:48px;background:#ffffff;border-radius:28px">
+<p style="font-size:56px;font-weight:700;color:#0066cc">04</p>
+<h3 style="font-size:40px;font-weight:700;letter-spacing:-0.5px">Build</h3>
+<p style="font-size:28px;line-height:1.4;color:#6e6e73">Handoff or SwiftUI development.</p>
+</div>
+</div>
+</section>
+</div></div>
+<div class="frame" id="f-herramientas"><div class="stage"><section id="herramientas" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px;align-items:center">
+<p style="font-size:28px;font-weight:600;color:#0066cc">Tools</p>
+<h2 style="font-size:64px;font-weight:700;letter-spacing:-1.5px;line-height:1.1;text-align:center">The software I master.</h2>
+</div>
+<div style="display:flex;gap:24px;align-items:start">
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;padding:40px;background:#ffffff;border-radius:28px">
+<h3 style="font-size:28px;font-weight:700;padding-bottom:6px">UX/UI Design</h3>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/eac466ae7e0e.webp" decoding="async" alt="Figma" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">Figma</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/455a1e98889a.webp" decoding="async" alt="Framer" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">Framer</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/7a79d092a21c.webp" decoding="async" alt="ProtoPie" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">ProtoPie</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/167828a9c08d.webp" decoding="async" alt="Marvel" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">Marvel</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;padding:40px;background:#ffffff;border-radius:28px">
+<h3 style="font-size:28px;font-weight:700;padding-bottom:6px">Design & production</h3>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/2ab201f9ad51.webp" decoding="async" alt="Adobe Photoshop" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">Photoshop</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/aade56a9323e.webp" decoding="async" alt="Adobe Illustrator" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">Illustrator</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/71651f9f88f2.webp" decoding="async" alt="Adobe InDesign" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">InDesign</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/d21850c3bc2b.webp" decoding="async" alt="Adobe After Effects" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">After Effects</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/965ae0891cdf.webp" decoding="async" alt="Procreate" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">Procreate</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/35255f5db07e.webp" decoding="async" alt="Blender" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">Blender</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/c656dbe35f61.webp" decoding="async" alt="DaVinci Resolve" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">DaVinci Resolve</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;padding:40px;background:#ffffff;border-radius:28px">
+<h3 style="font-size:28px;font-weight:700;padding-bottom:6px">Frontend</h3>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/38e275a216b5.webp" decoding="async" alt="SwiftUI" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">SwiftUI</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/d28062c066ad.webp" decoding="async" alt="HTML" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">HTML</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/c7bbaf3a61dc.webp" decoding="async" alt="CSS" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">CSS</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;padding:40px;background:#ffffff;border-radius:28px">
+<h3 style="font-size:28px;font-weight:700;padding-bottom:6px">Backend</h3>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/88049b17d27d.webp" decoding="async" alt="Swift" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">Swift</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/b1400e2740e7.webp" decoding="async" alt="Python" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">Python</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/262df9b61e27.webp" decoding="async" alt="C" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">C</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/0302a739f860.webp" decoding="async" alt="C++" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">C++</p></div>
+<div style="display:flex;gap:16px;align-items:center"><img src="assets/ae089caafab2.webp" decoding="async" alt="GDScript" style="width:56px;height:56px;object-fit:contain"><p style="font-size:24px">GDScript</p></div>
+</div>
+</div>
+
+</section>
+</div></div>
+<div class="frame" id="f-indice"><div class="stage"><section id="indice" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:96px">
+<div style="display:flex;flex-direction:column;gap:16px;align-items:center">
+<p style="font-size:28px;font-weight:600;color:#0066cc">Projects</p>
+<h2 style="font-size:80px;font-weight:700;letter-spacing:-2px;line-height:1.05;text-align:center">Six projects. One way of thinking.</h2>
+</div>
+<div style="display:flex;gap:44px;justify-content:center;align-items:flex-start">
+<div style="width:240px;display:flex;flex-direction:column;gap:16px;align-items:center">
+<img src="assets/5a6772f25241.webp" decoding="async" alt="App icon for Kiko" style="width:220px;height:220px;object-fit:cover;border-radius:50px;box-shadow:0 24px 48px rgba(0,0,0,0.18)">
+<p style="font-size:28px;font-weight:700;text-align:center;line-height:1.2">Kiko</p>
+<p style="font-size:24px;color:#6e6e73;text-align:center">iOS app</p>
+</div>
+<div style="width:240px;display:flex;flex-direction:column;gap:16px;align-items:center">
+<img src="assets/c19aa668b783.webp" decoding="async" alt="App icon for Mi Primer Huracán" style="width:220px;height:220px;object-fit:cover;border-radius:50px;box-shadow:0 24px 48px rgba(0,0,0,0.18)">
+<p style="font-size:28px;font-weight:700;text-align:center;line-height:1.2">Mi Primer Huracán</p>
+<p style="font-size:24px;color:#6e6e73;text-align:center">Educational app</p>
+</div>
+<div style="width:240px;display:flex;flex-direction:column;gap:16px;align-items:center">
+<img src="assets/0f69381e55ea.webp" decoding="async" alt="App icon for Tixal" style="width:220px;height:220px;object-fit:cover;border-radius:50px;box-shadow:0 24px 48px rgba(0,0,0,0.18)">
+<p style="font-size:28px;font-weight:700;text-align:center;line-height:1.2">Tixal</p>
+<p style="font-size:24px;color:#6e6e73;text-align:center">Cultural tourism</p>
+</div>
+<div style="width:240px;display:flex;flex-direction:column;gap:16px;align-items:center">
+<img src="assets/77ddd80c3cdb.webp" decoding="async" alt="App icon for Coppi" style="width:220px;height:220px;object-fit:cover;border-radius:50px;box-shadow:0 24px 48px rgba(0,0,0,0.18)">
+<p style="font-size:28px;font-weight:700;text-align:center;line-height:1.2">Coppi</p>
+<p style="font-size:24px;color:#6e6e73;text-align:center">Well-being</p>
+</div>
+<div style="width:240px;display:flex;flex-direction:column;gap:16px;align-items:center">
+<img src="assets/eddf098f41fc.webp" decoding="async" alt="App icon for Rendo" style="width:220px;height:220px;object-fit:cover;border-radius:50px;box-shadow:0 24px 48px rgba(0,0,0,0.18)">
+<p style="font-size:28px;font-weight:700;text-align:center;line-height:1.2">Rendo</p>
+<p style="font-size:24px;color:#6e6e73;text-align:center">Environmental education</p>
+</div>
+<div style="width:240px;display:flex;flex-direction:column;gap:16px;align-items:center">
+<img src="assets/44317036ca77.webp" decoding="async" alt="App icon for Aura" style="width:220px;height:220px;object-fit:cover;border-radius:50px;box-shadow:0 24px 48px rgba(0,0,0,0.18)">
+<p style="font-size:28px;font-weight:700;text-align:center;line-height:1.2">Aura</p>
+<p style="font-size:24px;color:#6e6e73;text-align:center">Video game</p>
+</div>
+</div>
+
+</section>
+</div></div>
+<div class="frame" id="f-kiko-hero"><div class="stage"><section id="kiko-hero" data-transition="fade" style="background:radial-gradient(ellipse at 50% 100%, #1d4d3a 0%, #08080a 62%), #08080a;color:#f5f5f7;font-family:Inter, sans-serif;padding:96px 128px 0px;display:flex;flex-direction:column;align-items:center">
+<p style="font-size:28px;font-weight:600;color:#8e8e93;text-align:center;padding-bottom:12px">01 · Kiko</p>
+<h1 style="font-size:200px;font-weight:700;letter-spacing:-7px;line-height:1.0;text-align:center;background:linear-gradient(90deg, #d8ffe4 0%, #7cf29a 45%, #2ec5ff 100%);background-clip:text;-webkit-text-fill-color:transparent">The World Cup,</h1>
+<h1 style="font-size:200px;font-weight:700;letter-spacing:-7px;line-height:1.0;text-align:center;background:linear-gradient(180deg, #5fcf8f 0%, #10241c 100%);background-clip:text;-webkit-text-fill-color:transparent">in your hand.</h1>
+<img src="assets/930638630698.webp" decoding="async" alt="Kiko home screen on an iPhone" style="position:absolute;left:530px;top:540px;width:860px;height:540px;object-fit:contain" data-build-in="rise">
+
+</section>
+</div></div>
+<div class="frame" id="f-kiko"><div class="stage"><section id="kiko" data-transition="fade" style="display:flex; flex-direction:row; align-items:center; padding:128px; background:linear-gradient(120deg, #f5f5f7 0%, #f5f5f7 55%, #dff3e4 100%)">
+  <div style="width:840px; display:flex; flex-direction:column; gap:36px">
+    <div style="display:flex; flex-direction:column; gap:16px">
+      <p style="font-family:Inter, sans-serif; font-size:28px; font-weight:600; color:#0066cc">01 · Kiko</p>
+      <h2 style="font-family:Inter, sans-serif; font-size:80px; font-weight:700; line-height:1.05; letter-spacing:-2px; color:#1d1d1f">The World Cup, in your pocket.</h2>
+      <p style="font-family:Inter, sans-serif; font-size:32px; line-height:1.4; color:#6e6e73">Companion app for the 2026 World Cup: live matches, tickets in Wallet and an assistant featuring the mascot Zayu.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px; padding:24px 0 0; border-top:1px solid #d2d2d7">
+      <h3 style="font-family:Inter, sans-serif; font-size:24px; font-weight:600; color:#6e6e73">My role</h3>
+      <p style="font-family:Inter, sans-serif; font-size:28px; line-height:1.4; color:#1d1d1f">I led the user interface design.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px; padding:24px 0 0; border-top:1px solid #d2d2d7">
+      <h3 style="font-family:Inter, sans-serif; font-size:24px; font-weight:600; color:#6e6e73">Focus</h3>
+      <p style="font-family:Inter, sans-serif; font-size:28px; line-height:1.4; color:#1d1d1f">Clear layouts, translucent surfaces and graphics optimized for a global audience.</p>
+    </div>
+  </div>
+  <img src="assets/e86ce04d2160.webp" decoding="async" alt="Kiko, Zayu welcome screen" data-build-in="rise 1" style="position:absolute; top:250px; left:1060px; width:340px; height:639px; object-fit:contain; transform:rotate(-10deg)">
+  <div style="position:absolute;top:148px;left:1350.1px;transform:rotate(6deg);width:341.69px;height:714px;border-radius:0;overflow:hidden;flex-shrink:0;display:block"><img src="assets/048e123c71dc.webp" alt="Kiko home with the Zayu assistant" style="width:341.69px;height:714px;object-fit:cover;object-position:0% 50%;transform:scale(1.0007);transform-origin:0% 50%"></div>
+  <img src="assets/5a6772f25241.webp" decoding="async" alt="App icon for Kiko" data-build-in="pop 3" style="position:absolute; top:140px; left:960px; width:180px; height:180px; border-radius:42px; box-shadow:0 24px 48px #00000040; transform:rotate(-8deg)">
+  
+</section>
+</div></div>
+<div class="frame" id="f-kiko-usuarios"><div class="stage"><section id="kiko-usuarios" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px;align-items:center">
+<p style="font-size:28px;font-weight:600;color:#0066cc">Kiko · Users</p>
+<h2 style="font-size:64px;font-weight:700;letter-spacing:-1.5px;line-height:1.1;text-align:center">Who are we designing for?</h2>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#ece6f7;border-radius:16px">What time does Mexico play?</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#ece6f7;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">🧑</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">Casual fan</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Match info is scattered across several apps.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">See schedules and live scores at a glance.</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#dcefe3;border-radius:16px">Where did I put my ticket?</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#dcefe3;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">👩</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">Stadium-goer</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Arrives without knowing the weather, time or entrance.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Ticket in Wallet and reminders to arrive on time.</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#f9e0e0;border-radius:16px">I’m in Mexico… now what?</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#f9e0e0;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">🧳</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">International tourist</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Doesn’t know the city or how to get around.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">A friendly assistant to guide them through the tournament.</p></div>
+</div>
+</div>
+
+</section>
+</div></div>
+<div class="frame" id="f-kiko-pantallas"><div class="stage"><section id="kiko-pantallas" data-transition="fade" style="background:radial-gradient(ellipse at 50% 90%, #d7f0dd 0%, #ffffff 65%);color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;align-items:center;gap:16px">
+<h2 style="font-size:64px;font-weight:700;letter-spacing:-1.5px;line-height:1.1;text-align:center">Every screen, one clear task.</h2>
+<p style="font-size:28px;color:#6e6e73;text-align:center">Live matches → match details → ticket in Wallet · Zayu assistant always available</p>
+<img src="assets/e86ce04d2160.webp" decoding="async" alt="Zayu welcome" style="position:absolute;left:250px;top:400px;width:266px;height:500px;object-fit:contain;transform:rotate(-16deg)" data-build-in="rise order 1">
+<img src="assets/048e123c71dc.webp" decoding="async" alt="Home with upcoming events" style="position:absolute;left:1410px;top:400px;width:266px;height:500px;object-fit:contain;transform:rotate(16deg)" data-build-in="rise order 1">
+<img src="assets/904575028812.webp" decoding="async" alt="Match details with lineup" style="position:absolute;left:490px;top:330px;width:308px;height:579px;object-fit:contain;transform:rotate(-8deg)" data-build-in="rise order 2">
+<img src="assets/cd0f00266902.webp" decoding="async" alt="Ticket in Apple Wallet" style="position:absolute;left:1122px;top:330px;width:308px;height:579px;object-fit:contain;transform:rotate(8deg)" data-build-in="rise order 2">
+<img src="assets/7f93af7e041d.webp" decoding="async" alt="Match schedule" style="position:absolute;left:790px;top:290px;width:340px;height:639px;object-fit:contain" data-build-in="rise order 3">
+</section>
+</div></div>
+<div class="frame" id="f-huracan-hero"><div class="stage"><section id="huracan-hero" data-transition="fade" style="background:radial-gradient(ellipse at 50% 100%, #5a3a12 0%, #08080a 62%), #08080a;color:#f5f5f7;font-family:Inter, sans-serif;padding:96px 128px 0px;display:flex;flex-direction:column;align-items:center">
+<p style="font-size:28px;font-weight:600;color:#8e8e93;text-align:center;padding-bottom:12px">02 · Mi Primer Huracán</p>
+<h1 style="font-size:200px;font-weight:700;letter-spacing:-7px;line-height:1.0;text-align:center;background:linear-gradient(90deg, #fff1c7 0%, #ffd66b 45%, #ff8a5b 100%);background-clip:text;-webkit-text-fill-color:transparent">Learn</h1>
+<h1 style="font-size:200px;font-weight:700;letter-spacing:-7px;line-height:1.0;text-align:center;background:linear-gradient(180deg, #e0a24f 0%, #2a1c0e 100%);background-clip:text;-webkit-text-fill-color:transparent">to stay safe.</h1>
+<img src="assets/28ee815876d2.webp" decoding="async" alt="Mi Primer Huracán home screen on a landscape iPhone" style="position:absolute;left:335px;top:540px;width:1250px;height:540px;object-fit:contain" data-build-in="rise">
+
+</section>
+</div></div>
+<div class="frame" id="f-huracan-caso"><div class="stage"><section id="huracan-caso" data-transition="fade" style="background:linear-gradient(120deg, #f5f5f7 0%, #f5f5f7 50%, #fdf0cf 100%);color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;align-items:center">
+<div style="width:760px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;color:#0066cc">02 · Mi Primer Huracán</p>
+<h2 style="font-size:80px;font-weight:700;letter-spacing:-2px;line-height:1.05">Learning to stay safe.</h2>
+<p style="font-size:32px;line-height:1.4;color:#6e6e73">An app that teaches children how to prevent and respond to natural disasters.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;padding-top:24px;border-top:1px solid #d2d2d7">
+<h3 style="font-size:24px;font-weight:600;color:#6e6e73">My role</h3>
+<p style="font-size:28px;line-height:1.4">Interface, visual identity and app development.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;padding-top:24px;border-top:1px solid #d2d2d7">
+<h3 style="font-size:24px;font-weight:600;color:#6e6e73">Solution</h3>
+<p style="font-size:28px;line-height:1.4">A friendly guide character and one-gesture mini-games that explain a serious topic without causing fear.</p>
+</div>
+</div>
+<div style="position:absolute;left:960px;top:250px;width:760px;height:366px;padding:14px;background:#1d1d1f;border-radius:60px;box-shadow:0 40px 80px rgba(0,0,0,0.25);transform:rotate(-6deg);display:flex" data-build-in="rise order 1">
+<img src="assets/fc28d1e08638.webp" decoding="async" alt="Home screen with the Play button" style="width:732px;height:338px;object-fit:cover;border-radius:46px">
+</div>
+<div style="position:absolute;left:1030px;top:560px;width:760px;height:366px;padding:14px;background:#1d1d1f;border-radius:60px;box-shadow:0 40px 80px rgba(0,0,0,0.25);transform:rotate(5deg);display:flex" data-build-in="rise order 2">
+<img src="assets/c114926cadd3.webp" decoding="async" alt="Storm scene" style="width:732px;height:338px;object-fit:cover;border-radius:46px">
+</div>
+<img src="assets/c19aa668b783.webp" decoding="async" alt="App icon for Mi Primer Huracán" style="position:absolute;left:1600px;top:136px;width:180px;height:180px;object-fit:contain;transform:rotate(10deg)" data-build-in="pop order 3">
+
+</section>
+</div></div>
+<div class="frame" id="f-huracan-usuarios"><div class="stage"><section id="huracan-usuarios" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px;align-items:center">
+<p style="font-size:28px;font-weight:600;color:#0066cc">Mi Primer Huracán · Users</p>
+<h2 style="font-size:64px;font-weight:700;letter-spacing:-1.5px;line-height:1.1;text-align:center">Who are we designing for?</h2>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#fdf0cf;border-radius:16px">What is a hurricane?</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#fdf0cf;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">🧒</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">Child aged 6 to 10</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Disaster topics scare or bore them.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Learning through play with a friendly character.</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#dcefe3;border-radius:16px">How do I explain this?</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#dcefe3;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">👩</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">Parent</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Doesn’t know how to talk about risk without scaring their kids.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">An activity to pack the emergency backpack as a family.</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#dde7f3;border-radius:16px">I need material for class</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#dde7f3;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">👨‍🏫</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">Elementary teacher</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">There’s little prevention material made for kids.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Short, clear mini-games to use in the classroom.</p></div>
+</div>
+</div>
+
+</section>
+</div></div>
+<div class="frame" id="f-huracan-pantallas"><div class="stage"><section id="huracan-pantallas" data-transition="fade" style="background:radial-gradient(ellipse at 50% 60%, #fdf0cf 0%, #ffffff 70%);color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;align-items:center;gap:16px">
+<h2 style="font-size:64px;font-weight:700;letter-spacing:-1.5px;line-height:1.1;text-align:center">Play to be prepared.</h2>
+<p style="font-size:28px;color:#6e6e73;text-align:center">Mini-game → win or lose animation that teaches the consequences → lives system</p>
+<div style="position:absolute;left:250px;top:300px;width:628px;height:304px;padding:14px;background:#1d1d1f;border-radius:52px;box-shadow:0 30px 60px rgba(0,0,0,0.2);transform:rotate(-6deg);display:flex" data-build-in="rise order 1">
+<img src="assets/6845e1b6b0f4.webp" decoding="async" alt="Guide character with an emergency backpack" style="width:600px;height:276px;object-fit:cover;border-radius:40px">
+</div>
+<div style="position:absolute;left:960px;top:280px;width:628px;height:304px;padding:14px;background:#1d1d1f;border-radius:52px;box-shadow:0 30px 60px rgba(0,0,0,0.2);transform:rotate(5deg);display:flex" data-build-in="rise order 2">
+<img src="assets/ab93d2514579.webp" decoding="async" alt="Mini-game: drag to clear the storm drain" style="width:600px;height:276px;object-fit:cover;border-radius:40px">
+</div>
+<div style="position:absolute;left:330px;top:630px;width:628px;height:304px;padding:14px;background:#1d1d1f;border-radius:52px;box-shadow:0 30px 60px rgba(0,0,0,0.2);transform:rotate(4deg);display:flex" data-build-in="rise order 3">
+<img src="assets/c114926cadd3.webp" decoding="async" alt="Storm and flood scene" style="width:600px;height:276px;object-fit:cover;border-radius:40px">
+</div>
+<div style="position:absolute;left:1040px;top:620px;width:628px;height:304px;padding:14px;background:#1d1d1f;border-radius:52px;box-shadow:0 30px 60px rgba(0,0,0,0.2);transform:rotate(-5deg);display:flex" data-build-in="rise order 4">
+<img src="assets/fc28d1e08638.webp" decoding="async" alt="Home screen with the Play button" style="width:600px;height:276px;object-fit:cover;border-radius:40px">
+</div>
+</section>
+</div></div>
+<div class="frame" id="f-tixal-hero"><div class="stage"><section id="tixal-hero" data-transition="fade" style="background:radial-gradient(ellipse at 50% 100%, #5a2414 0%, #08080a 62%), #08080a;color:#f5f5f7;font-family:Inter, sans-serif;padding:96px 128px 0px;display:flex;flex-direction:column;align-items:center">
+<p style="font-size:28px;font-weight:600;color:#8e8e93;text-align:center;padding-bottom:12px">03 · Tixal</p>
+<h1 style="font-size:200px;font-weight:700;letter-spacing:-7px;line-height:1.0;text-align:center;background:linear-gradient(90deg, #ffe0c2 0%, #ffb36b 45%, #ff4f7b 100%);background-clip:text;-webkit-text-fill-color:transparent">Your city,</h1>
+<h1 style="font-size:200px;font-weight:700;letter-spacing:-7px;line-height:1.0;text-align:center;background:linear-gradient(180deg, #e0704f 0%, #2a120e 100%);background-clip:text;-webkit-text-fill-color:transparent">your ticket.</h1>
+<img src="assets/065fe3dd2fcd.webp" decoding="async" alt="Tixal route screen on an iPhone" style="position:absolute;left:530px;top:540px;width:860px;height:540px;object-fit:contain" data-build-in="rise">
+
+</section>
+</div></div>
+<div class="frame" id="f-tixal-caso"><div class="stage"><section id="tixal-caso" data-transition="fade" style="background:linear-gradient(120deg, #f5f5f7 0%, #f5f5f7 55%, #fde3d0 100%);color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;align-items:center">
+<div style="width:840px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;color:#0066cc">03 · Tixal</p>
+<h2 style="font-size:80px;font-weight:700;letter-spacing:-2px;line-height:1.05">The city, one ticket away.</h2>
+<p style="font-size:32px;line-height:1.4;color:#6e6e73">An app to discover cultural spots in Guadalajara (museums, parks and galleries): ticket purchase and public-transit route in a single flow.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;padding-top:24px;border-top:1px solid #d2d2d7">
+<h3 style="font-size:24px;font-weight:600;color:#6e6e73">My role</h3>
+<p style="font-size:28px;line-height:1.4">Lead of the design and development teams.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;padding-top:24px;border-top:1px solid #d2d2d7">
+<h3 style="font-size:24px;font-weight:600;color:#6e6e73">Outcome</h3>
+<p style="font-size:28px;line-height:1.4">I split the team into focused groups to speed up delivery and balanced engineering with visual design.</p>
+</div>
+</div>
+<div style="position:absolute;left:1070px;top:260px;width:320px;height:660px;padding:14px;background:#1d1d1f;border-radius:58px;box-shadow:0 40px 80px rgba(0,0,0,0.25);transform:rotate(-10deg);display:flex" data-build-in="rise order 1">
+<img src="assets/be449e94e4ea.webp" decoding="async" alt="Tixal splash screen with logo" style="width:292px;height:632px;object-fit:cover;border-radius:46px">
+</div>
+<div style="position:absolute;left:1370px;top:160px;width:340px;height:700px;padding:14px;background:#1d1d1f;border-radius:60px;box-shadow:0 40px 80px rgba(0,0,0,0.25);transform:rotate(6deg);display:flex" data-build-in="rise order 2">
+<img src="assets/f500899065d3.webp" decoding="async" alt="Tixal, route to Museo Cabañas" style="width:312px;height:672px;object-fit:cover;border-radius:48px">
+</div>
+
+</section>
+</div></div>
+<div class="frame" id="f-tixal-usuarios"><div class="stage"><section id="tixal-usuarios" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px;align-items:center">
+<p style="font-size:28px;font-weight:600;color:#0066cc">Tixal · Users</p>
+<h2 style="font-size:64px;font-weight:700;letter-spacing:-1.5px;line-height:1.1;text-align:center">Who are we designing for?</h2>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#fde3d0;border-radius:16px">How do I get to the Cabañas?</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#fde3d0;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">🧳</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">Tourist in Guadalajara</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Doesn’t know the public-transit routes.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Clear routes with estimated arrival time.</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#ece6f7;border-radius:16px">What should I do this weekend?</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#ece6f7;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">🧑</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">Young local</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Doesn’t know which museums there are or what they cost.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Discover places and buy tickets in one flow.</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#dcefe3;border-radius:16px">There are four of us, how much is it?</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#dcefe3;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">👪</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">Family</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Buying several tickets at the box office is slow.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Pick adults and kids and pay from their phone.</p></div>
+</div>
+</div>
+
+</section>
+</div></div>
+<div class="frame" id="f-tixal-pantallas"><div class="stage"><section id="tixal-pantallas" data-transition="fade" style="background:radial-gradient(ellipse at 50% 85%, #fde3d0 0%, #ffffff 65%);color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;align-items:center;gap:16px">
+<h2 style="font-size:64px;font-weight:700;letter-spacing:-1.5px;line-height:1.1;text-align:center">From cultural spot to your route.</h2>
+<p style="font-size:28px;color:#6e6e73;text-align:center">Choose a cultural spot → buy a ticket → pay → check the route</p>
+<div style="position:absolute;left:540px;top:340px;width:280px;height:600px;padding:12px;background:#1d1d1f;border-radius:52px;box-shadow:0 30px 60px rgba(0,0,0,0.2);transform:rotate(-10deg);display:flex" data-build-in="rise order 1">
+<img src="assets/be449e94e4ea.webp" decoding="async" alt="Tixal splash screen" style="width:256px;height:576px;object-fit:cover;border-radius:42px">
+</div>
+<div style="position:absolute;left:1100px;top:340px;width:280px;height:600px;padding:12px;background:#1d1d1f;border-radius:52px;box-shadow:0 30px 60px rgba(0,0,0,0.2);transform:rotate(10deg);display:flex" data-build-in="rise order 1">
+<img src="assets/f500899065d3.webp" decoding="async" alt="Tixal, route to the cultural spot" style="width:256px;height:576px;object-fit:cover;border-radius:42px">
+</div>
+<div style="position:absolute;left:810px;top:290px;width:300px;height:640px;padding:12px;background:#1d1d1f;border-radius:54px;box-shadow:0 40px 80px rgba(0,0,0,0.25);display:flex" data-build-in="rise order 2">
+<img src="assets/50c7ab4d4302.webp" decoding="async" alt="Tixal, ticket purchase and payment" style="width:276px;height:616px;object-fit:cover;border-radius:44px">
+</div>
+</section>
+</div></div>
+<div class="frame" id="f-coppi-hero"><div class="stage"><section id="coppi-hero" data-transition="fade" style="background:radial-gradient(ellipse at 50% 100%, #1d3358 0%, #08080a 62%), #08080a;color:#f5f5f7;font-family:Inter, sans-serif;padding:96px 128px 0px;display:flex;flex-direction:column;align-items:center">
+<p style="font-size:28px;font-weight:600;color:#8e8e93;text-align:center;padding-bottom:12px">04 · Coppi</p>
+<h1 style="font-size:200px;font-weight:700;letter-spacing:-7px;line-height:1.0;text-align:center;background:linear-gradient(90deg, #fff3d1 0%, #ffd98a 45%, #7fa8ff 100%);background-clip:text;-webkit-text-fill-color:transparent">A breather,</h1>
+<h1 style="font-size:200px;font-weight:700;letter-spacing:-7px;line-height:1.0;text-align:center;background:linear-gradient(180deg, #6f8fd8 0%, #0e1628 100%);background-clip:text;-webkit-text-fill-color:transparent">right on time.</h1>
+<img src="assets/9f367e36e704.webp" decoding="async" alt="Coppi breathing exercise on an iPhone" style="position:absolute;left:530px;top:540px;width:860px;height:540px;object-fit:contain" data-build-in="rise">
+
+</section>
+</div></div>
+<div class="frame" id="f-coppi-caso"><div class="stage"><section id="coppi-caso" data-transition="fade" style="background:linear-gradient(120deg, #f5f5f7 0%, #f5f5f7 55%, #dde7f3 100%);color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;align-items:center">
+<div style="width:840px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;color:#0066cc">04 · Coppi · Coppel Challenge, Hack 26</p>
+<h2 style="font-size:80px;font-weight:700;letter-spacing:-2px;line-height:1.05">A breather, when it’s needed most.</h2>
+<p style="font-size:32px;line-height:1.4;color:#6e6e73">An emotional well-being app for employees: mood check-ins, breathing exercises and quick access to support.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;padding-top:24px;border-top:1px solid #d2d2d7">
+<h3 style="font-size:24px;font-weight:600;color:#6e6e73">My role</h3>
+<p style="font-size:28px;line-height:1.4">[UX/UI design, research, prototyping…]</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;padding-top:24px;border-top:1px solid #d2d2d7">
+<h3 style="font-size:24px;font-weight:600;color:#6e6e73">Focus</h3>
+<p style="font-size:28px;line-height:1.4">Soft shapes, warm colors and a single action per screen so it never overwhelms in a moment of crisis.</p>
+</div>
+</div>
+<div style="position:absolute;left:1070px;top:260px;width:320px;height:660px;padding:14px;background:#1d1d1f;border-radius:58px;box-shadow:0 40px 80px rgba(0,0,0,0.25);transform:rotate(-10deg);display:flex" data-build-in="rise order 1">
+<img src="assets/2374e3b59465.webp" decoding="async" alt="Coppi breathing exercise" style="width:292px;height:632px;object-fit:cover;border-radius:46px;background:#ffffff">
+</div>
+<div style="position:absolute;left:1370px;top:160px;width:340px;height:700px;padding:14px;background:#1d1d1f;border-radius:60px;box-shadow:0 40px 80px rgba(0,0,0,0.25);transform:rotate(6deg);display:flex" data-build-in="rise order 2">
+<img src="assets/4a29b821abe7.webp" decoding="async" alt="Coppi, how are you feeling today?" style="width:312px;height:672px;object-fit:cover;border-radius:48px;background:#ffffff">
+</div>
+<img src="assets/77ddd80c3cdb.webp" decoding="async" alt="App icon for Coppi" style="position:absolute;left:960px;top:150px;width:170px;height:170px;object-fit:contain;transform:rotate(-8deg)" data-build-in="pop order 3">
+
+</section>
+</div></div>
+<div class="frame" id="f-coppi-usuarios"><div class="stage"><section id="coppi-usuarios" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px;align-items:center">
+<p style="font-size:28px;font-weight:600;color:#0066cc">Coppi · Users</p>
+<h2 style="font-size:64px;font-weight:700;letter-spacing:-1.5px;line-height:1.1;text-align:center">Who are we designing for?</h2>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#fdf0cf;border-radius:16px">Today wasn’t a good day</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#fdf0cf;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">🧑‍💼</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">Store employee</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Heavy workload and little time to take a break.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Quick exercises to manage stress.</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#dde7f3;border-radius:16px">I don’t know who to talk to</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#dde7f3;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">👩</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">New employee</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Doesn’t know the company’s support services.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Direct access to the Mental and Emotional Well-being team.</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#ece6f7;border-radius:16px">How is my team doing?</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#ece6f7;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">👨‍💼</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">Area supervisor</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Notices team burnout too late.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Understand what triggers distress to act in time.</p></div>
+</div>
+</div>
+
+</section>
+</div></div>
+<div class="frame" id="f-coppi-pantallas"><div class="stage"><section id="coppi-pantallas" data-transition="fade" style="background:radial-gradient(ellipse at 50% 85%, #dde7f3 0%, #ffffff 65%);color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;align-items:center;gap:16px">
+<h2 style="font-size:64px;font-weight:700;letter-spacing:-1.5px;line-height:1.1;text-align:center">From feeling to support, in five steps.</h2>
+<p style="font-size:28px;color:#6e6e73;text-align:center">Log how you feel → what triggered it → breathing and focus game → reach out for support</p>
+<div style="position:absolute;left:250px;top:400px;width:260px;height:540px;padding:11px;background:#1d1d1f;border-radius:48px;box-shadow:0 30px 60px rgba(0,0,0,0.2);transform:rotate(-16deg);display:flex" data-build-in="rise order 1">
+<img src="assets/4a29b821abe7.webp" decoding="async" alt="Coppi, how are you feeling today?" style="width:238px;height:518px;object-fit:cover;border-radius:38px;background:#ffffff">
+</div>
+<div style="position:absolute;left:1410px;top:400px;width:260px;height:540px;padding:11px;background:#1d1d1f;border-radius:48px;box-shadow:0 30px 60px rgba(0,0,0,0.2);transform:rotate(16deg);display:flex" data-build-in="rise order 1">
+<img src="assets/dee4ef8041dc.webp" decoding="async" alt="Coppi, support services reminder" style="width:238px;height:518px;object-fit:cover;border-radius:38px;background:#ffffff">
+</div>
+<div style="position:absolute;left:490px;top:330px;width:290px;height:600px;padding:12px;background:#1d1d1f;border-radius:52px;box-shadow:0 30px 60px rgba(0,0,0,0.2);transform:rotate(-8deg);display:flex" data-build-in="rise order 2">
+<img src="assets/408f79e1cf4c.webp" decoding="async" alt="Coppi, what triggered this feeling?" style="width:266px;height:576px;object-fit:cover;border-radius:42px;background:#ffffff">
+</div>
+<div style="position:absolute;left:1140px;top:330px;width:290px;height:600px;padding:12px;background:#1d1d1f;border-radius:52px;box-shadow:0 30px 60px rgba(0,0,0,0.2);transform:rotate(8deg);display:flex" data-build-in="rise order 2">
+<img src="assets/4c1105f51838.webp" decoding="async" alt="Coppi focus game: name an animal" style="width:266px;height:576px;object-fit:cover;border-radius:42px;background:#ffffff">
+</div>
+<div style="position:absolute;left:805px;top:280px;width:310px;height:650px;padding:12px;background:#1d1d1f;border-radius:54px;box-shadow:0 40px 80px rgba(0,0,0,0.25);display:flex" data-build-in="rise order 3">
+<img src="assets/2374e3b59465.webp" decoding="async" alt="Coppi breathing exercise" style="width:286px;height:626px;object-fit:cover;border-radius:44px;background:#ffffff">
+</div>
+</section>
+</div></div>
+<div class="frame" id="f-rendo-hero"><div class="stage"><section id="rendo-hero" data-transition="fade" style="background:radial-gradient(ellipse at 50% 100%, #12483f 0%, #08080a 62%), #08080a;color:#f5f5f7;font-family:Inter, sans-serif;padding:96px 128px 0px;display:flex;flex-direction:column;align-items:center">
+<p style="font-size:28px;font-weight:600;color:#8e8e93;text-align:center;padding-bottom:12px">05 · Rendo</p>
+<h1 style="font-size:200px;font-weight:700;letter-spacing:-7px;line-height:1.0;text-align:center;background:linear-gradient(90deg, #d6fff4 0%, #5ce1c6 45%, #9be15d 100%);background-clip:text;-webkit-text-fill-color:transparent">Play for</h1>
+<h1 style="font-size:200px;font-weight:700;letter-spacing:-7px;line-height:1.0;text-align:center;background:linear-gradient(180deg, #3fb89f 0%, #0c221d 100%);background-clip:text;-webkit-text-fill-color:transparent">the planet.</h1>
+<img src="assets/4504a8f22b88.webp" decoding="async" alt="Rendo missions on an iPhone" style="position:absolute;left:530px;top:540px;width:860px;height:540px;object-fit:contain" data-build-in="rise">
+
+</section>
+</div></div>
+<div class="frame" id="f-rendo"><div class="stage"><section id="rendo" data-transition="fade" style="background:linear-gradient(120deg, #f5f5f7 0%, #f5f5f7 55%, #d5eef0 100%);color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;align-items:center">
+<div style="width:840px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;color:#0066cc">05 · Rendo</p>
+<h2 style="font-size:80px;font-weight:700;letter-spacing:-2px;line-height:1.05">Caring for the planet, one mission at a time.</h2>
+<p style="font-size:32px;line-height:1.4;color:#6e6e73">An environmental education app with missions, lessons and eco-adventures near your community.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;padding-top:24px;border-top:1px solid #d2d2d7">
+<h3 style="font-size:24px;font-weight:600;color:#6e6e73">What I did</h3>
+<p style="font-size:28px;line-height:1.4">I built the mini-games with SpriteKit, a score database and a ranking system.</p>
+</div>
+</div>
+<div style="position:absolute;left:1070px;top:260px;width:320px;height:660px;padding:14px;background:#1d1d1f;border-radius:58px;box-shadow:0 40px 80px rgba(0,0,0,0.25);transform:rotate(-10deg);display:flex" data-build-in="rise order 1">
+<img src="assets/a7f2427953da.webp" decoding="async" alt="Rendo eco-adventures" style="width:292px;height:632px;object-fit:cover;border-radius:46px">
+</div>
+<div style="position:absolute;left:1370px;top:160px;width:340px;height:700px;padding:14px;background:#1d1d1f;border-radius:60px;box-shadow:0 40px 80px rgba(0,0,0,0.25);transform:rotate(6deg);display:flex" data-build-in="rise order 2">
+<img src="assets/ecd02af20507.webp" decoding="async" alt="Rendo, waste-sorting missions" style="width:312px;height:672px;object-fit:cover;border-radius:48px">
+</div>
+
+</section>
+</div></div>
+<div class="frame" id="f-rendo-usuarios"><div class="stage"><section id="rendo-usuarios" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px;align-items:center">
+<p style="font-size:28px;font-weight:600;color:#0066cc">Rendo · Users</p>
+<h2 style="font-size:64px;font-weight:700;letter-spacing:-1.5px;line-height:1.1;text-align:center">Who are we designing for?</h2>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#d5eef0;border-radius:16px">Why sort the trash?</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#d5eef0;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">🧒</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">Student</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Environmental topics feel distant and boring.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Missions and challenges that motivate them to learn.</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#dcefe3;border-radius:16px">I want to help, but where?</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#dcefe3;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">🧑</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">Young volunteer</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Can’t find eco activities near home.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Adventures in their community, like adopting a tree.</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;padding:40px;background:#ffffff;border-radius:28px;box-shadow:0 20px 40px rgba(0,0,0,0.06)">
+<div style="display:flex;flex-direction:column;gap:20px;align-items:center">
+<p style="font-size:26px;font-weight:700;text-align:center;padding:14px 24px;background:#fdf0cf;border-radius:16px">How do I get them involved?</p>
+<div style="width:110px;height:110px;border-radius:55px;background:#fdf0cf;display:flex;align-items:center;justify-content:center"><p style="font-size:60px">👩‍🏫</p></div>
+<h3 style="font-size:30px;font-weight:700;text-align:center">Teacher</h3>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">Pain point</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Struggles to keep the class engaged with the topic.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;font-weight:700;color:#0066cc">User needs</p><p style="font-size:24px;line-height:1.4;color:#6e6e73">Scores and rankings that spark healthy competition.</p></div>
+</div>
+</div>
+
+</section>
+</div></div>
+<div class="frame" id="f-rendo-pantallas"><div class="stage"><section id="rendo-pantallas" data-transition="fade" style="background:radial-gradient(ellipse at 50% 85%, #d5eef0 0%, #ffffff 65%);color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;align-items:center;gap:16px">
+<h2 style="font-size:64px;font-weight:700;letter-spacing:-1.5px;line-height:1.1;text-align:center">Learn, play and act.</h2>
+<p style="font-size:28px;color:#6e6e73;text-align:center">Missions → educational game for kids → ranking → lessons → flashcards → adventures</p>
+<div style="position:absolute;left:250px;top:400px;width:260px;height:540px;padding:11px;background:#1d1d1f;border-radius:48px;box-shadow:0 30px 60px rgba(0,0,0,0.2);transform:rotate(-16deg);display:flex" data-build-in="rise order 1">
+<img src="assets/6014e3840888.webp" decoding="async" alt="Rendo, Adopt a Tree adventure" style="width:238px;height:518px;object-fit:cover;border-radius:38px">
+</div>
+<div style="position:absolute;left:1410px;top:400px;width:260px;height:540px;padding:11px;background:#1d1d1f;border-radius:48px;box-shadow:0 30px 60px rgba(0,0,0,0.2);transform:rotate(16deg);display:flex" data-build-in="rise order 1">
+<img src="assets/a76360435224.webp" decoding="async" alt="Rendo, Learn section" style="width:238px;height:518px;object-fit:cover;border-radius:38px">
+</div>
+<div style="position:absolute;left:490px;top:330px;width:290px;height:600px;padding:12px;background:#1d1d1f;border-radius:52px;box-shadow:0 30px 60px rgba(0,0,0,0.2);transform:rotate(-8deg);display:flex" data-build-in="rise order 2">
+<img src="assets/a7f2427953da.webp" decoding="async" alt="Rendo eco-adventures" style="width:266px;height:576px;object-fit:cover;border-radius:42px">
+</div>
+<div style="position:absolute;left:1140px;top:330px;width:290px;height:600px;padding:12px;background:#1d1d1f;border-radius:52px;box-shadow:0 30px 60px rgba(0,0,0,0.2);transform:rotate(8deg);display:flex" data-build-in="rise order 2">
+<img src="assets/1383ea9b8071.webp" decoding="async" alt="Rendo, pollution flashcards" style="width:266px;height:576px;object-fit:cover;border-radius:42px">
+</div>
+<div style="position:absolute;left:805px;top:280px;width:310px;height:650px;padding:12px;background:#1d1d1f;border-radius:54px;box-shadow:0 40px 80px rgba(0,0,0,0.25);display:flex" data-build-in="rise order 3">
+<img src="assets/ecd02af20507.webp" decoding="async" alt="Rendo missions" style="width:286px;height:626px;object-fit:cover;border-radius:44px">
+</div>
+</section>
+</div></div>
+<div class="frame" id="f-aura-hero"><div class="stage"><section id="aura-hero" data-transition="fade" style="background-color:#08080a; background-image:radial-gradient(ellipse at 50% 100%, #3d1d5c 0%, #08080a 62%)">
+  <img src="assets/d55da07a1e5e.webp" decoding="async" alt="Aura on a computer monitor" id="e2-ibart9" data-build-in="rise 1" style="position:absolute; top:450px; left:410px; width:1100px; height:630px; object-fit:contain">
+  <p id="pca76e24c496dr0-6d6d4df4" style="position:absolute; top:96px; left:898px; width:124px; padding:0 0 12px; font-family:Inter, sans-serif; font-size:28px; font-weight:600; text-align:center; color:#8e8e93">06 · Aura</p>
+  <h1 id="pca76e24c496dr1-6d6d4df4" style="position:absolute; top:238px; left:190px; width:560px; font-family:Inter, sans-serif; font-size:200px; font-weight:700; line-height:1; letter-spacing:-7px; text-align:center; color:#f5f5f7; background:linear-gradient(90deg, #ffe1f3 0%, #ff9ad5 45%, #a88bff 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent">Enter</h1>
+  <h1 id="pca76e24c496dr2-6d6d4df4" style="position:absolute; top:238px; left:760px; width:1000px; font-family:Inter, sans-serif; font-size:200px; font-weight:700; line-height:1; letter-spacing:-7px; text-align:center; color:#f5f5f7; background:linear-gradient(180deg, #b46fd8 0%, #1d0e28 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent">the dream.</h1>
+  
+</section>
+</div></div>
+<div class="frame" id="f-aura"><div class="stage"><section id="aura" data-transition="fade" style="background:radial-gradient(circle at 72% 50%, #3a1d52 0%, #0b0b0d 62%);color:#f5f5f7;font-family:Inter, sans-serif;padding:128px;display:flex;align-items:center">
+<div style="width:680px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:600;color:#d7a8ff">06 · Aura</p>
+<h2 style="font-size:80px;font-weight:700;letter-spacing:-2px;line-height:1.05">A demo in two months.</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;padding-top:24px;border-top:1px solid #3a3a3c">
+<h3 style="font-size:24px;font-weight:600;color:#a1a1a6">What I did</h3>
+<p style="font-size:28px;line-height:1.4">I led level design and production, coordinating art and engineering.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;padding-top:24px;border-top:1px solid #3a3a3c">
+<h3 style="font-size:24px;font-weight:600;color:#a1a1a6">Programming</h3>
+<p style="font-size:28px;line-height:1.4">I programmed all the player and game logic, except the menus and credits.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;padding-top:24px;border-top:1px solid #3a3a3c">
+<h3 style="font-size:24px;font-weight:600;color:#a1a1a6">Focus</h3>
+<p style="font-size:28px;line-height:1.4">Visual coherence, color palettes and narrative consistency.</p>
+</div>
+</div>
+<img src="assets/1a2d4b66af0d.webp" decoding="async" alt="Aura key art" style="position:absolute;left:880px;top:250px;width:880px;height:516px;object-fit:cover;border-radius:32px;box-shadow:0 40px 120px rgba(215,120,255,0.35);transform:rotate(4deg)" data-build-in="rise order 1">
+<img src="assets/1957f4ea28a4.webp" decoding="async" alt="Aura character" style="position:absolute;left:820px;top:640px;width:240px;height:240px;object-fit:contain;transform:rotate(-10deg)" data-build-in="pop order 2">
+
+</section>
+</div></div>
+<div class="frame" id="f-aura-gameplay"><div class="stage"><section id="aura-gameplay" data-transition="fade" style="background:radial-gradient(circle at 50% 70%, #3a1d52 0%, #0b0b0d 65%), #0b0b0d;color:#f5f5f7;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;align-items:center;gap:16px">
+<h2 style="font-size:64px;font-weight:700;letter-spacing:-1.5px;line-height:1.1;text-align:center">Worlds that feel made of paper.</h2>
+<p style="font-size:28px;color:#a1a1a6;text-align:center">Aura gameplay · Level design and art direction</p>
+<img src="assets/d14f752d0075.webp" decoding="async" alt="Aura gameplay: seaside level" style="position:absolute;left:190px;top:300px;width:900px;height:505px;object-fit:cover;border-radius:28px;box-shadow:0 40px 100px rgba(0,0,0,0.6);transform:rotate(-5deg)" data-build-in="rise order 1">
+<img src="assets/17e8d0eea65e.webp" decoding="async" alt="Aura gameplay: the bedroom and the book" style="position:absolute;left:830px;top:420px;width:900px;height:499px;object-fit:cover;border-radius:28px;box-shadow:0 40px 100px rgba(215,120,255,0.35);transform:rotate(4deg)" data-build-in="rise order 2">
+
+</section>
+</div></div>
+<div class="frame" id="f-logros"><div class="stage"><section id="logros" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:Inter, sans-serif;padding:128px;display:flex;gap:96px;align-items:center">
+<div style="width:640px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:28px;font-weight:600;color:#0066cc">Recognition</p>
+<h2 style="font-size:80px;font-weight:700;letter-spacing:-2px;line-height:1.05">Proven under pressure.</h2>
+<div style="display:flex;flex-direction:column;gap:8px;padding:40px;background:#1d1d1f;color:#f5f5f7;border-radius:28px">
+<h3 style="font-size:48px;font-weight:700;letter-spacing:-1px">1st place</h3>
+<p style="font-size:28px;color:#a1a1a6">CUAAD Hackathon · April 2025</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;padding:40px;background:#ffffff;border-radius:28px">
+<h3 style="font-size:48px;font-weight:700;letter-spacing:-1px">Honorable mention</h3>
+<p style="font-size:28px;color:#6e6e73">CUAAD Hackathon · March 2024</p>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:24px;padding:48px;background:#ffffff;border-radius:28px">
+<h3 style="font-size:28px;font-weight:700">Participation</h3>
+<table style="font-size:26px;width:832px;color:#1d1d1f">
+<tr><td style="width:75%;padding:14px 12px;border-top:1px solid #d2d2d7">City Science Hands-On</td><td style="width:25%;text-align:right;padding:14px 12px;border-top:1px solid #d2d2d7;color:#6e6e73">Aug 2026</td></tr>
+<tr><td style="padding:14px 12px;border-top:1px solid #d2d2d7">CSC 2025</td><td style="text-align:right;padding:14px 12px;border-top:1px solid #d2d2d7;color:#6e6e73">Nov 2025</td></tr>
+<tr><td style="padding:14px 12px;border-top:1px solid #d2d2d7">Hack_athon Swift Changemakers Monterrey</td><td style="text-align:right;padding:14px 12px;border-top:1px solid #d2d2d7;color:#6e6e73">May 2025</td></tr>
+<tr><td style="padding:14px 12px;border-top:1px solid #d2d2d7">Changemakers Social Challenge CDMX</td><td style="text-align:right;padding:14px 12px;border-top:1px solid #d2d2d7;color:#6e6e73">Nov 2024</td></tr>
+<tr><td style="padding:14px 12px;border-top:1px solid #d2d2d7">Hack_athon Swift Changemakers Monterrey</td><td style="text-align:right;padding:14px 12px;border-top:1px solid #d2d2d7;color:#6e6e73">Apr 2024</td></tr>
+<tr><td style="padding:14px 12px;border-top:1px solid #d2d2d7">Swift Student Challenge</td><td style="text-align:right;padding:14px 12px;border-top:1px solid #d2d2d7;color:#6e6e73">Feb 2024</td></tr>
+</table>
+</div>
+</section>
+</div></div>
+<div class="frame" id="f-contacto"><div class="stage"><section id="contacto" data-transition="fade" style="background:radial-gradient(circle at 50% 110%, #1f2a44 0%, #0b0b0d 60%);color:#f5f5f7;font-family:Inter, sans-serif;padding:128px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px">
+<p style="font-size:32px;font-weight:600;color:#2997ff;text-align:center">Thank you</p>
+<h2 style="font-size:140px;font-weight:700;letter-spacing:-4px;line-height:1.0;text-align:center">Let’s design something together.</h2>
+<p style="font-size:40px;font-weight:600;text-align:center">diego.gtz.chavez21@gmail.com</p>
+<p style="font-size:28px;color:#a1a1a6;text-align:center">+52 33 3250 6601 · <a href="https://www.linkedin.com/in/diego-cha"><span style="color:#2997ff">linkedin.com/in/diego-cha</span></a></p>
+</section>
+</div></div>
+</main>
+<footer>© 2026 Diego Alejandro Chávez Gutiérrez · Guadalajara, Mexico · <a href="mailto:diego.gtz.chavez21@gmail.com">diego.gtz.chavez21@gmail.com</a></footer>
+<script>
+function fit(){document.querySelectorAll('.frame').forEach(function(f){f.firstElementChild.style.transform='scale('+(f.clientWidth/1920)+')';});}
+addEventListener('resize',fit);fit();
+</script>
+</body>
+</html>
