@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Diego Chávez — Audiovisual & 3D Portfolio</title>
-<meta name="description" content="Audiovisual and 3D work by Diego Chávez: 3D environments, character modeling, cinematography, post-production and VFX. Guadalajara, Mexico.">
+<meta name="description" content="Audiovisual and 3D work by Diego Chávez: cinematography, post-production, color grading, VFX and 3D. Guadalajara, Mexico.">
 <meta property="og:title" content="Diego Chávez — Audiovisual & 3D Portfolio">
-<meta property="og:description" content="3D · Cinematography · Post-production · VFX · Guadalajara, Mexico">
-<meta property="og:image" content="media/tunnel-render.webp">
+<meta property="og:description" content="Post-production · Color grading · Cinematography · VFX · 3D · Guadalajara, Mexico">
+<meta property="og:image" content="media/tetris-4.webp">
 <meta name="theme-color" content="#0b0b0d">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b0b0d;--card:#151517;--line:#2a2a2e;--text:#f5f5f7;--muted:#a1a1a6;--dim:#6e6e73;--accent:#ff9f43;--blue:#2997ff}
+:root{--bg:#0b0b0d;--card:#151517;--line:#2a2a2e;--text:#f5f5f7;--muted:#a1a1a6;--dim:#7c7c82;--accent:#ff9f43}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
@@ -23,7 +23,7 @@ img,video{display:block;width:100%;height:auto;border-radius:18px;background:#00
 .top nav{display:flex;gap:18px;flex-wrap:wrap}
 .top nav a{color:#d1d1d6}.top nav a:hover{color:#fff}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
-.hero{min-height:78vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 0 72px;background:linear-gradient(180deg,rgba(11,11,13,0) 0%,rgba(11,11,13,.55) 55%,var(--bg) 100%),url(media/tunnel-render.webp) center/cover no-repeat}
+.hero{min-height:78vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 0 72px;background:linear-gradient(180deg,rgba(11,11,13,.1) 0%,rgba(11,11,13,.6) 55%,var(--bg) 100%),url(media/tetris-4.webp) center 30%/cover no-repeat}
 .eyebrow{font-size:15px;font-weight:600;color:var(--accent);letter-spacing:.02em;margin-bottom:12px}
 h1{font-size:clamp(44px,8vw,104px);font-weight:800;letter-spacing:-.04em;line-height:1}
 .hero p{font-size:clamp(18px,2.2vw,24px);color:#d1d1d6;max-width:720px;margin-top:20px}
@@ -34,42 +34,151 @@ section{padding:96px 0;border-top:1px solid var(--line)}
 h2{font-size:clamp(34px,5vw,60px);font-weight:700;letter-spacing:-.03em;line-height:1.05}
 .head p{color:var(--muted);font-size:18px}
 .meta{font-size:14px;color:var(--dim);margin-top:10px}
+.divider{padding:72px 0 0;border-top:1px solid var(--line)}
+.divider h2{font-size:clamp(28px,4vw,44px)}
 .grid{display:grid;gap:16px}
-.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
 figure{display:flex;flex-direction:column;gap:10px}
 figcaption{font-size:14px;color:var(--muted)}
+.still img{aspect-ratio:16/9;object-fit:cover}
+.works{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.work{display:flex;flex-direction:column;gap:10px}
+.work img{aspect-ratio:677/962;object-fit:cover;transition:transform .3s}
+.work:hover img{transform:scale(1.02)}
+.work b{font-size:18px}.work span{font-size:13px;color:var(--muted)}
+.player{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:18px;overflow:hidden;background:#000;cursor:pointer;padding:0;color:inherit;font:inherit}
+.player img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0;transition:transform .4s,opacity .3s;opacity:.85}
+.player:hover img{transform:scale(1.02);opacity:1}
+.player .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:12px;background:#fff;color:#000;border-radius:999px;padding:12px 22px 12px 14px;font-size:15px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.45);white-space:nowrap}
+.player .play i{width:30px;height:30px;border-radius:50%;background:#000;position:relative;flex-shrink:0}
+.player .play i::after{content:"";position:absolute;left:12px;top:9px;border-left:10px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.info{display:grid;grid-template-columns:220px 1fr;gap:40px;margin:32px 0}
+.facts{display:flex;flex-direction:column;gap:14px;font-size:14px}
+.facts dt{color:var(--dim);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.facts dd{color:#d1d1d6}
+.info .desc p{font-size:18px;color:#d1d1d6}
+.info .role{margin-top:18px;font-size:15px;color:var(--accent);font-weight:600}
 .vert{display:grid;grid-template-columns:repeat(2,minmax(0,340px));gap:16px;justify-content:center}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:12px}
-.card .role{font-size:13px;font-weight:600;color:var(--accent)}
-.card h3{font-size:24px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
-.card p{color:var(--muted);font-size:15px}
-.card .when{font-size:13px;color:var(--dim);margin-top:auto}
+.about{display:grid;grid-template-columns:360px 1fr;gap:56px;align-items:center}
+.about img{filter:grayscale(1);aspect-ratio:699/899;object-fit:cover}
+.about dl{display:grid;grid-template-columns:150px 1fr;gap:18px 24px}
+.about dt{color:var(--dim);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding-top:4px}
+.about dd{color:#d1d1d6;font-size:17px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
 .cta{text-align:center;padding:120px 0}
 .cta h2{margin-bottom:20px}
 .cta p{color:var(--muted);font-size:18px}
 .cta .links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
-.btn{font-size:15px;font-weight:600;padding:12px 20px;border-radius:999px;background:var(--text);color:#000}
+.btn{display:inline-block;font-size:15px;font-weight:600;padding:12px 20px;border-radius:999px;background:var(--text);color:#000}
 .btn.ghost{background:transparent;color:var(--text);border:1px solid #3a3a3e}
 footer{color:#8e8e93;text-align:center;font-size:13px;padding:28px 16px 40px}
 footer a{color:#d1d1d6}
-@media (max-width:860px){.head,.g2,.g3,.cards{grid-template-columns:1fr}.head{gap:16px}section{padding:72px 0}}
-@media (max-width:640px){.top{font-size:12px;padding:10px 14px}.top nav{gap:12px}.top nav a:nth-child(n+3){display:none}.wrap{padding:0 16px}.vert{grid-template-columns:1fr 1fr;gap:10px}}
+@media (max-width:860px){.head,.g2,.g3,.info,.about{grid-template-columns:1fr}.g4,.works{grid-template-columns:1fr 1fr}.head{gap:16px}section{padding:72px 0}.info{gap:24px}.facts{flex-direction:row;flex-wrap:wrap;gap:16px 28px}.about img{max-width:320px}.about dl{grid-template-columns:1fr;gap:6px}.about dd{margin-bottom:12px}}
+@media (max-width:640px){.top{font-size:12px;padding:10px 14px}.top nav{gap:12px}.top nav a:nth-child(n+3){display:none}.wrap{padding:0 16px}.vert{grid-template-columns:1fr 1fr;gap:10px}.player .play{font-size:13px;padding:10px 16px 10px 10px}}
 </style>
 </head>
 <body>
 <header class="top"><b>Diego Chávez · Audiovisual & 3D</b>
-<nav><a href="../">UX/UI Portfolio</a><a href="#contact">Contact</a><a href="https://www.linkedin.com/in/diego-cha" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:diego.gtz.chavez21@gmail.com">Email</a></nav></header>
+<nav><a href="../">UX/UI Portfolio</a><a href="#contact">Contact</a><a href="https://www.instagram.com/elkxze" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/in/diego-cha" target="_blank" rel="noopener">LinkedIn</a></nav></header>
 
 <main>
 <div class="hero"><div class="wrap">
   <p class="eyebrow">Audiovisual & 3D Portfolio · 2026</p>
   <h1>Diego Chávez</h1>
-  <p>3D environments, characters, cinematography and post-production. I build worlds, light them and tell stories with them.</p>
-  <div class="tags"><span class="tag">3D modeling</span><span class="tag">Lighting & rendering</span><span class="tag">Cinematography</span><span class="tag">Post-production</span><span class="tag">VFX</span><span class="tag">Sound design</span></div>
+  <p>Post-producer from Guadalajara. I shape stories through cinematography, editing, color grading, VFX and 3D.</p>
+  <div class="tags"><span class="tag">Color grading</span><span class="tag">Cinematography</span><span class="tag">Post-production</span><span class="tag">VFX</span><span class="tag">Video editing</span><span class="tag">3D</span></div>
 </div></div>
 
-<section id="corner"><div class="wrap">
+<section id="works"><div class="wrap">
+  <div class="head">
+    <div><p class="eyebrow">Selected works</p><h2>Films & commercials</h2></div>
+    <div><p>Four productions from 2025: two short films and two commercials. Tap any one to watch.</p></div>
+  </div>
+  <div class="works">
+    <a class="work" href="#tetris"><img src="media/tetris-cover.webp" alt="Tetris short film still"><b>Tetris</b><span>Short film</span></a>
+    <a class="work" href="#prozan"><img src="media/prozan-cover.webp" alt="Prozan commercial still"><b>Prozan</b><span>Stop-motion commercial</span></a>
+    <a class="work" href="#archivo"><img src="media/archivo-cover.webp" alt="Archivo Mental short film still"><b>Archivo Mental</b><span>Short film</span></a>
+    <a class="work" href="#kicko"><img src="media/kicko-cover.webp" alt="Kicko app commercial still"><b>Kicko</b><span>App commercial</span></a>
+  </div>
+</div></section>
+
+<section id="tetris"><div class="wrap">
+  <div class="head">
+    <div><p class="eyebrow">01 · Short film</p><h2>Tetris</h2></div>
+    <div><p>When the game invades reality.</p></div>
+  </div>
+  <button class="player" data-yt="qRwdSsEic84" aria-label="Play Tetris on YouTube"><img src="media/tetris-1.webp" alt=""><span class="play"><i></i>Watch the film</span></button>
+  <div class="info">
+    <dl class="facts"><div><dt>Client</dt><dd>Kalypso</dd></div><div><dt>Year</dt><dd>2025</dd></div><div><dt>Location</dt><dd>Jalisco, Mexico</dd></div><div><dt>Services</dt><dd>Post-production · Photography · Editing · Color</dd></div></dl>
+    <div class="desc"><p>A fictional short film where a person discovers a forgotten arcade machine at home, and as they play, the aesthetics and logic of Tetris begin to invade the real world. I directed the project from start to finish — from concept and planning to on-set execution — while also handling cinematography, VFX supervision and editing, crafting a progressively immersive experience driven by geometry, light and the tension of breaking an impossible high score.</p><p class="role">Director · DP · VFX supervisor · Editor</p></div>
+  </div>
+  <div class="grid g3 still">
+    <img src="media/tetris-2.webp" alt="Tetris still: face lit by falling blocks" loading="lazy">
+    <img src="media/tetris-3.webp" alt="Tetris still: silhouette in front of the arcade" loading="lazy">
+    <img src="media/tetris-4.webp" alt="Tetris still: close-up in cyan light" loading="lazy">
+  </div>
+</div></section>
+
+<section id="prozan"><div class="wrap">
+  <div class="head">
+    <div><p class="eyebrow">02 · Stop-motion commercial</p><h2>Prozan</h2></div>
+    <div><p>Premium supplements to enhance your wellness, health and beauty from within.</p></div>
+  </div>
+  <a class="player" href="https://www.instagram.com/reel/DTyen1iDgee/" target="_blank" rel="noopener" aria-label="Watch Prozan on Instagram"><img src="media/prozan-1.webp" alt=""><span class="play"><i></i>Watch on Instagram</span></a>
+  <div class="info">
+    <dl class="facts"><div><dt>Client</dt><dd>Prozan</dd></div><div><dt>Year</dt><dd>2025</dd></div><div><dt>Location</dt><dd>Jalisco, Mexico · Remote</dd></div><div><dt>Services</dt><dd>Post-production · Color grading</dd></div></dl>
+    <div class="desc"><p>Prozan, a brand focused on nutritious products with a variety of flavors, commissioned a stop-motion commercial to communicate its benefits. The project showcased the brand’s attributes through frame-by-frame animation, emphasizing texture, rhythm and product clarity. I handled green-screen cleanup and the removal of animation rigs, as well as the final color grade to unify the look, highlight the food and make the nutrients and flavors more appealing.</p><p class="role">Green screen & rig removal · Colorist</p></div>
+  </div>
+  <div class="grid g2 still">
+    <img src="media/prozan-2.webp" alt="Prozan still: chocolate bar on kitchen counter" loading="lazy">
+    <img src="media/prozan-3.webp" alt="Prozan still: coffee beans forming a circle" loading="lazy">
+    <img src="media/prozan-4.webp" alt="Prozan still: product bags on wood" loading="lazy">
+    <img src="media/prozan-5.webp" alt="Prozan still: single product bag on wood" loading="lazy">
+  </div>
+</div></section>
+
+<section id="archivo"><div class="wrap">
+  <div class="head">
+    <div><p class="eyebrow">03 · Short film</p><h2>Archivo Mental</h2></div>
+    <div><p>The day a thought couldn’t be filed.</p></div>
+  </div>
+  <button class="player" data-yt="612TWbVxb_4" aria-label="Play Archivo Mental on YouTube"><img src="media/archivo-1.webp" alt=""><span class="play"><i></i>Watch the film</span></button>
+  <div class="info">
+    <dl class="facts"><div><dt>Client</dt><dd>Personal</dd></div><div><dt>Year</dt><dd>2025</dd></div><div><dt>Location</dt><dd>Jalisco, Mexico</dd></div><div><dt>Services</dt><dd>Post-production · Color · Photography · Editing</dd></div></dl>
+    <div class="desc"><p>I was invited to develop the visual concept for a short film that depicts the mind as an internal office where thoughts are received and organized. I built a cinematic approach focused on visual storytelling and the emotional progression of the narrative, working as director of photography, editor, colorist, VFX artist and 3D modeling and texturing lead — designing the look, lighting, editing rhythm and color to support the dramatic arc until a thought triggers an anxiety episode and breaks the system’s order.</p><p class="role">DP · Editor · Colorist · VFX · 3D lead</p></div>
+  </div>
+  <div class="grid g2 still">
+    <img src="media/archivo-2.webp" alt="Archivo Mental still: papers in orange light" loading="lazy">
+    <img src="media/archivo-3.webp" alt="Archivo Mental still: 3D filing cabinet detail" loading="lazy">
+    <img src="media/archivo-4.webp" alt="Archivo Mental still: chalkboard reading Días sin sobrepensar" loading="lazy">
+    <figure><img src="media/archivo-5.webp" alt="Archivo Mental behind the scenes on green screen" loading="lazy"><figcaption>Behind the scenes — green screen</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="kicko"><div class="wrap">
+  <div class="head">
+    <div><p class="eyebrow">04 · App commercial</p><h2>Kicko</h2></div>
+    <div><p>Your partner for every play, every match, every day.</p></div>
+  </div>
+  <button class="player" data-yt="gFcXncRQ12I" aria-label="Play Kicko commercial on YouTube"><img src="media/kicko-1.webp" alt=""><span class="play"><i></i>Watch the commercial</span></button>
+  <div class="info">
+    <dl class="facts"><div><dt>Client</dt><dd>ENACTUS</dd></div><div><dt>Year</dt><dd>2025</dd></div><div><dt>Location</dt><dd>Jalisco, Mexico</dd></div><div><dt>Services</dt><dd>Photography · Color · Post-production · Editing</dd></div></dl>
+    <div class="desc"><p>Kicko, a virtual assistant designed to enhance the World Cup experience, entrusted me with creating its commercial. I directed the shoot as cinematographer, developed the motion graphics, handled editing and color grading, and oversaw the overall direction to deliver a cohesive, engaging piece aligned with the app’s personality.</p><p class="role">Director · DP · Motion graphics · Editor · Colorist</p></div>
+  </div>
+  <div class="grid g3 still">
+    <img src="media/kicko-2.webp" alt="Kicko commercial: Localiza tus asientos" loading="lazy">
+    <img src="media/kicko-3.webp" alt="Kicko commercial: Estadísticas y alineaciones" loading="lazy">
+    <img src="media/kicko-4.webp" alt="Kicko commercial: Elige, gana, canjea" loading="lazy">
+    <img src="media/kicko-5.webp" alt="Kicko commercial: Digital payment" loading="lazy">
+    <img src="media/kicko-6.webp" alt="Kicko commercial: Accede a tus boletos" loading="lazy">
+    <img src="media/kicko-cover.webp" alt="Kicko mascot" loading="lazy" style="object-position:50% 30%">
+  </div>
+</div></section>
+
+<div class="divider"><div class="wrap"><p class="eyebrow">3D work</p><h2>Environments & characters</h2></div></div>
+
+<section id="corner" style="border-top:0"><div class="wrap">
   <div class="head">
     <div><p class="eyebrow">3D Environment</p><h2>Block Drugs — street corner</h2></div>
     <div><p>A night-time city corner built from scratch: storefront, neon signage, street signs and pedestrian signals, with fog and wet pavement to sell the mood.</p><p class="meta">Modeling · Texturing · Lighting · Rendering</p></div>
@@ -116,15 +225,20 @@ footer a{color:#d1d1d6}
   </div>
 </div></section>
 
-<section id="film"><div class="wrap">
-  <div class="head">
-    <div><p class="eyebrow">Film & commercial work</p><h2>Behind the camera</h2></div>
-    <div><p>Freelance productions where I led the image, the edit and the effects.</p></div>
-  </div>
-  <div class="cards">
-    <article class="card"><p class="role">Post-producer · Freelance, remote</p><h3>Prozan — stop-motion commercial</h3><p>Post-production of a stop-motion commercial: editing, cleanup and final delivery.</p><p class="when">Nov 2025 – Jan 2026</p></article>
-    <article class="card"><p class="role">Director of Photography & Video Editor</p><h3>ENACTUS — Kicko commercial</h3><p>Cinematography and editing, using generative AI to create some of the shot transitions.</p><p class="when">Commercial</p></article>
-    <article class="card"><p class="role">Director, Cinematographer & VFX Supervisor</p><h3>Kalypso — <i>Tetris</i></h3><p>Directed and shot the short film and supervised its visual effects.</p><p class="when">Short film</p></article>
+<section id="info"><div class="wrap">
+  <div class="about">
+    <img src="media/portrait.webp" alt="Portrait of Diego Chávez" loading="lazy">
+    <div>
+      <p class="eyebrow">Info</p>
+      <h2 style="margin-bottom:32px">Built to feel solid.</h2>
+      <dl>
+        <dt>What I do</dt><dd>I bring clarity to each project through post-production, achieving a solid, well-crafted visual result.</dd>
+        <dt>Background</dt><dd>Over a year in post-production, shaping stories through editing, color grading, VFX and 3D integration within complete post-production pipelines.</dd>
+        <dt>Approach</dt><dd>Great audiovisual projects begin with understanding the intention and emotion behind each story. I listen, collaborate and create visuals that look good and feel coherent.</dd>
+        <dt>Tools</dt><dd class="chips"><span class="tag">DaVinci Resolve</span><span class="tag">After Effects</span><span class="tag">Premiere Pro</span><span class="tag">Blender</span><span class="tag">Maya</span><span class="tag">Substance 3D Painter</span><span class="tag">Photoshop</span><span class="tag">Illustrator</span><span class="tag">InDesign</span><span class="tag">Procreate</span></dd>
+        <dt>Certification</dt><dd>3D Post-Production and VFX (2025)</dd>
+      </dl>
+    </div>
   </div>
 </div></section>
 
@@ -132,9 +246,13 @@ footer a{color:#d1d1d6}
   <p class="eyebrow">Let’s work together</p>
   <h2>Have a story to tell?</h2>
   <p>diego.gtz.chavez21@gmail.com · +52 33 3250 6601</p>
-  <div class="links"><a class="btn" href="mailto:diego.gtz.chavez21@gmail.com">Email me</a><a class="btn ghost" href="https://www.linkedin.com/in/diego-cha" target="_blank" rel="noopener">LinkedIn</a><a class="btn ghost" href="../">UX/UI Portfolio</a></div>
+  <div class="links"><a class="btn" href="mailto:diego.gtz.chavez21@gmail.com">Email me</a><a class="btn ghost" href="https://www.instagram.com/elkxze" target="_blank" rel="noopener">Instagram @elkxze</a><a class="btn ghost" href="https://www.linkedin.com/in/diego-cha" target="_blank" rel="noopener">LinkedIn</a><a class="btn ghost" href="../">UX/UI Portfolio</a></div>
 </div></section>
 </main>
 <footer>© 2026 Diego Alejandro Chávez Gutiérrez · Guadalajara, Mexico · <a href="mailto:diego.gtz.chavez21@gmail.com">diego.gtz.chavez21@gmail.com</a></footer>
+<script>
+document.querySelectorAll('.player[data-yt]').forEach(function(b){b.addEventListener('click',function(){
+var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.yt+'?autoplay=1&rel=0';f.title=b.getAttribute('aria-label');f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;var d=document.createElement('div');d.className='player';d.style.cursor='default';d.appendChild(f);b.replaceWith(d);});});
+</script>
 </body>
 </html>
