@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diego Chávez Level Design</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portafolio de Diego Chávez, Level & Game Designer en Guadalajara. Proyecto destacado: Aura, videojuego de plataformas 2D.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Darumadrop+One&family=Lexend:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: a storybook stage. Curtain opens, a dotted path walks the reader through the levels, curtain closes. */
+:root{
+  --telon:#964681;      /* Telón apagado */
+  --rosa:#EE82B6;       /* Rosa nostalgia */
+  --violeta:#C847AE;    /* Eco de violeta */
+  --lumiere:#FFFFBA;    /* Lumière */
+  --terracota:#B74F59;  /* Rojo terracota */
+  --ambar:#FECB72;      /* Ámbar suave */
+  --estanque:#5B948D;   /* Brisa de estanque */
+  --oro:#D99A54;        /* Oro viejo */
+  --azul:#6C79B0;       /* Torre de Julieta */
+  --ink:#2E1A33;
+  --plum:#5E2560;
+  --muted:#6B5570;
+  --paper:#FCF1E6;
+  --card:#FFF8F1;
+  --curtain-deep:#5A2357;
+  --font-display:"Darumadrop One","Comic Sans MS","Chalkboard SE",cursive;
+  --font-title:"Cinzel","Trajan Pro",Georgia,serif;
+  --font-body:"Lexend",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --tint:#FBE3E6;
+  --level:var(--terracota);
+  --r:22px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--font-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--curtain-deep)}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ambar);outline-offset:3px;border-radius:8px}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0;color:var(--plum)}
+p{margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.eyebrow{font:600 12px/1.2 var(--font-body);letter-spacing:.28em;text-transform:uppercase;color:var(--telon)}
+.lead{font-size:clamp(17px,1.6vw,19px);max-width:62ch}
+.sparkle{display:inline-block;width:14px;height:14px;background:currentColor;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);flex:none}
+
+/* ---------- Nav ---------- */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(90,35,87,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#FFF3E6;border-bottom:1px solid rgba(255,255,186,.18)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.brand{font-family:var(--font-display);font-size:22px;text-decoration:none;color:var(--lumiere);display:flex;align-items:center;gap:10px;white-space:nowrap}
+.brand .sparkle{color:var(--ambar)}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:4px}
+.nav ul a{display:block;text-decoration:none;font-size:14px;font-weight:500;padding:8px 12px;border-radius:999px;color:#F6DDEE;transition:background .2s,color .2s}
+.nav ul a:hover{background:rgba(255,255,186,.12);color:#fff}
+.nav ul a.active{background:var(--lumiere);color:var(--plum)}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,186,.4);color:var(--lumiere);border-radius:999px;padding:8px 14px;font:500 14px var(--font-body);cursor:pointer}
+@media (max-width:860px){
+  .menu-btn{display:block}
+  .nav ul{position:absolute;left:0;right:0;top:100%;flex-direction:column;background:var(--curtain-deep);padding:8px max(20px,env(safe-area-inset-right,0px)) 16px max(20px,env(safe-area-inset-left,0px));gap:2px;border-bottom:1px solid rgba(255,255,186,.2)}
+  .nav ul[hidden]{display:none!important}
+  .nav ul a{font-size:16px;padding:12px 14px}
+}
+@media (min-width:861px){.nav ul[hidden]{display:flex!important}}
+
+/* ---------- Curtain hero ---------- */
+.curtain{position:relative;color:#FFF6EA;text-align:center;background:var(--telon) url("assets/curtain.webp") center/cover;isolation:isolate}
+.curtain::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 30%,rgba(255,220,180,.18),transparent 60%),linear-gradient(rgba(90,35,87,.25),rgba(90,35,87,.15))}
+.hero{padding-block:64px 120px}
+.hero .eyebrow{color:var(--ambar)}
+.hero h1{font-size:clamp(48px,9vw,104px);color:#FFF2DC;text-shadow:0 4px 0 rgba(90,35,87,.55);margin-top:18px}
+.hero .name{font:600 clamp(24px,3vw,34px)/1.2 var(--font-body);margin-top:18px}
+.hero .meta{color:#F4DDEC;margin-top:6px;font-size:15px}
+.ribbon{margin:44px auto 0;max-width:640px;position:relative;padding:18px 24px 14px;background:linear-gradient(180deg,#9F4C8C,#8C3E7C);clip-path:polygon(0 0,100% 0,97% 50%,100% 100%,0 100%,3% 50%);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.ribbon small{display:block;font:600 11px var(--font-body);letter-spacing:.3em;text-transform:uppercase;color:var(--ambar);margin-bottom:4px}
+.ribbon b{display:block;font:600 clamp(54px,10vw,96px)/1 var(--font-title);letter-spacing:.06em;color:#FFF7EC;text-shadow:0 0 18px rgba(255,236,170,.75),0 0 4px rgba(255,236,170,.9)}
+.hero .sub{margin-top:14px;letter-spacing:.14em;font-size:14px;color:#F6E2EF}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:24px;padding:0;list-style:none}
+.chips li{border:1.5px solid rgba(255,236,190,.7);border-radius:999px;padding:6px 16px;font-weight:600;font-size:14px;color:#FFEFD0}
+.ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--font-body);text-decoration:none;border-radius:999px;padding:12px 22px;cursor:pointer;border:2px solid transparent;transition:transform .15s,background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--lumiere);color:var(--plum);box-shadow:0 0 0 4px rgba(255,255,186,.2),0 6px 18px rgba(0,0,0,.2)}
+.btn-ghost{border-color:rgba(255,239,208,.75);color:#FFF3E2;background:rgba(90,35,87,.25)}
+.btn-ghost:hover{background:rgba(255,255,186,.12)}
+.btn svg{width:18px;height:18px}
+.scallop{position:absolute;left:0;right:0;bottom:-1px;height:28px;background:var(--paper);clip-path:polygon(0 60%,4% 45%,9% 62%,14% 40%,19% 58%,25% 42%,31% 60%,37% 44%,43% 63%,50% 40%,56% 60%,62% 45%,68% 62%,74% 42%,80% 58%,86% 44%,92% 61%,97% 46%,100% 55%,100% 100%,0 100%)}
+.avatar{position:absolute;left:50%;bottom:-62px;transform:translateX(-50%);width:140px;height:140px;border-radius:50%;overflow:hidden;border:6px solid var(--terracota);box-shadow:0 0 0 6px #F3C68C,0 10px 24px rgba(0,0,0,.25);background:#F3C68C;z-index:2}
+.avatar img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- String lights ---------- */
+.lights{display:block;width:100%;height:auto;max-width:1080px;margin:0 auto;color:var(--plum)}
+
+/* ---------- Sections ---------- */
+section{position:relative}
+.band{padding-block:72px}
+.about{padding-top:110px;text-align:center}
+.about h2{font-size:clamp(40px,6vw,60px);margin-top:10px}
+.about .lead{margin:22px auto 0}
+.about .tags{justify-content:center;margin-top:26px}
+.about .seek{margin-top:18px;font-weight:600;color:var(--plum)}
+.doodles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.doodle{position:absolute;width:180px;border-radius:6px;box-shadow:0 6px 16px rgba(94,37,96,.15)}
+.doodle.l{left:max(12px,4vw);top:70px;transform:rotate(-8deg)}
+.doodle.r{right:max(12px,4vw);top:90px;transform:rotate(7deg)}
+@media (max-width:900px){.doodle{width:110px;opacity:.9}.doodle.l{top:40px}.doodle.r{top:44px}.about{padding-top:150px}}
+@media (max-width:520px){.doodle{width:86px}.doodle.l{left:8px;top:84px}.doodle.r{right:8px;top:84px}}
+
+.tags{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0;list-style:none}
+.tag{border-radius:999px;padding:7px 16px;font-weight:600;font-size:14px;color:#fff}
+.tag.t1{background:var(--terracota)}.tag.t2{background:var(--estanque)}.tag.t3{background:var(--oro)}
+
+.aura{background:linear-gradient(180deg,var(--paper),#FCE4E8 30%,#FBE0E6)}
+.aura-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:center}
+.title-mark{display:flex;gap:18px;align-items:flex-start}
+.bookmark{flex:none;width:52px;height:78px;background:var(--level);clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%);display:grid;place-items:start center;padding-top:16px;color:#FFF6E6}
+.bookmark .sparkle{width:22px;height:22px}
+.title-mark h2{font-size:clamp(36px,5vw,52px)}
+.title-mark .eyebrow{margin-bottom:6px;color:var(--level)}
+.aura .copy{display:grid;gap:16px;margin-top:22px}
+.lamp{justify-self:end;max-width:360px;width:100%;-webkit-mask-image:radial-gradient(ellipse 70% 72% at 50% 50%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 70% 72% at 50% 50%,#000 60%,transparent 100%);filter:drop-shadow(0 18px 30px rgba(183,79,89,.25))}
+@media (max-width:760px){.aura-grid{grid-template-columns:1fr}.lamp{justify-self:center;max-width:220px;order:-1}}
+.contrib{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:48px}
+.contrib div{border-left:4px solid var(--telon);padding-left:16px}
+.contrib h3{font-size:24px;margin-bottom:6px}
+.contrib p{color:#4A3550;font-size:15.5px}
+@media (max-width:700px){.contrib{grid-template-columns:1fr}}
+
+.process{background:linear-gradient(180deg,#FBE0E6,#FCEBDD)}
+.process h2{font-size:clamp(38px,5.5vw,58px);margin-top:10px}
+.process .lead{margin-top:16px}
+.steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:36px 0 0;padding:0;list-style:none}
+.steps li{display:flex;gap:16px;align-items:flex-start;background:rgba(255,248,241,.85);border-radius:var(--r);padding:20px 22px;box-shadow:0 6px 18px rgba(150,70,129,.08)}
+.num{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;font:400 22px var(--font-display)}
+.steps h3{font-size:24px}
+.steps p{font-size:15.5px;color:#4A3550}
+@media (max-width:640px){.steps{grid-template-columns:1fr}}
+
+.chart{margin-top:28px;background:rgba(255,248,241,.92);border-radius:var(--r);padding:26px 28px;box-shadow:0 6px 18px rgba(150,70,129,.08)}
+.chart h3{font-size:26px}
+.chart > p{font-size:14.5px;color:var(--muted);margin-top:2px}
+.chart dl{margin:16px 0 0;display:grid;gap:0}
+.row{display:grid;grid-template-columns:minmax(120px,1.1fr) minmax(0,2.4fr) 56px;align-items:center;gap:16px;padding:12px 0;border-top:1.5px dotted #E3B9D3}
+.row dt b{display:block;font-weight:600}
+.row dt span{font-size:13px;color:var(--muted)}
+.bar{position:relative;height:16px;border-radius:999px;background:#F3E3EC;overflow:hidden}
+.bar i{position:absolute;inset:0 auto 0 0;border-radius:999px;background:var(--c);width:calc(var(--v) / 7 * 100%)}
+.bar i.range{background:repeating-linear-gradient(90deg,var(--c) 0 8px,transparent 8px 10px)}
+.row dd{margin:0;text-align:right;font:400 26px var(--font-display);color:var(--plum);font-variant-numeric:tabular-nums}
+@media (max-width:520px){.row{grid-template-columns:1fr 52px}.row .bar{grid-column:1 / -1;order:3}}
+
+/* ---------- Path ---------- */
+.path h2{font-size:clamp(36px,5.5vw,56px);margin-top:10px}
+.path .lead{margin-top:16px}
+.trail{position:relative;margin-top:40px;display:grid;gap:28px}
+.trail svg.dots{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;color:#C996BC}
+.stop{position:relative;display:flex;align-items:center;gap:20px;background:none;border:0;padding:6px;text-align:left;cursor:pointer;font:inherit;color:inherit;width:min(560px,100%);border-radius:24px}
+.stop:nth-child(odd){justify-self:start;margin-left:6%}
+.stop:nth-child(even){justify-self:end;margin-right:6%;flex-direction:row-reverse;text-align:right}
+.stop .disc{flex:none;width:78px;height:78px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font:400 34px var(--font-display);box-shadow:0 0 0 7px #FFFAB8,0 8px 20px rgba(94,37,96,.2);transition:transform .2s}
+.stop:hover .disc{transform:scale(1.06)}
+.stop .disc .sparkle{width:30px;height:30px;color:#FFF6D8}
+.stop .h{display:block;font:400 clamp(22px,2.6vw,28px)/1.1 var(--font-display);color:var(--plum)}
+.stop p{margin:0}
+.stop .pill{display:inline-block;margin:6px 0 4px;font:600 11px var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#fff;background:var(--c);border-radius:999px;padding:4px 12px}
+.stop .d{display:block;font-size:15px;color:#4A3550}
+.stop .go{font-size:13px;font-weight:600;color:var(--telon);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:640px){.stop{margin:0;justify-self:stretch;flex-direction:row;text-align:left}.stop .disc{width:60px;height:60px;font-size:28px}}
+
+/* ---------- Levels ---------- */
+.levels{background:var(--tint);transition:background .4s}
+.levels h2.sec{font-size:clamp(36px,5.5vw,56px);margin-top:10px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;padding:6px;background:rgba(255,255,255,.55);border-radius:20px;width:fit-content;max-width:100%}
+.tab{font:600 14.5px var(--font-body);border:0;border-radius:14px;padding:10px 16px;background:transparent;color:var(--plum);cursor:pointer;display:flex;gap:8px;align-items:center}
+.tab .n{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--c);color:#fff;font:400 14px var(--font-display)}
+.tab[aria-selected="true"]{background:#fff;box-shadow:0 4px 12px rgba(94,37,96,.12)}
+.tab:hover{background:rgba(255,255,255,.75)}
+.note{margin-top:12px;font-size:13.5px;color:var(--muted)}
+.panel{margin-top:36px}
+.panel .title-mark h2{font-size:clamp(34px,5vw,50px)}
+figure{margin:0}
+.shot{border-radius:20px;overflow:hidden;background:#FFF8F1;border:5px solid #FFF6EC;box-shadow:0 10px 26px rgba(60,20,60,.18);cursor:zoom-in;padding:0;display:block;width:100%}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.shot:hover img{transform:scale(1.025)}
+figcaption{display:flex;gap:8px;align-items:baseline;font-size:13.5px;color:#5E4A63;margin-top:10px;line-height:1.45}
+figcaption .sparkle{width:10px;height:10px;color:var(--level);transform:translateY(1px)}
+.hero-shot{margin-top:26px}
+.subhead{display:flex;gap:10px;align-items:center;margin-top:30px;font:400 clamp(20px,2.4vw,24px)/1.25 var(--font-display);color:var(--level)}
+.subhead .sparkle{width:18px;height:18px}
+.prose{display:grid;gap:14px;margin-top:14px;max-width:70ch}
+.chiprow{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;padding:0;list-style:none}
+.mech{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--level);border-radius:999px;padding:6px 14px;font-weight:600;font-size:14px;background:#FFF8F1}
+.mech .sparkle{width:12px;height:12px;color:var(--level)}
+.tool{display:inline-flex;align-items:baseline;gap:6px;border-radius:999px;padding:8px 16px;background:var(--level);color:#fff;font-weight:600;font-size:14px}
+.tool small{font-weight:400;opacity:.85;font-size:12.5px}
+.iter{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--level);border-radius:999px;padding:6px 14px;font-weight:600;font-size:14px;background:#FFFCE0}
+.iter svg{width:15px;height:15px}
+.label{display:flex;align-items:center;gap:14px;margin-top:44px;font:600 12px var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:var(--level)}
+.label::after{content:"";flex:1;border-top:2px dotted currentColor;opacity:.6}
+.cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px}
+.mini{background:#FFF8F1;border-radius:20px;padding:18px 18px 20px;border-top:6px solid var(--c);box-shadow:0 6px 16px rgba(60,20,60,.07)}
+.mini h4{font:400 22px var(--font-display);margin:10px 0 4px;color:var(--plum)}
+.mini p{font-size:14.5px;color:#4A3550}
+.mini svg{width:36px;height:36px;color:var(--c)}
+.solid{border-top:0;color:#FFF6EE;background:var(--c)}
+.solid h4{color:#FFF6EE}.solid p{color:#FFEFE6}
+@media (max-width:760px){.cards3{grid-template-columns:1fr}}
+.gal{display:grid;gap:22px;margin-top:18px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g-7-5{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+.gal .shot{aspect-ratio:16/9}
+.gal .sketch .shot{background:#FBF6EE;border-color:#FBF6EE}
+.gal .sketch .shot img{object-fit:contain}
+.gal .wide .shot{aspect-ratio:auto}
+.sheet .shot{aspect-ratio:auto;background:#fff}
+@media (max-width:700px){.g2,.g3,.g-7-5{grid-template-columns:1fr}}
+.gameplay-slot{display:none}
+
+/* ---------- Principles ---------- */
+.principles{background:linear-gradient(180deg,#F5DDEC,#FBE6EE)}
+.principles h2{font-size:clamp(36px,5.5vw,56px);margin-top:10px}
+.principles .lead{margin-top:14px}
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:40px}
+.pcard{position:relative;background:rgba(255,248,241,.92);border-radius:24px;padding:42px 22px 22px;border-top:7px solid var(--c);box-shadow:0 8px 20px rgba(94,37,96,.08)}
+.pcard .badge{position:absolute;top:-26px;left:20px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;box-shadow:0 0 0 5px rgba(255,248,241,.95)}
+.pcard .badge .sparkle{width:20px;height:20px}
+.pcard h3{font-size:24px}
+.pcard p{margin-top:8px;font-size:15px;color:#4A3550}
+@media (max-width:900px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.pgrid{grid-template-columns:1fr;gap:34px}}
+
+.visual h2{font-size:clamp(36px,5.5vw,56px);margin-top:10px}
+.visual .lead{margin-top:14px}
+.swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:30px}
+.sw{border:0;background:none;padding:0;text-align:left;cursor:pointer;font:inherit;color:inherit}
+.sw span{display:block;height:68px;border-radius:16px;background:var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.05);transition:transform .15s}
+.sw:hover span{transform:translateY(-3px)}
+.sw b{display:block;margin-top:8px;font-size:14px}
+.sw code{font-size:12.5px;color:var(--muted)}
+@media (max-width:640px){.swatches{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fonts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}
+.fonts div{background:#FFF8F1;border-radius:18px;padding:20px 22px}
+.fonts .d{font:400 34px var(--font-display);color:var(--plum)}
+.fonts .b{font:500 30px var(--font-body);color:var(--plum)}
+.fonts p{font-size:14px;color:var(--muted);margin-top:4px}
+@media (max-width:560px){.fonts{grid-template-columns:1fr}}
+.mountains{display:block;margin:56px auto 0;width:min(640px,90%)}
+
+/* ---------- Footer curtain ---------- */
+.finale{padding-block:96px 80px}
+.finale .scallop{top:-1px;bottom:auto;transform:scaleY(-1)}
+.finale h2{font-size:clamp(44px,8vw,86px);color:#FFF2DC;text-shadow:0 4px 0 rgba(90,35,87,.55)}
+.finale .name{font:600 clamp(20px,2.5vw,26px) var(--font-body);margin-top:18px}
+.links{display:grid;grid-template-columns:auto auto;gap:10px 18px;justify-content:center;margin:30px auto 0;text-align:left;align-items:baseline}
+.links dt{font:600 11px var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:var(--ambar);text-align:right}
+.links dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.links a{color:#FFF3E2;text-decoration:underline;text-decoration-color:rgba(255,236,190,.6);text-underline-offset:4px}
+.links a:hover{text-decoration-color:var(--lumiere)}
+.mail{display:inline-flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:center}
+.mail code{font:500 16px var(--font-body);user-select:all}
+.copybtn{font:600 12.5px var(--font-body);border-radius:999px;border:1.5px solid rgba(255,239,208,.7);background:rgba(90,35,87,.35);color:#FFF3E2;padding:5px 12px;cursor:pointer}
+.copybtn:hover{background:rgba(255,255,186,.15)}
+.avail{margin-top:30px;font-weight:600}
+.credit{margin-top:10px;font-size:13px;color:#EED3E6}
+@media (max-width:520px){.links{grid-template-columns:1fr;text-align:center}.links dt{text-align:center;margin-top:8px}}
+
+/* ---------- Lightbox ---------- */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(36,12,38,.92);display:grid;grid-template-rows:1fr auto;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:100%;margin:auto;border-radius:14px;object-fit:contain;min-height:0}
+.lb .cap{color:#F6E2EF;text-align:center;font-size:14.5px;padding:12px 56px 4px}
+.lb button{position:absolute;background:rgba(255,248,241,.12);color:#FFF6EA;border:1.5px solid rgba(255,239,208,.5);width:46px;height:46px;border-radius:50%;font-size:22px;cursor:pointer;display:grid;place-items:center}
+.lb button:hover{background:rgba(255,255,186,.25)}
+.lb .x{top:calc(14px + env(safe-area-inset-top,0px));right:calc(14px + env(safe-area-inset-right,0px))}
+.lb .prev{left:calc(14px + env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
+.lb .next{right:calc(14px + env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--plum);color:#FFF6EA;padding:10px 18px;border-radius:999px;font-weight:600;font-size:14px;z-index:120;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.totop{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;width:48px;height:48px;border-radius:50%;border:0;background:var(--telon);color:var(--lumiere);box-shadow:0 6px 16px rgba(60,20,60,.3);cursor:pointer;display:grid;place-items:center}
+.totop svg{width:20px;height:20px}
+@keyframes twinkle{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+.stars{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.stars i{position:absolute;color:#FFF3DC;animation:twinkle 3.6s ease-in-out infinite}
+.stars i .sparkle{width:100%;height:100%}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="lights" viewBox="0 0 1000 90">
+      <path d="M10 14 Q250 70 500 70 T990 14" fill="none" stroke="currentColor" stroke-width="3"/>
+      <g fill="#FFE07A" stroke="currentColor" stroke-width="1.5">
+        <path d="M80 30v10M80 40l-10 8h20z"/><path d="M180 48v10M180 58l-10 8h20z"/><path d="M290 60v10M290 70l-10 8h20z"/><path d="M400 67v10M400 77l-10 8h20z"/><path d="M500 70v10M500 80l-10 8h20z"/><path d="M600 67v10M600 77l-10 8h20z"/><path d="M710 60v10M710 70l-10 8h20z"/><path d="M820 48v10M820 58l-10 8h20z"/><path d="M920 30v10M920 40l-10 8h20z"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><span class="sparkle"></span>Diego Chávez</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navList">Menú</button>
+    <ul id="navList">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#aura">Aura</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#niveles">Niveles</a></li>
+      <li><a href="#principios">Principios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="curtain" id="inicio">
+  <div class="stars" aria-hidden="true">
+    <i style="left:8%;top:14%;width:26px;height:26px"><span class="sparkle"></span></i>
+    <i style="left:88%;top:18%;width:34px;height:34px;animation-delay:1.1s"><span class="sparkle"></span></i>
+    <i style="left:16%;top:62%;width:22px;height:22px;animation-delay:.6s"><span class="sparkle"></span></i>
+    <i style="left:84%;top:58%;width:24px;height:24px;animation-delay:1.8s"><span class="sparkle"></span></i>
+    <i style="left:50%;top:6%;width:18px;height:18px;animation-delay:2.4s"><span class="sparkle"></span></i>
+    <i style="left:72%;top:80%;width:20px;height:20px;animation-delay:.3s"><span class="sparkle"></span></i>
+  </div>
+  <div class="wrap hero">
+    <p class="eyebrow">Portafolio 2026</p>
+    <h1>Level &amp;<br>Game Designer</h1>
+    <p class="name">Diego Chávez</p>
+    <p class="meta">Guadalajara, Jalisco · Diseño, Arte y Tecnologías Interactivas · UdeG</p>
+    <div class="ribbon"><small>Proyecto destacado</small><b>AURA</b></div>
+    <p class="sub">Videojuego de plataformas 2D</p>
+    <ul class="chips"><li>Diseño de niveles</li><li>Diseño de juego</li><li>Lógica de jugabilidad</li></ul>
+    <div class="ctas">
+      <a class="btn btn-primary" href="#niveles">Ver niveles</a>
+      <a class="btn btn-ghost" href="#contacto">Contacto</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/diego-cha" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/Kxze" target="_blank" rel="noopener">GitHub</a>
+      <!-- Para agregar un video de gameplay, descomenta y pon tu enlace (YouTube/Vimeo):
+      <a class="btn btn-ghost" href="https://TU-ENLACE-DE-GAMEPLAY" target="_blank" rel="noopener">Ver gameplay</a>
+      -->
+    </div>
+  </div>
+  <div class="scallop"></div>
+  <div class="avatar"><img src="assets/avatar.webp" alt="Aura, la protagonista" width="412" height="424"></div>
+</header>
+
+<main>
+<section id="sobre-mi" class="about band">
+  <div class="doodles" aria-hidden="true">
+    <img class="doodle l" src="assets/kid-dance.webp" alt="" loading="lazy">
+    <img class="doodle r" src="assets/kid-run.webp" alt="" loading="lazy">
+  </div>
+  <div class="wrap">
+    <p class="eyebrow">Sobre mí</p>
+    <h2>Entre el diseño<br>y el código</h2>
+    <p class="lead">Soy Diego Chávez, de Guadalajara. Estudio Diseño, Arte y Tecnologías Interactivas en la Universidad de Guadalajara (8.º semestre) y me muevo entre dos mundos: diseño la experiencia de un nivel y también programo la lógica que lo hace jugable.</p>
+    <ul class="tags"><li class="tag t1">Diseño de niveles</li><li class="tag t2">Diseño de juego</li><li class="tag t3">Programación de jugabilidad</li></ul>
+    <p class="seek">Busco prácticas en videojuegos en Guadalajara.</p>
+  </div>
+</section>
+
+<section id="aura" class="aura band" style="--level:var(--terracota)">
+  <div class="wrap">
+    <div class="aura-grid">
+      <div>
+        <div class="title-mark">
+          <div class="bookmark"><span class="sparkle"></span></div>
+          <div><p class="eyebrow">Proyecto · plataformas 2D</p><h2>Aura</h2></div>
+        </div>
+        <div class="copy">
+          <p>Aura cuenta su historia a través del viaje introspectivo de su protagonista por el pasado. Busca una experiencia inmersiva, cargada de emoción y nostalgia, con la estética de un cuento clásico o una obra de teatro.</p>
+          <p>Cada elemento del arte construye una atmósfera onírica: lo cotidiano en 3D se funde con lo imaginativo en 2D, como un mundo hecho de recuerdos. Su apariencia es tierna, pero trata con cuidado y empatía temas sensibles como la pérdida, el duelo y las disputas familiares.</p>
+        </div>
+      </div>
+      <img class="lamp" src="assets/lamp.webp" alt="Ilustración de la lámpara de Aura con una bailarina en su interior" loading="lazy">
+    </div>
+    <p class="eyebrow" style="margin-top:48px">Mi aporte</p>
+    <div class="contrib" style="margin-top:16px">
+      <div><h3>Diseño de niveles</h3><p>Boceto, blocking e iteración de tres niveles y de la primera fase del jefe final.</p></div>
+      <div><h3>Diseño de juego</h3><p>Cómo se enseña, se refuerza y se pone a prueba cada mecánica.</p></div>
+      <div><h3>Programación</h3><p>La lógica del jugador y del juego, excepto menús y créditos; incluidos enemigos y jefe.</p></div>
+    </div>
+  </div>
+</section>
+
+<svg class="lights" viewBox="0 0 1000 90" aria-hidden="true" style="background:linear-gradient(#FBE0E6,#FBE0E6)"><use href="#lights"/></svg>
+
+<section id="proceso" class="process band">
+  <div class="wrap">
+    <p class="eyebrow">Proceso</p>
+    <h2>Del boceto<br>al nivel jugable</h2>
+    <p class="lead">Todos mis niveles siguen el mismo camino: lo dibujo, lo construyo en volumen y lo pruebo jugando, hasta que se siente bien.</p>
+    <ol class="steps">
+      <li><span class="num" style="background:var(--terracota)">1</span><div><h3>Boceto</h3><p>Diseño el recorrido a mano antes de abrir cualquier herramienta.</p></div></li>
+      <li><span class="num" style="background:var(--estanque)">2</span><div><h3>Blocking en Blender</h3><p>Volúmenes y planos de color para construir el nivel.</p></div></li>
+      <li><span class="num" style="background:var(--oro)">3</span><div><h3>Pruebas en Godot</h3><p>Implemento el nivel y lo pruebo jugando.</p></div></li>
+      <li><span class="num" style="background:var(--telon)">4</span><div><h3>Iteración</h3><p>Ajusto hasta que jugar se sienta satisfactorio y sin frustración.</p></div></li>
+    </ol>
+    <div class="chart">
+      <h3>Iteraciones por nivel</h3>
+      <p>Cuántas vueltas necesitó cada uno hasta lograr el equilibrio buscado.</p>
+      <dl>
+        <div class="row"><dt><b>Nivel 1</b><span>Cuarto de Aura</span></dt><div class="bar" style="--c:var(--terracota)"><i style="--v:3"></i></div><dd>3</dd></div>
+        <div class="row"><dt><b>Nivel 2</b><span>Castillo inundado y Villa</span></dt><div class="bar" style="--c:var(--estanque)"><i style="--v:5"></i></div><dd>~5</dd></div>
+        <div class="row"><dt><b>Nivel 4</b><span>Torre de Julieta</span></dt><div class="bar" style="--c:var(--azul)"><i style="--v:2"></i><i class="range" style="--v:3;opacity:.45"></i></div><dd>2–3</dd></div>
+        <div class="row"><dt><b>Jefe final</b><span>Odile · fase 1</span></dt><div class="bar" style="--c:var(--telon)"><i style="--v:6"></i></div><dd>~6</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="recorrido" class="path band" style="background:#FCEBDD">
+  <div class="wrap">
+    <p class="eyebrow">El recorrido</p>
+    <h2>Una curva de<br>aprendizaje en 4 pasos</h2>
+    <p class="lead">Cada nivel enseña algo, lo refuerza o lo pone a prueba. Así avanza el jugador, de su primer paso en el cuarto de Aura hasta el combate contra Odile.</p>
+    <div class="trail">
+      <button class="stop" data-goto="n1" style="--c:var(--terracota)"><span class="disc">1</span><span><span class="h">Nivel 1 · Cuarto de Aura</span><span class="pill">Aprender</span><span class="d">Caminar, correr y saltar, con los controles dentro del escenario.</span><span class="go">Ver nivel</span></span></button>
+      <button class="stop" data-goto="n2" style="--c:var(--estanque)"><span class="disc">2</span><span><span class="h">Nivel 2 · Castillo y Villa</span><span class="pill">Reforzar</span><span class="d">Correr con precisión y enemigos: Aura puede recibir daño.</span><span class="go">Ver nivel</span></span></button>
+      <button class="stop" data-goto="n4" style="--c:var(--azul)"><span class="disc">4</span><span><span class="h">Nivel 4 · Torre de Julieta</span><span class="pill">Respirar</span><span class="d">Pas de Lumière y calma tras un nivel muy exigente.</span><span class="go">Ver nivel</span></span></button>
+      <button class="stop" data-goto="jefe" style="--c:var(--telon)"><span class="disc"><span class="sparkle"></span></span><span><span class="h">Jefe · Odile, fase 1</span><span class="pill">Aplicar</span><span class="d">Todo lo aprendido, mezclado en un combate.</span><span class="go">Ver nivel</span></span></button>
+    </div>
+  </div>
+</section>
+
+<section id="niveles" class="levels band">
+  <div class="wrap">
+    <p class="eyebrow">Niveles</p>
+    <h2 class="sec">Cuatro niveles, de cerca</h2>
+    <div class="tabs" role="tablist" aria-label="Elegir nivel">
+      <button class="tab" role="tab" id="tab-n1" aria-controls="n1" aria-selected="true" style="--c:var(--terracota)"><span class="n">1</span>Cuarto de Aura</button>
+      <button class="tab" role="tab" id="tab-n2" aria-controls="n2" aria-selected="false" tabindex="-1" style="--c:var(--estanque)"><span class="n">2</span>Castillo y Villa</button>
+      <button class="tab" role="tab" id="tab-n4" aria-controls="n4" aria-selected="false" tabindex="-1" style="--c:var(--azul)"><span class="n">4</span>Torre de Julieta</button>
+      <button class="tab" role="tab" id="tab-jefe" aria-controls="jefe" aria-selected="false" tabindex="-1" style="--c:var(--telon)"><span class="n"><span class="sparkle" style="width:11px;height:11px"></span></span>Jefe Odile</button>
+    </div>
+    <p class="note">El Nivel 3 lo diseñó otro integrante del equipo.</p>
+
+    <!-- ===== NIVEL 1 ===== -->
+    <article class="panel" id="n1" role="tabpanel" aria-labelledby="tab-n1" data-tint="#FBE3E6" style="--level:var(--terracota)">
+      <div class="title-mark">
+        <div class="bookmark"><span class="sparkle"></span></div>
+        <div><p class="eyebrow">Nivel 1 · Primera toma de contacto</p><h2>Cuarto de Aura</h2></div>
+      </div>
+      <figure class="hero-shot"><button class="shot" data-lb><img src="assets/n1-hero.webp" alt="Aura de pie sobre un libro abierto en su cuarto" loading="lazy"></button><figcaption><span class="sparkle"></span>El libro solo se alcanza corriendo.</figcaption></figure>
+      <p class="subhead"><span class="sparkle"></span>Una primera toma de contacto con todo lo que Aura puede hacer.</p>
+      <div class="prose">
+        <p>El primer nivel introduce las tres mecánicas base, caminar, correr y saltar, y las enseña de forma natural mediante saltos transversales. Los controles se explican dentro del propio escenario, a través de dibujos colgados en el cuarto de Aura, sin interrumpir el juego.</p>
+        <p>También refuerza que algunos saltos exigen correr para llegar más lejos: el libro, por ejemplo, solo puede alcanzarse tomando carrerilla.</p>
+        <p>Mi función fue bocetar el recorrido, llevarlo a blocking en Blender e iterarlo en Godot hasta que jugarlo se sintiera satisfactorio y no generara frustración. Bastaron tres iteraciones para llegar rápido al resultado final.</p>
+      </div>
+      <ul class="chiprow">
+        <li class="mech"><span class="sparkle"></span>Caminar</li><li class="mech"><span class="sparkle"></span>Correr</li><li class="mech"><span class="sparkle"></span>Saltar</li><li class="mech"><span class="sparkle"></span>Saltos transversales</li>
+      </ul>
+      <ul class="chiprow" style="margin-top:10px">
+        <li class="tool">Blender <small>· modelado y blocking</small></li><li class="tool">Godot <small>· testing e implementación</small></li>
+        <li class="iter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 11a8 8 0 0 0-14-5l-2 2M4 13a8 8 0 0 0 14 5l2-2M4 4v4h4M20 20v-4h-4"/></svg>3 iteraciones</li>
+      </ul>
+      <p class="label">Del boceto al juego</p>
+      <div class="gal">
+        <figure class="sketch wide"><button class="shot" data-lb><img src="assets/n1-sketch.webp" alt="Boceto a lápiz del cuarto de Aura" loading="lazy"></button><figcaption><span class="sparkle"></span>Boceto del nivel.</figcaption></figure>
+      </div>
+      <div class="gal g2">
+        <figure><button class="shot" data-lb><img src="assets/n1-blocking-color.webp" alt="Blocking del cuarto en Blender con planos de color" loading="lazy"></button><figcaption><span class="sparkle"></span>Blocking en Blender: planos de color para separar la profundidad.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/n1-blocking-front.webp" alt="Blocking frontal con la ruta del salto con carrerilla" loading="lazy"></button><figcaption><span class="sparkle"></span>Blocking final en vista frontal: de la cama al libro hay que correr.</figcaption></figure>
+      </div>
+      <div class="gal">
+        <figure class="wide"><button class="shot" data-lb><img src="assets/n1-godot.webp" alt="El cuarto implementado en Godot" loading="lazy"></button><figcaption><span class="sparkle"></span>Prueba e implementación en Godot.</figcaption></figure>
+      </div>
+      <div class="gal g2">
+        <figure><button class="shot" data-lb><img src="assets/n1-controls.webp" alt="Dibujos colgados que explican los controles" loading="lazy"></button><figcaption><span class="sparkle"></span>Los controles viven en el escenario: A/D para avanzar, Shift para correr, espacio para saltar.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/n1-lit.webp" alt="El cuarto iluminado durante el juego" loading="lazy"></button><figcaption><span class="sparkle"></span>El cuarto, ya iluminado y en juego.</figcaption></figure>
+      </div>
+    </article>
+
+    <!-- ===== NIVEL 2 ===== -->
+    <article class="panel" id="n2" role="tabpanel" aria-labelledby="tab-n2" data-tint="#DDEEEA" style="--level:var(--estanque)" hidden>
+      <div class="title-mark">
+        <div class="bookmark"><span class="sparkle"></span></div>
+        <div><p class="eyebrow">Nivel 2 · Correr y peligro</p><h2>Castillo inundado y Villa de los Cascanueces</h2></div>
+      </div>
+      <figure class="hero-shot"><button class="shot" data-lb style="background:#EEF5F3"><img src="assets/n2-hero.webp" alt="Vista completa del nivel 2 en Godot" loading="lazy"></button><figcaption><span class="sparkle"></span>Vista completa del nivel en Godot: del castillo inundado a la villa.</figcaption></figure>
+      <p class="subhead"><span class="sparkle"></span>Correr con precisión, ahora con peligro.</p>
+      <div class="prose">
+        <p>El segundo nivel refuerza que para llegar a ciertos lugares hay que correr, y además introduce a los enemigos para que el jugador entienda que puede recibir daño. Son cascanueces con forma de osito: cada golpe resta 1 de vida, y al tercero Aura muere y reaparece en el último checkpoint.</p>
+        <p>Para que el peligro se pueda anticipar, cada cascanueces patrulla por una nav mesh y tiene un radio de guardia: cuando Aura entra en él, el oso se torna rojo y se dirige hacia su posición, una señal clara que invita al jugador a ponerse en alerta. Programé este comportamiento, igual para todos los enemigos.</p>
+        <p>El nivel también pone a prueba los saltos encadenados corriendo: primero con el salto desde la última vela del candelabro hasta la cornisa, y después con la serie de globos, donde hay que enlazar cinco saltos seguidos.</p>
+        <p>Mi función fue bocetar el recorrido, llevarlo a blocking en Blender e iterarlo en Godot, alrededor de cinco veces.</p>
+      </div>
+      <ul class="chiprow">
+        <li class="mech"><span class="sparkle"></span>Correr</li><li class="mech"><span class="sparkle"></span>Saltos encadenados</li><li class="mech"><span class="sparkle"></span>Enemigos y daño</li><li class="mech"><span class="sparkle"></span>Checkpoint</li>
+      </ul>
+      <ul class="chiprow" style="margin-top:10px">
+        <li class="tool">Blender <small>· modelado y blocking</small></li><li class="tool">Godot <small>· testing e implementación</small></li>
+        <li class="iter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 11a8 8 0 0 0-14-5l-2 2M4 13a8 8 0 0 0 14 5l2-2M4 4v4h4M20 20v-4h-4"/></svg>~5 iteraciones</li>
+      </ul>
+      <p class="label">El cascanueces, diseño y comportamiento</p>
+      <div class="cards3">
+        <div class="mini" style="--c:var(--estanque)"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 6"><path d="M6 28 Q20 6 34 24"/><path d="M28 24h7v-7" stroke-dasharray="none"/></svg><h4>Patrulla</h4><p>Se mueve por una nav mesh.</p></div>
+        <div class="mini" style="--c:var(--terracota)"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3"><circle cx="20" cy="20" r="15" stroke-dasharray="3 4"/><circle cx="20" cy="20" r="5" fill="currentColor"/></svg><h4>Radio de guardia</h4><p>Si Aura entra, el oso se torna rojo y se dirige a su posición.</p></div>
+        <div class="mini" style="--c:var(--telon)"><svg viewBox="0 0 96 32" style="width:84px" fill="currentColor"><path d="M16 29C4 20 2 14 2 10a7 7 0 0 1 14-2 7 7 0 0 1 14 2c0 4-2 10-14 19zM48 29C36 20 34 14 34 10a7 7 0 0 1 14-2 7 7 0 0 1 14 2c0 4-2 10-14 19zM80 29C68 20 66 14 66 10a7 7 0 0 1 14-2 7 7 0 0 1 14 2c0 4-2 10-14 19z"/></svg><h4>Tres golpes</h4><p>Cada golpe resta 1; al tercero, Aura reaparece en el checkpoint.</p></div>
+      </div>
+      <div class="gal g-7-5" style="margin-top:22px">
+        <figure><button class="shot" data-lb><img src="assets/n2-villa.webp" alt="El cascanueces en la villa junto a Aura" loading="lazy"></button><figcaption><span class="sparkle"></span>El cascanueces en la villa.</figcaption></figure>
+        <figure class="sheet"><button class="shot" data-lb><img src="assets/n2-sheet.webp" alt="Hoja de personaje del cascanueces con paleta de color" loading="lazy"></button><figcaption><span class="sparkle"></span>Hoja del personaje: versión pacífica y hostil.</figcaption></figure>
+      </div>
+      <p class="label">Del boceto al juego</p>
+      <div class="gal g2">
+        <figure class="sketch"><button class="shot" data-lb><img src="assets/n2-sketch-candelabro.webp" alt="Boceto del candelabro" loading="lazy"></button><figcaption><span class="sparkle"></span>Boceto: el candelabro.</figcaption></figure>
+        <figure class="sketch"><button class="shot" data-lb><img src="assets/n2-sketch-villa.webp" alt="Boceto de la villa y los globos" loading="lazy"></button><figcaption><span class="sparkle"></span>Boceto: la villa y los globos.</figcaption></figure>
+      </div>
+      <div class="gal">
+        <figure class="wide"><button class="shot" data-lb><img src="assets/n2-blocking.webp" alt="Blocking del recorrido completo del nivel 2 en Blender" loading="lazy"></button><figcaption><span class="sparkle"></span>Blocking en Blender: el recorrido completo.</figcaption></figure>
+      </div>
+      <div class="gal g2">
+        <figure><button class="shot" data-lb><img src="assets/n2-perspective.webp" alt="Perspectiva del blocking" loading="lazy"></button><figcaption><span class="sparkle"></span>Perspectiva del blocking.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/n2-planes.webp" alt="Planos que separan castillo y villa" loading="lazy"></button><figcaption><span class="sparkle"></span>Los planos separan castillo y villa.</figcaption></figure>
+      </div>
+      <div class="gal g3">
+        <figure><button class="shot" data-lb><img src="assets/n2-cornisa.webp" alt="Aura saltando del último candelero a la cornisa" loading="lazy"></button><figcaption><span class="sparkle"></span>Salto del último candelero a la cornisa.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/n2-globos.webp" alt="Aura sobre la serie de globos" loading="lazy"></button><figcaption><span class="sparkle"></span>Los globos: cinco saltos seguidos.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/n2-ritmo.webp" alt="Aura saltando entre globos" loading="lazy"></button><figcaption><span class="sparkle"></span>Hay que mantener el ritmo.</figcaption></figure>
+      </div>
+    </article>
+
+    <!-- ===== NIVEL 4 ===== -->
+    <article class="panel" id="n4" role="tabpanel" aria-labelledby="tab-n4" data-tint="#E4E4F3" style="--level:var(--azul)" hidden>
+      <div class="title-mark">
+        <div class="bookmark"><span class="sparkle"></span></div>
+        <div><p class="eyebrow">Nivel 4 · El respiro</p><h2>Torre de Julieta</h2></div>
+      </div>
+      <figure class="hero-shot"><button class="shot" data-lb><img src="assets/n4-hero.webp" alt="Aura con la lámpara encendida frente a una foto" loading="lazy"></button><figcaption><span class="sparkle"></span>Con la lámpara en la mano, la foto se vuelve un portal.</figcaption></figure>
+      <p class="subhead"><span class="sparkle"></span>Un espacio de calma para respirar.</p>
+      <div class="prose">
+        <p>La Torre de Julieta llega después de un nivel muy exigente y estresante, así que está pensada como un respiro: los saltos son más permisivos y tranquilos, y no hay enemigos.</p>
+        <p>Aquí se introduce una nueva mecánica, el Pas de Lumière. Con la lámpara en la mano, Aura puede acceder a una foto y atravesarla como si fuera un portal, algo que antes no podía hacer. Estos portales llevan a áreas nuevas dentro de los niveles, pensadas para recolectar coleccionables, y la lámpara también sirve para curar o descorromper a ciertos enemigos, como los cisnes, algo que se explica en el siguiente nivel.</p>
+        <p>Mi función fue bocetar el recorrido y llevarlo a blocking en Blender, iterándolo en Godot entre dos y tres veces hasta lograr un ritmo tranquilo que contrastara con el nivel anterior.</p>
+      </div>
+      <ul class="chiprow">
+        <li class="mech"><span class="sparkle"></span>Pas de Lumière</li><li class="mech"><span class="sparkle"></span>Saltos permisivos</li><li class="mech"><span class="sparkle"></span>Sin enemigos</li><li class="mech"><span class="sparkle"></span>Áreas con coleccionables</li>
+      </ul>
+      <ul class="chiprow" style="margin-top:10px">
+        <li class="tool">Blender <small>· modelado y blocking</small></li><li class="tool">Godot <small>· testing e implementación</small></li>
+        <li class="iter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 11a8 8 0 0 0-14-5l-2 2M4 13a8 8 0 0 0 14 5l2-2M4 4v4h4M20 20v-4h-4"/></svg>2–3 iteraciones</li>
+      </ul>
+      <p class="label">Del boceto al juego</p>
+      <div class="gal g2">
+        <figure class="sketch"><button class="shot" data-lb><img src="assets/n4-sketch-enredaderas.webp" alt="Boceto de las enredaderas" loading="lazy"></button><figcaption><span class="sparkle"></span>Boceto: enredaderas.</figcaption></figure>
+        <figure class="sketch"><button class="shot" data-lb><img src="assets/n4-sketch-escritorio.webp" alt="Boceto del escritorio, joyero y marco" loading="lazy"></button><figcaption><span class="sparkle"></span>Boceto: escritorio, joyero y marco.</figcaption></figure>
+        <figure class="sketch"><button class="shot" data-lb><img src="assets/n4-sketch-repisa.webp" alt="Boceto de la repisa y el teatro" loading="lazy"></button><figcaption><span class="sparkle"></span>Boceto: la repisa y el teatro.</figcaption></figure>
+        <figure class="sketch"><button class="shot" data-lb><img src="assets/n4-sketch-mueble.webp" alt="Boceto del mueble" loading="lazy"></button><figcaption><span class="sparkle"></span>Boceto: el mueble.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/n4-blocking.webp" alt="Blocking de la torre en Blender" loading="lazy"></button><figcaption><span class="sparkle"></span>Blocking en Blender.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/n4-volumen.webp" alt="El recorrido de la torre en volumen" loading="lazy"></button><figcaption><span class="sparkle"></span>El recorrido a volumen.</figcaption></figure>
+        <figure class="sketch"><button class="shot" data-lb><img src="assets/n4-godot.webp" alt="Prueba de la torre en Godot" loading="lazy"></button><figcaption><span class="sparkle"></span>Prueba en Godot.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/n4-libros.webp" alt="Libros usados como escalera" loading="lazy"></button><figcaption><span class="sparkle"></span>Los libros como escalera.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/n4-plataformas.webp" alt="Plataformas anchas en la torre" loading="lazy"></button><figcaption><span class="sparkle"></span>Plataformas anchas y sin presión.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/n4-saltos.webp" alt="Saltos tranquilos sobre plataformas verdes" loading="lazy"></button><figcaption><span class="sparkle"></span>Saltos pensados para respirar.</figcaption></figure>
+      </div>
+    </article>
+
+    <!-- ===== JEFE ===== -->
+    <article class="panel" id="jefe" role="tabpanel" aria-labelledby="tab-jefe" data-tint="#EEDDEE" style="--level:var(--telon)" hidden>
+      <div class="title-mark">
+        <div class="bookmark"><span class="sparkle"></span></div>
+        <div><p class="eyebrow">Jefe final · Fase 1</p><h2>Odile</h2></div>
+      </div>
+      <figure class="hero-shot"><button class="shot" data-lb><img src="assets/odile-hero.webp" alt="Escenario teatral del combate contra Odile" loading="lazy"></button><figcaption><span class="sparkle"></span>Escenario de la primera fase.</figcaption></figure>
+      <p class="subhead"><span class="sparkle"></span>Un repaso de todo lo aprendido, contado con luz.</p>
+      <div class="prose">
+        <p>La primera fase del enfrentamiento contra Odile reúne lo aprendido en los primeros niveles: el jugador debe golpear el saco que cuelga en el centro del escenario y dejarlo caer sobre Odile, combinando movimiento y salto con precisión. Solo entran las mecánicas básicas, sin el Pas de Lumière ni el dash.</p>
+        <p>El estado del combate se comunica con la iluminación, sin texto: cuando el saco cae, las luces del escenario se vuelven rojas, y cuando se puede soltar de nuevo regresan a su tono amarillo normal. El daño se lee en las antorchas del fondo: cada vez que Odile pierde una vida se apaga una, de modo que el jugador entiende que debe golpearla tres veces.</p>
+        <p>Lo más difícil fue encontrar el punto de equilibrio: un combate lo bastante exigente para ser entretenido y a la vez accesible para no frustrar, algo que me llevó alrededor de seis iteraciones. Además de bocetar y bloquear el escenario, programé toda la lógica del jefe: el desplazamiento de Odile de un lado a otro, su animación de daño cuando el saco la golpea, la respuesta de las luces y la animación del saco, que aparece, rebota y desaparece al caer.</p>
+        <p>Para las fases 2 y 3 la idea era incorporar el resto de las mecánicas al combate, pero no alcanzaron a implementarse y quedaron como ideas.</p>
+      </div>
+      <ul class="chiprow">
+        <li class="mech"><span class="sparkle"></span>Mecánicas básicas</li><li class="mech"><span class="sparkle"></span>Feedback con luz</li><li class="mech"><span class="sparkle"></span>Tres golpes</li><li class="mech"><span class="sparkle"></span>Equilibrio de dificultad</li>
+      </ul>
+      <ul class="chiprow" style="margin-top:10px">
+        <li class="tool">Blender <small>· modelado y blocking</small></li><li class="tool">Godot <small>· testing e implementación</small></li>
+        <li class="iter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 11a8 8 0 0 0-14-5l-2 2M4 13a8 8 0 0 0 14 5l2-2M4 4v4h4M20 20v-4h-4"/></svg>~6 iteraciones</li>
+      </ul>
+      <p class="label">Cómo se lee el combate, sin texto</p>
+      <div class="cards3">
+        <div class="mini solid" style="--c:var(--terracota)"><h4>El saco cae</h4><p>Las luces del escenario se vuelven rojas: Odile está herida y no se puede soltar de nuevo.</p></div>
+        <div class="mini solid" style="--c:var(--oro)"><h4>Otra oportunidad</h4><p>La iluminación vuelve a su tono amarillo normal: ya se puede dejar caer el saco.</p></div>
+        <div class="mini solid" style="--c:#4A2350"><svg viewBox="0 0 60 24" style="width:60px;height:24px"><g fill="var(--ambar)"><path d="M30 2c4 6 4 10 0 12-4-2-4-6 0-12zM50 2c4 6 4 10 0 12-4-2-4-6 0-12z"/></g><g stroke="#B79A86" stroke-width="2"><path d="M10 6v8M30 14v8M50 14v8M8 6l1 0M12 3l-1 2"/></g></svg><h4>Una antorcha menos</h4><p>Cada vida que pierde Odile apaga una antorcha: son tres golpes.</p></div>
+      </div>
+      <div class="cards3">
+        <div class="mini" style="--c:var(--telon)"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 6"><path d="M6 28 Q20 6 34 24"/><path d="M28 24h7v-7" stroke-dasharray="none"/></svg><h4>Odile</h4><p>Se desplaza de un lado a otro y reacciona con una animación de daño.</p></div>
+        <div class="mini" style="--c:var(--oro)"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3"><circle cx="20" cy="20" r="15" stroke-dasharray="3 4"/><circle cx="20" cy="20" r="5" fill="currentColor"/></svg><h4>Luces</h4><p>Cambian de color según el estado del combate.</p></div>
+        <div class="mini" style="--c:var(--estanque)"><svg viewBox="0 0 96 32" style="width:84px" fill="currentColor"><path d="M16 29C4 20 2 14 2 10a7 7 0 0 1 14-2 7 7 0 0 1 14 2c0 4-2 10-14 19zM48 29C36 20 34 14 34 10a7 7 0 0 1 14-2 7 7 0 0 1 14 2c0 4-2 10-14 19zM80 29C68 20 66 14 66 10a7 7 0 0 1 14-2 7 7 0 0 1 14 2c0 4-2 10-14 19z"/></svg><h4>El saco</h4><p>Aparece, rebota y desaparece al caer.</p></div>
+      </div>
+      <p class="label">Del boceto al juego</p>
+      <div class="gal g2">
+        <figure class="sketch"><button class="shot" data-lb><img src="assets/odile-sketch.webp" alt="Boceto del escenario del jefe" loading="lazy"></button><figcaption><span class="sparkle"></span>Boceto del escenario.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/odile-blocking.webp" alt="Blocking frontal del escenario en Blender" loading="lazy"></button><figcaption><span class="sparkle"></span>Blocking en Blender, vista frontal.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/odile-rojo.webp" alt="Luces rojas tras la caída del saco" loading="lazy"></button><figcaption><span class="sparkle"></span>Luces rojas tras la caída del saco.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/odile-antorchas.webp" alt="Antorchas del fondo que marcan la vida de Odile" loading="lazy"></button><figcaption><span class="sparkle"></span>Las antorchas del fondo marcan la vida de Odile.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/odile-saco.webp" alt="Aura sobre el saco" loading="lazy"></button><figcaption><span class="sparkle"></span>Aura sobre el saco, listo para golpearlo.</figcaption></figure>
+        <figure><button class="shot" data-lb><img src="assets/odile-escenario.webp" alt="El escenario del jefe en Godot" loading="lazy"></button><figcaption><span class="sparkle"></span>El escenario en Godot.</figcaption></figure>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="principios" class="principles band">
+  <div class="wrap">
+    <p class="eyebrow">Principios</p>
+    <h2>Lo que aplico al<br>diseñar un nivel</h2>
+    <p class="lead">Seis decisiones que se repiten en mis niveles y que me sirven de guía para cualquier proyecto.</p>
+    <div class="pgrid">
+      <div class="pcard" style="--c:var(--terracota)"><span class="badge"><span class="sparkle"></span></span><h3>Enseñar dentro del mundo</h3><p>Los controles son dibujos colgados en el cuarto de Aura, y la lámpara enseña su poder justo cuando hace falta.</p></div>
+      <div class="pcard" style="--c:var(--estanque)"><span class="badge"><span class="sparkle"></span></span><h3>Reforzar antes de exigir</h3><p>Correr se aprende con el libro, se repite con el candelabro y los globos, y se pone a prueba en el jefe.</p></div>
+      <div class="pcard" style="--c:var(--oro)"><span class="badge"><span class="sparkle"></span></span><h3>Comunicar con luz y color</h3><p>El cascanueces se vuelve rojo; las luces del jefe cambian y las antorchas se apagan al daño.</p></div>
+      <div class="pcard" style="--c:var(--azul)"><span class="badge"><span class="sparkle"></span></span><h3>Alternar tensión y calma</h3><p>Tras un nivel muy exigente, la Torre de Julieta ofrece saltos permisivos y cero enemigos.</p></div>
+      <div class="pcard" style="--c:var(--estanque)"><span class="badge"><span class="sparkle"></span></span><h3>Iterar hasta el equilibrio</h3><p>El jefe me llevó cerca de seis iteraciones para ser entretenido sin frustrar.</p></div>
+      <div class="pcard" style="--c:var(--telon)"><span class="badge"><span class="sparkle"></span></span><h3>Diseñar y programar</h3><p>Construyo el nivel y también la lógica que lo hace jugable, de los enemigos al jefe.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="sistema" class="visual band" style="background:#FBE6EE">
+  <div class="wrap">
+    <p class="eyebrow">Sistema visual</p>
+    <h2>Un mundo, una paleta</h2>
+    <p class="lead">Este portafolio usa la paleta y las tipografías de la guía visual de Aura, para que arte, niveles y documento se lean como un mismo universo. Toca un color para copiar su código.</p>
+    <div class="swatches">
+      <button class="sw" data-hex="#964681" style="--c:#964681"><span></span><b>Telón apagado</b><code>#964681</code></button>
+      <button class="sw" data-hex="#EE82B6" style="--c:#EE82B6"><span></span><b>Rosa nostalgia</b><code>#EE82B6</code></button>
+      <button class="sw" data-hex="#C847AE" style="--c:#C847AE"><span></span><b>Eco de violeta</b><code>#C847AE</code></button>
+      <button class="sw" data-hex="#FFFFBA" style="--c:#FFFFBA"><span></span><b>Lumière</b><code>#FFFFBA</code></button>
+      <button class="sw" data-hex="#B74F59" style="--c:#B74F59"><span></span><b>Rojo terracota</b><code>#B74F59</code></button>
+      <button class="sw" data-hex="#FECB72" style="--c:#FECB72"><span></span><b>Ámbar suave</b><code>#FECB72</code></button>
+      <button class="sw" data-hex="#5B948D" style="--c:#5B948D"><span></span><b>Brisa de estanque</b><code>#5B948D</code></button>
+      <button class="sw" data-hex="#D99A54" style="--c:#D99A54"><span></span><b>Oro viejo</b><code>#D99A54</code></button>
+    </div>
+    <div class="fonts">
+      <div><p class="d">Darumadrop One</p><p>Títulos y textos cortos</p></div>
+      <div><p class="b">Lexend</p><p>Textos largos · pensada para una lectura más fácil</p></div>
+    </div>
+    <img class="mountains" src="assets/mountains.webp" alt="" loading="lazy">
+  </div>
+</section>
+</main>
+
+<footer id="contacto" class="curtain finale">
+  <div class="scallop" style="background:#FBE6EE"></div>
+  <div class="wrap">
+    <h2>Gracias por<br>recorrer el nivel</h2>
+    <p class="name">Diego Chávez · Level &amp; Game Designer</p>
+    <dl class="links">
+      <dt>Correo</dt><dd><span class="mail"><code id="email">diego.gtz.chavez21@gmail.com</code><button class="copybtn" data-copy="diego.gtz.chavez21@gmail.com">Copiar</button></span></dd>
+      <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/diego-cha" target="_blank" rel="noopener">linkedin.com/in/diego-cha</a></dd>
+      <dt>Portafolio UX/UI</dt><dd><a href="https://kxze.github.io/portfolio/" target="_blank" rel="noopener">kxze.github.io/portfolio</a></dd>
+      <dt>3D y audiovisual</dt><dd><a href="https://kxze.github.io/portfolio/audiovisual/" target="_blank" rel="noopener">kxze.github.io/portfolio/audiovisual</a></dd>
+      <dt>GitHub</dt><dd><a href="https://github.com/Kxze" target="_blank" rel="noopener">github.com/Kxze</a></dd>
+    </dl>
+    <p class="avail">Disponible para prácticas en videojuegos · Guadalajara, Jalisco, México</p>
+    <p class="credit">Arte y guía visual de Aura: equipo de arte de Aura.</p>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" aria-label="Volver arriba" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Imagen ampliada" hidden>
+  <img id="lbImg" alt="">
+  <p class="cap" id="lbCap"></p>
+  <button class="x" id="lbClose" aria-label="Cerrar">✕</button>
+  <button class="prev" id="lbPrev" aria-label="Anterior">‹</button>
+  <button class="next" id="lbNext" aria-label="Siguiente">›</button>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(function(){
+  const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+
+  // Mobile menu
+  const menuBtn=$('#menuBtn'), navList=$('#navList');
+  const mq=matchMedia('(max-width:860px)');
+  function syncMenu(){ if(mq.matches){navList.hidden=true;menuBtn.setAttribute('aria-expanded','false')} else navList.hidden=false; }
+  syncMenu(); mq.addEventListener('change',syncMenu);
+  menuBtn.addEventListener('click',()=>{const open=navList.hidden;navList.hidden=!open;menuBtn.setAttribute('aria-expanded',String(open));menuBtn.textContent=open?'Cerrar':'Menú'});
+  $$('#navList a').forEach(a=>a.addEventListener('click',()=>{if(mq.matches){navList.hidden=true;menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='Menú'}}));
+
+  // Active nav link
+  const links=$$('#navList a'), map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const watched=['sobre-mi','aura','proceso','recorrido','niveles','principios','sistema','contacto'].map(id=>document.getElementById(id));
+  const alias={recorrido:'proceso',sistema:'principios'};
+  function onScroll(){
+    const y=window.innerHeight*0.35; let cur=null;
+    for(const s of watched){ if(s.getBoundingClientRect().top<=y) cur=s.id; }
+    if(cur) cur=alias[cur]||cur;
+    links.forEach(a=>a.classList.toggle('active',a===map.get(cur)));
+    $('#toTop').hidden = window.scrollY < 900;
+  }
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  $('#toTop').addEventListener('click',()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
+
+  // Level tabs
+  const tabs=$$('.tab'), panels=$$('.panel'), levelsSec=$('#niveles');
+  function select(id,focus){
+    tabs.forEach(t=>{const on=t.getAttribute('aria-controls')===id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;if(on&&focus)t.focus()});
+    panels.forEach(p=>{p.hidden=p.id!==id; if(p.id===id) levelsSec.style.setProperty('--tint',p.dataset.tint)});
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>{select(t.getAttribute('aria-controls'));try{history.replaceState(null,'','#'+t.getAttribute('aria-controls'))}catch(e){}});
+    t.addEventListener('keydown',e=>{
+      let j=null; if(e.key==='ArrowRight')j=(i+1)%tabs.length; if(e.key==='ArrowLeft')j=(i-1+tabs.length)%tabs.length;
+      if(j!==null){e.preventDefault();select(tabs[j].getAttribute('aria-controls'),true)}
+    });
+  });
+  $$('.stop').forEach(b=>b.addEventListener('click',()=>{select(b.dataset.goto);levelsSec.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}));
+  function fromHash(){const h=location.hash.slice(1); if(['n1','n2','n4','jefe'].includes(h)){select(h);levelsSec.scrollIntoView()}}
+  addEventListener('hashchange',fromHash); fromHash();
+
+  // Lightbox (navigates within the visible panel or section)
+  const lb=$('#lb'), lbImg=$('#lbImg'), lbCap=$('#lbCap'); let group=[], idx=0, lastFocus=null;
+  function show(i){idx=(i+group.length)%group.length;const b=group[idx], img=$('img',b);lbImg.src=img.currentSrc||img.src;lbImg.alt=img.alt;const cap=b.closest('figure')?.querySelector('figcaption');lbCap.textContent=cap?cap.textContent.trim():img.alt;}
+  $$('[data-lb]').forEach(b=>b.addEventListener('click',()=>{
+    const scope=b.closest('.panel')||document; group=$$('[data-lb]',scope).filter(x=>!x.closest('[hidden]'));
+    lastFocus=b; show(group.indexOf(b)); lb.hidden=false; document.body.style.overflow='hidden'; $('#lbClose').focus();
+  }));
+  function close(){lb.hidden=true;document.body.style.overflow='';lastFocus&&lastFocus.focus()}
+  $('#lbClose').addEventListener('click',close);
+  $('#lbPrev').addEventListener('click',()=>show(idx-1));
+  $('#lbNext').addEventListener('click',()=>show(idx+1));
+  lb.addEventListener('click',e=>{if(e.target===lb)close()});
+  addEventListener('keydown',e=>{if(lb.hidden)return; if(e.key==='Escape')close(); if(e.key==='ArrowRight')show(idx+1); if(e.key==='ArrowLeft')show(idx-1)});
+
+  // Copy helpers
+  const toast=$('#toast'); let tt;
+  function say(msg){toast.textContent=msg;toast.hidden=false;clearTimeout(tt);tt=setTimeout(()=>toast.hidden=true,1800)}
+  async function copy(text,label){
+    try{await navigator.clipboard.writeText(text);say(label+' copiado')}
+    catch(e){const r=document.createRange();const el=$('#email');r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);say('Selecciona y copia: '+text)}
+  }
+  $$('.copybtn').forEach(b=>b.addEventListener('click',()=>copy(b.dataset.copy,'Correo')));
+  $$('.sw').forEach(b=>b.addEventListener('click',()=>copy(b.dataset.hex,b.dataset.hex)));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diego Chávez UX/UI Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="UX/UI designer and SwiftUI developer from Guadalajara, Mexico. Six projects, from research to code.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: Apple-keynote rhythm — light content sections, full-bleed dark title bands per project with gradient display type, phone mockups as the hero of each case. */
+:root{
+  --bg:#f4f4f6; --surface:#ffffff; --surface-2:#ececf0; --fg:#1b1b1f; --muted:#666672; --line:#dedee4;
+  --accent:#0a66d0; --accent-soft:#e3eefb;
+  --night:#0b0b0e; --night-2:#16161b; --night-fg:#f3f3f6; --night-muted:#9a9aa8;
+  --chip-fg:#1b1b1f;
+  --display:"Inter Tight","Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r-lg:28px; --r-md:18px; --r-sm:12px;
+  --shadow:0 18px 40px -22px rgba(20,20,40,.35);
+  --wrap:1180px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f0f13; --surface:#18181e; --surface-2:#22222a; --fg:#f1f1f5; --muted:#a0a0ad; --line:#2c2c35;
+  --accent:#5aa6ff; --accent-soft:#16263b; --shadow:0 18px 40px -22px rgba(0,0,0,.8); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f0f13; --surface:#18181e; --surface-2:#22222a; --fg:#f1f1f5; --muted:#a0a0ad; --line:#2c2c35;
+  --accent:#5aa6ff; --accent-soft:#16263b; --shadow:0 18px 40px -22px rgba(0,0,0,.8); color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--night)}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.025em;line-height:1.05;margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font:600 15px/1.2 var(--body);color:var(--accent);letter-spacing:.01em}
+.section{padding-block:clamp(64px,10vw,120px)}
+.sec-head{display:grid;gap:12px;text-align:center;justify-items:center;margin-bottom:clamp(32px,5vw,56px)}
+.sec-head h2{font-size:clamp(34px,5.4vw,60px);font-weight:700}
+.sec-head p{color:var(--muted);max-width:60ch}
+
+/* Header */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--night) 86%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);color:var(--night-fg);border-bottom:1px solid rgba(255,255,255,.06)}
+.head-in{display:flex;align-items:center;gap:20px;height:60px}
+.brand{font:700 18px/1 var(--display);letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.brand span{color:var(--night-muted);font-weight:600}
+.nav{display:flex;gap:4px;margin-left:auto;align-items:center}
+.nav a{font-size:14px;font-weight:500;text-decoration:none;color:var(--night-muted);padding:8px 12px;border-radius:999px;transition:color .2s,background .2s}
+.nav a:hover{color:var(--night-fg)}
+.nav a.active{color:var(--night-fg);background:rgba(255,255,255,.1)}
+.nav .sep{width:1px;height:20px;background:rgba(255,255,255,.15);margin:0 6px}
+.nav a.ext{color:var(--night-fg)}
+.icon-btn{appearance:none;border:1px solid rgba(255,255,255,.16);background:transparent;color:var(--night-fg);width:38px;height:38px;border-radius:999px;display:grid;place-items:center;cursor:pointer;flex:none}
+.icon-btn:hover{background:rgba(255,255,255,.08)}
+.icon-btn svg{width:18px;height:18px}
+.menu-btn{display:none}
+@media (max-width:960px){
+  .menu-btn{display:grid;margin-left:auto}
+  .nav{position:fixed;inset:calc(60px + env(safe-area-inset-top,0px)) 0 auto 0;flex-direction:column;align-items:stretch;gap:2px;background:var(--night);padding:12px max(16px,env(safe-area-inset-right,0px)) 20px max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid rgba(255,255,255,.08);transform:translateY(-8px);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+  .nav.open{opacity:1;transform:none;pointer-events:auto}
+  .nav a{padding:12px 14px;font-size:16px}
+  .nav .sep{width:auto;height:1px;margin:6px 0}
+}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px/1 var(--body);padding:14px 22px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:#fff;color:#111}
+.btn-ghost{border-color:rgba(255,255,255,.22);color:var(--night-fg);background:transparent}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+
+/* Hero */
+.hero{background:radial-gradient(60% 70% at 50% 45%,#1b2a4a 0%,#0e1424 45%,var(--night) 100%);color:var(--night-fg);position:relative;overflow:hidden}
+.hero-in{position:relative;padding-block:clamp(88px,14vw,150px);text-align:center;display:grid;justify-items:center;gap:18px}
+.hero .eyebrow{color:#5aa6ff}
+.hero h1{font-size:clamp(52px,11vw,128px);font-weight:800;letter-spacing:-.04em}
+.hero .role{font:600 clamp(18px,2.6vw,28px)/1.3 var(--display);color:#d6d6de;letter-spacing:-.01em}
+.hero .loc{color:var(--night-muted);font-size:15px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:12px}
+.hero-links{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;font-size:14px}
+.hero-links a{color:var(--night-muted);text-decoration:none}
+.hero-links a:hover{color:var(--night-fg)}
+.float{position:absolute;width:clamp(44px,5vw,72px);border-radius:22%;background:#fff;padding:6px;box-shadow:0 20px 40px -12px rgba(0,0,0,.6);animation:bob 7s ease-in-out infinite}
+.float img{border-radius:18%}
+.f1{left:4%;top:38%;transform:rotate(-6deg)}
+.f2{left:30%;top:18%;opacity:.55;width:44px;animation-delay:-2s}
+.f3{right:18%;top:25%;opacity:.7;width:50px;animation-delay:-4s}
+.f4{right:9%;top:46%;animation-delay:-1s}
+.f5{left:2%;bottom:16%;animation-delay:-3s}
+.f6{right:12%;bottom:6%;transform:rotate(5deg);animation-delay:-5s}
+@keyframes bob{50%{translate:0 -10px}}
+@media (max-width:720px){.f2,.f3,.f4{display:none}.f1{top:8%;left:6%}.f5{bottom:6%}.f6{bottom:6%}}
+
+/* About */
+.about{background:var(--night);color:var(--night-fg)}
+.about-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:clamp(28px,5vw,64px);align-items:center}
+.about-photo{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:3/4;max-width:100%}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.about-text{display:grid;gap:20px;min-width:0}
+.about-text .eyebrow{color:#5aa6ff}
+.about-text h2{font-size:clamp(34px,5vw,56px);font-weight:700}
+.about-text p{color:#b9b9c5;font-size:clamp(16px,1.6vw,19px);max-width:58ch}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.stat{background:var(--night-2);border-radius:var(--r-md);padding:20px}
+.stat b{display:block;font:700 clamp(26px,3vw,34px)/1.1 var(--display);margin-bottom:6px}
+.stat span{color:var(--night-muted);font-size:14px;line-height:1.4;display:block}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr}.about-photo{max-width:340px;aspect-ratio:4/5}.stats{grid-template-columns:1fr 1fr}}
+
+/* Process */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;list-style:none;padding:0;margin:0}
+.step{background:var(--surface);border-radius:var(--r-md);padding:28px 24px;display:grid;gap:6px;align-content:start}
+.step .n{font:700 34px/1 var(--display);color:var(--accent);margin-bottom:12px;font-variant-numeric:tabular-nums}
+.step h3{font-size:22px}
+.step p{color:var(--muted)}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:440px){.steps{grid-template-columns:1fr}}
+
+/* Tools */
+.tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:start}
+.tool-card{background:var(--surface);border-radius:var(--r-md);padding:22px}
+.tool-card h3{font:600 17px/1.2 var(--body);letter-spacing:0;margin-bottom:14px}
+.tool-card ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.tool-card li{display:flex;align-items:center;gap:12px;font-size:15px}
+.tool-card li img{width:32px;height:32px;border-radius:8px;background:#fff;flex:none}
+@media (max-width:860px){.tools{grid-template-columns:1fr 1fr}}
+@media (max-width:440px){.tools{grid-template-columns:1fr}}
+
+/* Work grid */
+.filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:36px}
+.chip{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--fg);font:500 14px/1 var(--body);padding:10px 16px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--surface);border-radius:var(--r-lg);padding:22px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.card img{width:76px;height:76px;border-radius:22%;object-fit:cover}
+.card h3{font-size:22px;margin-bottom:2px}
+.card .cat{color:var(--muted);font-size:14px}
+.card .go{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:14px;font-size:14px;font-weight:600;color:var(--accent)}
+.card .tags{display:flex;gap:6px;flex-wrap:wrap}
+.card .tags span{font-size:12px;font-weight:500;color:var(--muted);background:var(--surface-2);padding:4px 9px;border-radius:999px}
+.card[hidden]{display:none}
+@media (max-width:900px){.cards{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+
+/* Case study */
+.case-band{background:var(--night);color:var(--night-fg);text-align:center;overflow:hidden;position:relative}
+.case-band::before{content:"";position:absolute;inset:auto 0 0 0;height:70%;background:radial-gradient(50% 60% at 50% 100%,var(--glow),transparent 70%);opacity:.55;pointer-events:none}
+.case-band .wrap{position:relative;padding-top:clamp(64px,9vw,110px);display:grid;justify-items:center;gap:14px}
+.case-band .num{color:var(--night-muted);font-weight:600;font-size:16px}
+.case-band h2{font-size:clamp(46px,9vw,112px);font-weight:800;letter-spacing:-.04em;line-height:.98}
+.grad{background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.dim{background:linear-gradient(180deg,var(--g2),transparent 115%);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.75}
+.case-band .peek{width:min(640px,92%);margin-top:clamp(20px,3vw,36px);-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+.case-band .peek img{width:100%}
+.case-body{padding-block:clamp(56px,8vw,96px);display:grid;gap:clamp(56px,8vw,96px)}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.intro-text{display:grid;gap:18px;min-width:0}
+.intro-text h3{font-size:clamp(32px,4.4vw,52px);font-weight:700}
+.intro-text .lede{color:var(--muted);font-size:clamp(17px,1.7vw,20px)}
+.facts{margin:0;display:grid}
+.facts div{border-top:1px solid var(--line);padding-block:14px;display:grid;gap:4px}
+.facts dt{font-size:14px;color:var(--muted);font-weight:500}
+.facts dd{margin:0}
+.intro-img{border-radius:var(--r-lg);overflow:hidden;background:var(--surface)}
+.intro-img img{width:100%;cursor:zoom-in}
+@media (max-width:820px){.intro{grid-template-columns:1fr}}
+.users-head{text-align:center;display:grid;gap:8px;margin-bottom:28px}
+.users-head h4,.flow h4{font:700 clamp(28px,4vw,44px)/1.1 var(--display);letter-spacing:-.025em;margin:0;text-wrap:balance}
+.personas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.persona{background:var(--surface);border-radius:var(--r-lg);padding:24px;display:grid;gap:10px;align-content:start;text-align:left}
+.persona .q{justify-self:center;font-weight:600;font-size:15px;padding:8px 14px;border-radius:10px;background:var(--qbg);color:var(--chip-fg);text-align:center}
+.persona .av{justify-self:center;width:64px;height:64px;border-radius:50%;background:var(--qbg);display:grid;place-items:center;font-size:32px}
+.persona h5{font:600 20px/1.2 var(--display);text-align:center;margin:2px 0 6px}
+.persona b{color:var(--accent);font-size:14px;font-weight:600}
+.persona p{color:var(--muted);font-size:15px;line-height:1.5}
+@media (max-width:820px){.personas{grid-template-columns:1fr}}
+.flow{display:grid;gap:14px;text-align:center;justify-items:center}
+.steps-inline{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;list-style:none;padding:0;margin:4px 0 8px}
+.steps-inline li{font-size:14px;color:var(--muted);background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.flow-img{border-radius:var(--r-lg);overflow:hidden;width:100%;background:#fff}
+.flow-img img{width:100%;cursor:zoom-in}
+.case-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.case-nav a{font-weight:600;font-size:15px;text-decoration:none;color:var(--accent);padding:10px 0}
+.case-nav a:hover{text-decoration:underline}
+
+.k{--g1:#d7ffe6;--g2:#7fe39a;--g3:#2fc1f2;--glow:#0f6b39;--q1:#ece6fb;--q2:#dcf1e3;--q3:#fbe1e3}
+.h{--g1:#fff1bf;--g2:#ffb25c;--g3:#f2865a;--glow:#7a4310;--q1:#fcefd2;--q2:#dcf1e3;--q3:#e0e8f6}
+.t{--g1:#ffdcae;--g2:#ff8b67;--g3:#ff3f80;--glow:#7a2a10;--q1:#fde4d3;--q2:#ece6fb;--q3:#dcf1e3}
+.c{--g1:#fff0b0;--g2:#e6d3a3;--g3:#88a6f2;--glow:#1d2e6b;--q1:#fcefd2;--q2:#e0e8f6;--q3:#ece6fb}
+.r{--g1:#cbfff0;--g2:#6ee6c0;--g3:#7bd86a;--glow:#0d5a4a;--q1:#d7f0f2;--q2:#dcf1e3;--q3:#fcefd2}
+.a{--g1:#ffc6ec;--g2:#c98bf0;--g3:#8a5bd8;--glow:#4a1f7a}
+.persona:nth-child(1){--qbg:var(--q1)}.persona:nth-child(2){--qbg:var(--q2)}.persona:nth-child(3){--qbg:var(--q3)}
+
+/* Aura dark case */
+.case-dark{background:linear-gradient(180deg,var(--night) 0%,#1a0f2a 100%);color:var(--night-fg)}
+.case-dark .facts div{border-color:rgba(255,255,255,.12)}
+.case-dark .facts dt{color:var(--night-muted)}
+.case-dark .intro-text .lede{color:var(--night-muted)}
+.case-dark .eyebrow{color:#d6a6ff}
+.case-dark .intro-img,.case-dark .flow-img{background:transparent}
+.case-dark .flow h4{color:var(--night-fg)}
+.case-dark .flow p{color:var(--night-muted)}
+.case-dark .case-nav a{color:#d6a6ff}
+
+/* Recognition */
+.rec-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.rec-left{display:grid;gap:16px}
+.rec-left h2{font-size:clamp(36px,5vw,58px);font-weight:700;margin-bottom:8px}
+.award{border-radius:var(--r-md);padding:22px 24px;background:var(--surface)}
+.award.top{background:#1e1e22;color:#fff}
+.award.top span{color:#a8a8b2}
+.award b{display:block;font:700 26px/1.2 var(--display);letter-spacing:-.02em}
+.award span{color:var(--muted);font-size:15px}
+.part{background:var(--surface);border-radius:var(--r-lg);padding:24px 28px}
+.part h3{font:600 17px/1.2 var(--body);letter-spacing:0;margin-bottom:10px}
+.part table{width:100%;border-collapse:collapse;font-size:15px}
+.part td{border-top:1px solid var(--line);padding:12px 6px}
+.part td:last-child{text-align:right;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+@media (max-width:820px){.rec-grid{grid-template-columns:1fr}}
+
+/* Contact */
+.contact{background:radial-gradient(60% 80% at 50% 100%,#1b2a4a 0%,var(--night) 70%);color:var(--night-fg);text-align:center}
+.contact .wrap{padding-block:clamp(80px,12vw,140px);display:grid;justify-items:center;gap:18px}
+.contact .eyebrow{color:#5aa6ff}
+.contact h2{font-size:clamp(40px,8vw,96px);font-weight:800;letter-spacing:-.04em}
+.mail{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;margin-top:8px}
+.mail code{font:600 clamp(17px,2.4vw,24px)/1.3 var(--body);user-select:all;word-break:break-all}
+.copy{appearance:none;border:1px solid rgba(255,255,255,.22);background:transparent;color:var(--night-fg);font:600 14px/1 var(--body);padding:10px 16px;border-radius:999px;cursor:pointer}
+.copy:hover{background:rgba(255,255,255,.08)}
+.contact .meta{color:var(--night-muted);font-size:15px}
+.contact .meta a{color:#5aa6ff;text-decoration:none}
+.others{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:18px}
+footer{background:var(--night);color:var(--night-muted);font-size:13px;border-top:1px solid rgba(255,255,255,.06)}
+footer .wrap{padding-block:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:var(--night-muted)}
+
+/* Back to top */
+.totop{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;width:46px;height:46px;border-radius:50%;border:0;background:var(--fg);color:var(--bg);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .25s}
+.totop.show{opacity:1;pointer-events:auto}
+.totop svg{width:20px;height:20px}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(6,6,10,.92);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;padding:calc(56px + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+.lb img{max-height:calc(100vh - 120px);max-width:100%;margin:auto;border-radius:14px;object-fit:contain}
+.lb .lb-btn{appearance:none;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+.lb .lb-btn svg{width:20px;height:20px}
+.lb .lb-close{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:calc(12px + env(safe-area-inset-right,0px))}
+.lb .lb-cap{position:absolute;left:0;right:0;bottom:calc(8px + env(safe-area-inset-bottom,0px));text-align:center;color:#bbb;font-size:13px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));translate:-50% 0;background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;font-weight:600;z-index:120}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="#top">Diego Chávez <span>UX/UI</span></a>
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#tools">Tools</a>
+      <a href="#work">Work</a>
+      <a href="#recognition">Recognition</a>
+      <a href="#contact">Contact</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a class="ext" href="https://kxze.github.io/portfolio/games/">Games</a>
+      <a class="ext" href="https://kxze.github.io/portfolio/audiovisual/">3D &amp; Audiovisual</a>
+      <button class="icon-btn" id="themeBtn" aria-label="Switch color theme" title="Switch color theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-label="Introduction">
+  <div class="float f1" aria-hidden="true"><img src="assets/tool-swiftui.webp" alt=""></div>
+  <div class="float f2" aria-hidden="true"><img src="assets/tool-protopie.webp" alt=""></div>
+  <div class="float f3" aria-hidden="true"><img src="assets/tool-ps.webp" alt=""></div>
+  <div class="float f4" aria-hidden="true"><img src="assets/tool-ai.webp" alt=""></div>
+  <div class="float f5" aria-hidden="true"><img src="assets/tool-ae.webp" alt=""></div>
+  <div class="float f6" aria-hidden="true"><img src="assets/tool-figma.webp" alt=""></div>
+  <div class="wrap hero-in">
+    <p class="eyebrow">UX/UI Portfolio · 2026</p>
+    <h1>Diego Chávez</h1>
+    <p class="role">UX/UI Designer · Interactive Technologies</p>
+    <p class="loc">Guadalajara, Mexico</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#work">View projects</a>
+      <a class="btn btn-ghost" href="#contact">Contact</a>
+    </div>
+    <div class="hero-links">
+      <a href="https://www.linkedin.com/in/diego-cha" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/Kxze" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="about section" id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo"><img src="assets/diego.webp" alt="Portrait of Diego Chávez" width="560" height="761"></div>
+    <div class="about-text">
+      <p class="eyebrow">About me</p>
+      <h2>Design you can use. And build.</h2>
+      <p>I study Design, Art and Interactive Technologies at the University of Guadalajara. I blend branding, graphic design and UX/UI with SwiftUI development to speak the language of clients, creatives and developers.</p>
+      <div class="stats">
+        <div class="stat"><b>8</b><span>hackathons and challenges since 2024</span></div>
+        <div class="stat"><b>1st</b><span>place, CUAAD Hackathon 2025</span></div>
+        <div class="stat"><b>ES · EN</b><span>fluent Spanish and English</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">How I work</p><h2>From concept to code.</h2></div>
+    <ol class="steps">
+      <li class="step"><span class="n">01</span><h3>Research</h3><p>Users, context and client goals.</p></li>
+      <li class="step"><span class="n">02</span><h3>Define</h3><p>Flows, architecture and layouts.</p></li>
+      <li class="step"><span class="n">03</span><h3>Prototype</h3><p>Wireframes and interactive prototypes.</p></li>
+      <li class="step"><span class="n">04</span><h3>Build</h3><p>Handoff or SwiftUI development.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="tools" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Tools</p><h2>The software I master.</h2></div>
+    <div class="tools">
+      <div class="tool-card"><h3>UX/UI Design</h3><ul>
+        <li><img src="assets/tool-figma.webp" alt="">Figma</li><li><img src="assets/tool-framer.webp" alt="">Framer</li><li><img src="assets/tool-protopie.webp" alt="">ProtoPie</li><li><img src="assets/tool-marvel.webp" alt="">Marvel</li></ul></div>
+      <div class="tool-card"><h3>Design &amp; production</h3><ul>
+        <li><img src="assets/tool-ps.webp" alt="">Photoshop</li><li><img src="assets/tool-ai.webp" alt="">Illustrator</li><li><img src="assets/tool-id.webp" alt="">InDesign</li><li><img src="assets/tool-ae.webp" alt="">After Effects</li><li><img src="assets/tool-procreate.webp" alt="">Procreate</li><li><img src="assets/tool-blender.webp" alt="">Blender</li><li><img src="assets/tool-davinci.webp" alt="">DaVinci Resolve</li></ul></div>
+      <div class="tool-card"><h3>Frontend</h3><ul>
+        <li><img src="assets/tool-swiftui.webp" alt="">SwiftUI</li><li><img src="assets/tool-html.webp" alt="">HTML</li><li><img src="assets/tool-css.webp" alt="">CSS</li></ul></div>
+      <div class="tool-card"><h3>Backend</h3><ul>
+        <li><img src="assets/tool-swift.webp" alt="">Swift</li><li><img src="assets/tool-python.webp" alt="">Python</li><li><img src="assets/tool-c.webp" alt="">C</li><li><img src="assets/tool-cpp.webp" alt="">C++</li><li><img src="assets/tool-gdscript.webp" alt="">GDScript</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Projects</p><h2>Six projects. One way of thinking.</h2></div>
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button class="chip" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" data-filter="app" aria-pressed="false">Mobile apps</button>
+      <button class="chip" data-filter="play" aria-pressed="false">Games &amp; play</button>
+      <button class="chip" data-filter="edu" aria-pressed="false">Education</button>
+      <button class="chip" data-filter="impact" aria-pressed="false">Social impact</button>
+    </div>
+    <div class="cards" id="cards">
+      <a class="card" href="#kiko" data-tags="app"><img src="assets/icon-kiko.webp" alt=""><div><h3>Kiko</h3><p class="cat">iOS app · World Cup 2026</p></div><div class="go"><span class="tags"><span>UI lead</span><span>iOS</span></span>Case study →</div></a>
+      <a class="card" href="#huracan" data-tags="app play edu impact"><img src="assets/icon-huracan.webp" alt=""><div><h3>Mi Primer Huracán</h3><p class="cat">Educational app</p></div><div class="go"><span class="tags"><span>UI + dev</span><span>Kids</span></span>Case study →</div></a>
+      <a class="card" href="#tixal" data-tags="app"><img src="assets/icon-tixal.webp" alt=""><div><h3>Tixal</h3><p class="cat">Cultural tourism</p></div><div class="go"><span class="tags"><span>Team lead</span><span>Guadalajara</span></span>Case study →</div></a>
+      <a class="card" href="#coppi" data-tags="app impact"><img src="assets/icon-coppi.webp" alt=""><div><h3>Coppi</h3><p class="cat">Well-being</p></div><div class="go"><span class="tags"><span>Hackathon</span><span>UX research</span></span>Case study →</div></a>
+      <a class="card" href="#rendo" data-tags="app play edu impact"><img src="assets/icon-rendo.webp" alt=""><div><h3>Rendo</h3><p class="cat">Environmental education</p></div><div class="go"><span class="tags"><span>SpriteKit</span><span>Ranking</span></span>Case study →</div></a>
+      <a class="card" href="#aura" data-tags="play"><img src="assets/icon-aura.webp" alt=""><div><h3>Aura</h3><p class="cat">Video game</p></div><div class="go"><span class="tags"><span>Level design</span><span>Godot</span></span>Case study →</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- 01 Kiko -->
+<article class="k" id="kiko" aria-labelledby="kiko-t">
+  <div class="case-band"><div class="wrap">
+    <p class="num">01 · Kiko</p>
+    <h2 id="kiko-t"><span class="grad">The World Cup,</span><br><span class="dim">in your hand.</span></h2>
+    <div class="peek"><img src="assets/kiko-peek.webp" alt="Kiko home screen with upcoming matches and the Zayu assistant" loading="lazy"></div>
+  </div></div>
+  <div class="wrap case-body">
+    <div class="intro">
+      <div class="intro-text">
+        <p class="eyebrow">01 · Kiko</p>
+        <h3>The World Cup, in your pocket.</h3>
+        <p class="lede">Companion app for the 2026 World Cup: live matches, tickets in Wallet and an assistant featuring the mascot Zayu.</p>
+        <dl class="facts"><div><dt>My role</dt><dd>I led the user interface design.</dd></div><div><dt>Focus</dt><dd>Clear layouts, translucent surfaces and graphics optimized for a global audience.</dd></div></dl>
+      </div>
+      <div class="intro-img"><img src="assets/kiko-hero.webp" alt="Kiko app icon and home screen" loading="lazy" data-zoom></div>
+    </div>
+    <div>
+      <div class="users-head"><p class="eyebrow">Kiko · Users</p><h4>Who are we designing for?</h4></div>
+      <div class="personas">
+        <div class="persona"><span class="q">What time does Mexico play?</span><span class="av" aria-hidden="true">🧑</span><h5>Casual fan</h5><b>Pain point</b><p>Match info is scattered across several apps.</p><b>User needs</b><p>See schedules and live scores at a glance.</p></div>
+        <div class="persona"><span class="q">Where did I put my ticket?</span><span class="av" aria-hidden="true">👩</span><h5>Stadium-goer</h5><b>Pain point</b><p>Arrives without knowing the weather, time or entrance.</p><b>User needs</b><p>Ticket in Wallet and reminders to arrive on time.</p></div>
+        <div class="persona"><span class="q">I'm in Mexico… now what?</span><span class="av" aria-hidden="true">🧳</span><h5>International tourist</h5><b>Pain point</b><p>Doesn't know the city or how to get around.</p><b>User needs</b><p>A friendly assistant to guide them through the tournament.</p></div>
+      </div>
+    </div>
+    <div class="flow">
+      <h4>Every screen, one clear task.</h4>
+      <ul class="steps-inline"><li>Live matches</li><li>Match details</li><li>Ticket in Wallet</li><li>Zayu assistant always available</li></ul>
+      <div class="flow-img"><img src="assets/kiko-flow.webp" alt="Five Kiko screens: Zayu assistant, match lineup, match list, Wallet ticket, home" loading="lazy" data-zoom></div>
+    </div>
+    <nav class="case-nav" aria-label="Project navigation"><a href="#work">← All projects</a><a href="#huracan">Next: Mi Primer Huracán →</a></nav>
+  </div>
+</article>
+
+<!-- 02 Mi Primer Huracán -->
+<article class="h" id="huracan" aria-labelledby="hur-t">
+  <div class="case-band"><div class="wrap">
+    <p class="num">02 · Mi Primer Huracán</p>
+    <h2 id="hur-t"><span class="grad">Learn</span><br><span class="dim">to stay safe.</span></h2>
+    <div class="peek"><img src="assets/huracan-peek.webp" alt="Mi Primer Huracán start screen with a coastal town and a Play button" loading="lazy"></div>
+  </div></div>
+  <div class="wrap case-body">
+    <div class="intro">
+      <div class="intro-text">
+        <p class="eyebrow">02 · Mi Primer Huracán</p>
+        <h3>Learning to stay safe.</h3>
+        <p class="lede">An app that teaches children how to prevent and respond to natural disasters.</p>
+        <dl class="facts"><div><dt>My role</dt><dd>Interface, visual identity and app development.</dd></div><div><dt>Solution</dt><dd>A friendly guide character and one-gesture mini-games that explain a serious topic without causing fear.</dd></div></dl>
+      </div>
+      <div class="intro-img"><img src="assets/huracan-hero.webp" alt="Mi Primer Huracán icon and two game screens" loading="lazy" data-zoom></div>
+    </div>
+    <div>
+      <div class="users-head"><p class="eyebrow">Mi Primer Huracán · Users</p><h4>Who are we designing for?</h4></div>
+      <div class="personas">
+        <div class="persona"><span class="q">What is a hurricane?</span><span class="av" aria-hidden="true">🧒</span><h5>Child aged 6 to 10</h5><b>Pain point</b><p>Disaster topics scare or bore them.</p><b>User needs</b><p>Learning through play with a friendly character.</p></div>
+        <div class="persona"><span class="q">How do I explain this?</span><span class="av" aria-hidden="true">👩</span><h5>Parent</h5><b>Pain point</b><p>Doesn't know how to talk about risk without scaring their kids.</p><b>User needs</b><p>An activity to pack the emergency backpack as a family.</p></div>
+        <div class="persona"><span class="q">I need material for class</span><span class="av" aria-hidden="true">👨‍🏫</span><h5>Elementary teacher</h5><b>Pain point</b><p>There's little prevention material made for kids.</p><b>User needs</b><p>Short, clear mini-games to use in the classroom.</p></div>
+      </div>
+    </div>
+    <div class="flow">
+      <h4>Play to be prepared.</h4>
+      <ul class="steps-inline"><li>Mini-game</li><li>Win or lose animation that teaches the consequences</li><li>Lives system</li></ul>
+      <div class="flow-img"><img src="assets/huracan-flow.webp" alt="Four mini-game screens: the guide character, clearing a drain, a house on fire in a storm, and the start screen" loading="lazy" data-zoom></div>
+    </div>
+    <nav class="case-nav" aria-label="Project navigation"><a href="#kiko">← Kiko</a><a href="#tixal">Next: Tixal →</a></nav>
+  </div>
+</article>
+
+<!-- 03 Tixal -->
+<article class="t" id="tixal" aria-labelledby="tix-t">
+  <div class="case-band"><div class="wrap">
+    <p class="num">03 · Tixal</p>
+    <h2 id="tix-t"><span class="grad">Your city,</span><br><span class="dim">your ticket.</span></h2>
+    <div class="peek"><img src="assets/tixal-peek.webp" alt="Tixal route screen to Museo Hospicio Cabañas" loading="lazy"></div>
+  </div></div>
+  <div class="wrap case-body">
+    <div class="intro">
+      <div class="intro-text">
+        <p class="eyebrow">03 · Tixal</p>
+        <h3>The city, one ticket away.</h3>
+        <p class="lede">An app to discover cultural spots in Guadalajara (museums, parks and galleries): ticket purchase and public-transit route in a single flow.</p>
+        <dl class="facts"><div><dt>My role</dt><dd>Lead of the design and development teams.</dd></div><div><dt>Outcome</dt><dd>I split the team into focused groups to speed up delivery and balanced engineering with visual design.</dd></div></dl>
+      </div>
+      <div class="intro-img"><img src="assets/tixal-hero.webp" alt="Tixal splash screen and route map" loading="lazy" data-zoom></div>
+    </div>
+    <div>
+      <div class="users-head"><p class="eyebrow">Tixal · Users</p><h4>Who are we designing for?</h4></div>
+      <div class="personas">
+        <div class="persona"><span class="q">How do I get to the Cabañas?</span><span class="av" aria-hidden="true">🧳</span><h5>Tourist in Guadalajara</h5><b>Pain point</b><p>Doesn't know the public-transit routes.</p><b>User needs</b><p>Clear routes with estimated arrival time.</p></div>
+        <div class="persona"><span class="q">What should I do this weekend?</span><span class="av" aria-hidden="true">🧑</span><h5>Young local</h5><b>Pain point</b><p>Doesn't know which museums there are or what they cost.</p><b>User needs</b><p>Discover places and buy tickets in one flow.</p></div>
+        <div class="persona"><span class="q">There are four of us, how much is it?</span><span class="av" aria-hidden="true">👨‍👩‍👧‍👦</span><h5>Family</h5><b>Pain point</b><p>Buying several tickets at the box office is slow.</p><b>User needs</b><p>Pick adults and kids and pay from their phone.</p></div>
+      </div>
+    </div>
+    <div class="flow">
+      <h4>From cultural spot to your route.</h4>
+      <ul class="steps-inline"><li>Choose a cultural spot</li><li>Buy a ticket</li><li>Pay</li><li>Check the route</li></ul>
+      <div class="flow-img"><img src="assets/tixal-flow.webp" alt="Three Tixal screens: splash, ticket order for Museo Cultural Cabañas, and transit route" loading="lazy" data-zoom></div>
+    </div>
+    <nav class="case-nav" aria-label="Project navigation"><a href="#huracan">← Mi Primer Huracán</a><a href="#coppi">Next: Coppi →</a></nav>
+  </div>
+</article>
+
+<!-- 04 Coppi -->
+<article class="c" id="coppi" aria-labelledby="cop-t">
+  <div class="case-band"><div class="wrap">
+    <p class="num">04 · Coppi</p>
+    <h2 id="cop-t"><span class="grad">A breather,</span><br><span class="dim">right on time.</span></h2>
+    <div class="peek"><img src="assets/coppi-peek.webp" alt="Coppi breathing exercise screen reading Inhala" loading="lazy"></div>
+  </div></div>
+  <div class="wrap case-body">
+    <div class="intro">
+      <div class="intro-text">
+        <p class="eyebrow">04 · Coppi · Coppel Challenge, Hack 26</p>
+        <h3>A breather, when it's needed most.</h3>
+        <p class="lede">An emotional well-being app for employees: mood check-ins, breathing exercises and quick access to support.</p>
+        <dl class="facts"><div><dt>My role</dt><dd>UX/UI design, research and prototyping.</dd></div><div><dt>Focus</dt><dd>Soft shapes, warm colors and a single action per screen so it never overwhelms in a moment of crisis.</dd></div></dl>
+      </div>
+      <div class="intro-img"><img src="assets/coppi-hero.webp" alt="Coppi icon, breathing screen and mood check-in" loading="lazy" data-zoom></div>
+    </div>
+    <div>
+      <div class="users-head"><p class="eyebrow">Coppi · Users</p><h4>Who are we designing for?</h4></div>
+      <div class="personas">
+        <div class="persona"><span class="q">Today wasn't a good day</span><span class="av" aria-hidden="true">🧑‍💼</span><h5>Store employee</h5><b>Pain point</b><p>Heavy workload and little time to take a break.</p><b>User needs</b><p>Quick exercises to manage stress.</p></div>
+        <div class="persona"><span class="q">I don't know who to talk to</span><span class="av" aria-hidden="true">👩</span><h5>New employee</h5><b>Pain point</b><p>Doesn't know the company's support services.</p><b>User needs</b><p>Direct access to the Mental and Emotional Well-being team.</p></div>
+        <div class="persona"><span class="q">How is my team doing?</span><span class="av" aria-hidden="true">👨‍💼</span><h5>Area supervisor</h5><b>Pain point</b><p>Notices team burnout too late.</p><b>User needs</b><p>Understand what triggers distress to act in time.</p></div>
+      </div>
+    </div>
+    <div class="flow">
+      <h4>From feeling to support, in five steps.</h4>
+      <ul class="steps-inline"><li>Log how you feel</li><li>What triggered it</li><li>Breathing and focus game</li><li>Reach out for support</li></ul>
+      <div class="flow-img"><img src="assets/coppi-flow.webp" alt="Five Coppi screens: mood check-in, trigger selection, breathing, focus game, support call" loading="lazy" data-zoom></div>
+    </div>
+    <nav class="case-nav" aria-label="Project navigation"><a href="#tixal">← Tixal</a><a href="#rendo">Next: Rendo →</a></nav>
+  </div>
+</article>
+
+<!-- 05 Rendo -->
+<article class="r" id="rendo" aria-labelledby="ren-t">
+  <div class="case-band"><div class="wrap">
+    <p class="num">05 · Rendo</p>
+    <h2 id="ren-t"><span class="grad">Play for</span><br><span class="dim">the planet.</span></h2>
+    <div class="peek"><img src="assets/rendo-peek.webp" alt="Rendo missions screen with a low-poly planet" loading="lazy"></div>
+  </div></div>
+  <div class="wrap case-body">
+    <div class="intro">
+      <div class="intro-text">
+        <p class="eyebrow">05 · Rendo</p>
+        <h3>Caring for the planet, one mission at a time.</h3>
+        <p class="lede">An environmental education app with missions, lessons and eco-adventures near your community.</p>
+        <dl class="facts"><div><dt>What I did</dt><dd>I built the mini-games with SpriteKit, a score database and a ranking system.</dd></div></dl>
+      </div>
+      <div class="intro-img"><img src="assets/rendo-hero.webp" alt="Rendo adventures and missions screens" loading="lazy" data-zoom></div>
+    </div>
+    <div>
+      <div class="users-head"><p class="eyebrow">Rendo · Users</p><h4>Who are we designing for?</h4></div>
+      <div class="personas">
+        <div class="persona"><span class="q">Why sort the trash?</span><span class="av" aria-hidden="true">🧒</span><h5>Student</h5><b>Pain point</b><p>Environmental topics feel distant and boring.</p><b>User needs</b><p>Missions and challenges that motivate them to learn.</p></div>
+        <div class="persona"><span class="q">I want to help, but where?</span><span class="av" aria-hidden="true">🧑</span><h5>Young volunteer</h5><b>Pain point</b><p>Can't find eco activities near home.</p><b>User needs</b><p>Adventures in their community, like adopting a tree.</p></div>
+        <div class="persona"><span class="q">How do I get them involved?</span><span class="av" aria-hidden="true">👩‍🏫</span><h5>Teacher</h5><b>Pain point</b><p>Struggles to keep the class engaged with the topic.</p><b>User needs</b><p>Scores and rankings that spark healthy competition.</p></div>
+      </div>
+    </div>
+    <div class="flow">
+      <h4>Learn, play and act.</h4>
+      <ul class="steps-inline"><li>Missions</li><li>Educational game for kids</li><li>Ranking</li><li>Lessons</li><li>Flashcards</li><li>Adventures</li></ul>
+      <div class="flow-img"><img src="assets/rendo-flow.webp" alt="Five Rendo screens: adopt a tree, adventures, missions, flashcards, learn" loading="lazy" data-zoom></div>
+    </div>
+    <nav class="case-nav" aria-label="Project navigation"><a href="#coppi">← Coppi</a><a href="#aura">Next: Aura →</a></nav>
+  </div>
+</article>
+
+<!-- 06 Aura -->
+<article class="a" id="aura" aria-labelledby="aur-t">
+  <div class="case-band"><div class="wrap">
+    <p class="num">06 · Aura</p>
+    <h2 id="aur-t"><span class="grad">Enter</span> <span class="dim">the dream.</span></h2>
+    <div class="peek" style="width:min(760px,96%)"><img src="assets/aura-peek.webp" alt="Aura key art on a desktop monitor" loading="lazy"></div>
+  </div></div>
+  <div class="case-dark">
+    <div class="wrap case-body">
+      <div class="intro">
+        <div class="intro-text">
+          <p class="eyebrow">06 · Aura</p>
+          <h3>A demo in two months.</h3>
+          <dl class="facts"><div><dt>What I did</dt><dd>I led level design and production, coordinating art and engineering.</dd></div><div><dt>Programming</dt><dd>I programmed all the player and game logic, except the menus and credits.</dd></div><div><dt>Focus</dt><dd>Visual coherence, color palettes and narrative consistency.</dd></div></dl>
+        </div>
+        <div class="intro-img"><img src="assets/aura-hero.webp" alt="Aura title art with the two main characters" loading="lazy" data-zoom></div>
+      </div>
+      <div class="flow">
+        <h4>Worlds that feel made of paper.</h4>
+        <p>Aura gameplay · Level design and art direction</p>
+        <div class="flow-img"><img src="assets/aura-gameplay.webp" alt="Two Aura gameplay screenshots: a flooded castle and Aura's bedroom" loading="lazy" data-zoom></div>
+        <p style="margin-top:8px"><a class="btn btn-ghost" href="https://kxze.github.io/portfolio/games/">See the full level design breakdown →</a></p>
+      </div>
+      <nav class="case-nav" aria-label="Project navigation"><a href="#rendo">← Rendo</a><a href="#work">All projects ↑</a></nav>
+    </div>
+  </div>
+</article>
+
+<section class="section" id="recognition">
+  <div class="wrap rec-grid">
+    <div class="rec-left">
+      <p class="eyebrow">Recognition</p>
+      <h2>Proven under pressure.</h2>
+      <div class="award top"><b>1st place</b><span>CUAAD Hackathon · April 2025</span></div>
+      <div class="award"><b>Honorable mention</b><span>CUAAD Hackathon · March 2024</span></div>
+    </div>
+    <div class="part">
+      <h3>Participation</h3>
+      <table><tbody>
+        <tr><td>City Science Hands-On</td><td>Aug 2026</td></tr>
+        <tr><td>CSC 2025</td><td>Nov 2025</td></tr>
+        <tr><td>Hack_athon Swift Changemakers Monterrey</td><td>May 2025</td></tr>
+        <tr><td>Changemakers Social Challenge CDMX</td><td>Nov 2024</td></tr>
+        <tr><td>Hack_athon Swift Changemakers Monterrey</td><td>Apr 2024</td></tr>
+        <tr><td>Swift Student Challenge</td><td>Feb 2024</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Thank you</p>
+    <h2>Let's design something together.</h2>
+    <div class="mail"><code id="email">diego.gtz.chavez21@gmail.com</code><button class="copy" id="copyBtn" type="button">Copy email</button></div>
+    <p class="meta">+52 33 3250 6601 · <a href="https://www.linkedin.com/in/diego-cha" target="_blank" rel="noopener">linkedin.com/in/diego-cha</a> · <a href="https://github.com/Kxze" target="_blank" rel="noopener">github.com/Kxze</a></p>
+    <div class="others">
+      <a class="btn btn-ghost" href="https://kxze.github.io/portfolio/games/">Level &amp; Game Design portfolio</a>
+      <a class="btn btn-ghost" href="https://kxze.github.io/portfolio/audiovisual/">3D &amp; Audiovisual portfolio</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Diego Chávez · Guadalajara, Mexico</span><span><a href="#top">Back to top</a></span></div></footer>
+
+<button class="totop" id="toTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lb-btn" id="lbPrev" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <img id="lbImg" alt="">
+  <button class="lb-btn" id="lbNext" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+  <p class="lb-cap" id="lbCap"></p>
+</div>
+
+<script>
+(function(){
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  // Theme toggle
+  const root=document.documentElement;
+  try{const t=localStorage.getItem('dc-theme'); if(t) root.dataset.theme=t;}catch(e){}
+  $('#themeBtn').addEventListener('click',()=>{
+    const dark = root.dataset.theme ? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try{localStorage.setItem('dc-theme',root.dataset.theme);}catch(e){}
+  });
+  // Mobile menu
+  const nav=$('#nav'), mb=$('#menuBtn');
+  mb.addEventListener('click',()=>{const o=nav.classList.toggle('open'); mb.setAttribute('aria-expanded',o); mb.setAttribute('aria-label',o?'Close menu':'Open menu');});
+  nav.addEventListener('click',e=>{if(e.target.closest('a')){nav.classList.remove('open');mb.setAttribute('aria-expanded','false');}});
+  // Active section highlight
+  const links=$$('.nav a[href^="#"]');
+  const map={kiko:'work',huracan:'work',tixal:'work',coppi:'work',rendo:'work',aura:'work'};
+  const secs=['about','process','tools','work','kiko','huracan','tixal','coppi','rendo','aura','recognition','contact'].map(id=>document.getElementById(id));
+  function onScroll(){
+    const y=window.scrollY+120; let cur='';
+    for(const s of secs){ if(s && s.offsetTop<=y) cur=s.id; }
+    cur=map[cur]||cur;
+    links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+    $('#toTop').classList.toggle('show',window.scrollY>700);
+  }
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  $('#toTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
+  // Filters
+  $$('.chip').forEach(c=>c.addEventListener('click',()=>{
+    $$('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));
+    const f=c.dataset.filter;
+    $$('#cards .card').forEach(card=>card.hidden = f!=='all' && !card.dataset.tags.split(' ').includes(f));
+  }));
+  // Copy email
+  function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),1800);}
+  $('#copyBtn').addEventListener('click',()=>{
+    const txt=$('#email').textContent;
+    const sel=()=>{const r=document.createRange();r.selectNodeContents($('#email'));const s=getSelection();s.removeAllRanges();s.addRange(r);toast('Email selected, press Ctrl/⌘+C');};
+    if(navigator.clipboard){navigator.clipboard.writeText(txt).then(()=>toast('Email copied'),sel);} else sel();
+  });
+  // Lightbox
+  const zs=$$('img[data-zoom]'); let idx=0; const lb=$('#lb'), li=$('#lbImg'), cap=$('#lbCap'); let last=null;
+  function show(i){idx=(i+zs.length)%zs.length; li.src=zs[idx].currentSrc||zs[idx].src; li.alt=zs[idx].alt; cap.textContent=zs[idx].alt+'  ·  '+(idx+1)+' / '+zs.length;}
+  zs.forEach((im,i)=>{im.tabIndex=0; im.setAttribute('role','button');
+    const open=()=>{last=im;show(i);lb.hidden=false;document.body.style.overflow='hidden';$('#lbClose').focus();};
+    im.addEventListener('click',open); im.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});});
+  function close(){lb.hidden=true;document.body.style.overflow='';last&&last.focus();}
+  $('#lbClose').addEventListener('click',close);
+  $('#lbPrev').addEventListener('click',()=>show(idx-1));
+  $('#lbNext').addEventListener('click',()=>show(idx+1));
+  lb.addEventListener('click',e=>{if(e.target===lb)close();});
+  addEventListener('keydown',e=>{if(lb.hidden)return; if(e.key==='Escape')close(); if(e.key==='ArrowLeft')show(idx-1); if(e.key==='ArrowRight')show(idx+1);});
+})();
+</script>
+</body>
+</html>
