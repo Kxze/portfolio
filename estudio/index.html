@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diego Chávez · Reel 3D y Juegos</title>
+<meta name="description" content="Portafolio de Diego Chávez: modelado 3D, animación, VFX, postproducción y programación de videojuegos. Guadalajara, México.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: una sola "consola" oscura; cada disciplina es un cartucho con su color (mismo sistema que la portada DC SYSTEM) */
+:root{
+  --bg:#050705;
+  --panel:#0c110c;
+  --linea:#1d2a1c;
+  --tinta:#e4f4dc;
+  --gris:#8d9c89;
+  --verde:#7cff3a;   /* sistema / código */
+  --ambar:#ffb648;   /* 3D */
+  --rosa:#ff7ac0;    /* juegos */
+  --cian:#3fd0ff;    /* audiovisual */
+  --display:"Orbitron",system-ui,sans-serif;
+  --label:"Rajdhani","Arial Narrow",system-ui,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tinta);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--verde);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Barra */
+.barra{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+.barra .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.marca{font:700 13px var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--verde);display:flex;align-items:center;gap:8px;text-decoration:none}
+.marca i{width:8px;height:8px;border-radius:50%;background:var(--verde);box-shadow:0 0 10px var(--verde)}
+.barra nav{display:flex;gap:18px;flex-wrap:wrap}
+.barra nav a{font:600 15px var(--label);letter-spacing:.06em;text-transform:uppercase;color:var(--gris);text-decoration:none}
+.barra nav a:hover{color:var(--tinta)}
+@media (max-width:720px){.barra nav{display:none}}
+
+/* Hero */
+.hero{padding-block:56px 40px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.eyebrow{font:600 15px var(--label);letter-spacing:.16em;text-transform:uppercase;color:var(--gris);margin:0 0 14px}
+h1{font:900 clamp(38px,6.4vw,76px)/.98 var(--display);margin:0 0 20px;letter-spacing:-.01em;text-wrap:balance}
+h1 span{display:block}
+.verbos{font:700 clamp(22px,2.8vw,30px)/1.25 var(--label);margin:0 0 22px;letter-spacing:.02em}
+.verbos b:nth-child(1){color:var(--verde)}.verbos b:nth-child(2){color:var(--ambar)}.verbos b:nth-child(3){color:var(--rosa)}.verbos b:nth-child(4){color:var(--cian)}
+.hero p.intro{color:var(--gris);max-width:58ch;margin:0 0 26px}
+.botones{display:flex;flex-wrap:wrap;gap:12px}
+.btn{font:700 15px var(--label);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:12px 20px;border-radius:999px;border:1px solid var(--verde);color:var(--bg);background:var(--verde);display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--tinta);border-color:var(--linea)}
+.btn.ghost:hover{border-color:var(--gris)}
+.pantalla{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--linea);background:#000;aspect-ratio:1/1;max-width:100%}
+.pantalla video{width:100%;height:100%;object-fit:cover}
+.pantalla::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);pointer-events:none}
+.pantalla figcaption{position:absolute;left:14px;bottom:12px;z-index:2;font:600 14px var(--label);letter-spacing:.1em;text-transform:uppercase;color:var(--ambar);background:rgba(0,0,0,.6);padding:4px 10px;border-radius:6px}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.pantalla{max-width:520px}}
+
+/* Pipeline: las 4 cosas que pide el estudio */
+.pipeline{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-block:8px 64px}
+.cart{border:1px solid var(--linea);border-radius:14px;padding:18px;background:var(--panel);text-decoration:none;display:flex;flex-direction:column;gap:6px;border-top:3px solid var(--c);min-width:0}
+.cart small{font:600 13px var(--label);letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
+.cart strong{font:800 17px/1.2 var(--display)}
+.cart span{color:var(--gris);font-size:14px}
+@media (max-width:860px){.pipeline{grid-template-columns:1fr 1fr}}
+@media (max-width:460px){.pipeline{grid-template-columns:1fr}}
+
+/* Secciones */
+.sec{padding-block:64px;border-top:1px solid var(--linea)}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;align-items:end;margin-bottom:34px}
+.slot{font:800 13px var(--display);letter-spacing:.2em;color:var(--c);border:1px solid var(--c);border-radius:6px;padding:6px 10px;grid-row:span 2;align-self:start}
+h2{font:800 clamp(26px,3.6vw,40px)/1.1 var(--display);margin:0;text-wrap:balance}
+.sec-head p{margin:0;color:var(--gris);max-width:68ch}
+@media (max-width:560px){.sec-head{grid-template-columns:1fr}.slot{grid-row:auto;justify-self:start}}
+
+.obra{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin-bottom:56px}
+.obra:last-child{margin-bottom:0}
+.obra.inv .media{order:2}
+.obra .txt{min-width:0}
+.tipo{font:600 14px var(--label);letter-spacing:.14em;text-transform:uppercase;color:var(--c);margin:0 0 6px}
+h3{font:800 clamp(20px,2.4vw,26px)/1.2 var(--display);margin:0 0 12px}
+.txt p{margin:0 0 14px;color:#c6d3c1;max-width:62ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;padding:0;list-style:none}
+.chips li{font:600 14px var(--label);letter-spacing:.04em;padding:4px 12px;border-radius:999px;border:1px solid var(--linea);color:var(--tinta)}
+.media{display:grid;gap:10px;min-width:0}
+.media.dos{grid-template-columns:1fr 1fr}
+.media.tres{grid-template-columns:repeat(3,1fr)}
+.media figure{margin:0;border-radius:12px;overflow:hidden;background:#000;border:1px solid var(--linea);position:relative}
+.media figure.ancha{grid-column:1/-1}
+.media img,.media video{width:100%;height:100%;object-fit:cover;aspect-ratio:var(--ar,16/10)}
+.media figcaption{position:absolute;left:8px;bottom:8px;font:600 12px var(--label);letter-spacing:.08em;text-transform:uppercase;background:rgba(0,0,0,.65);padding:3px 8px;border-radius:5px;color:var(--tinta)}
+@media (max-width:860px){.obra{grid-template-columns:1fr}.obra.inv .media{order:0}}
+
+/* Rol en programación */
+.codigo{margin-top:6px;background:#020302;border:1px solid var(--linea);border-radius:12px;padding:14px 16px;overflow-x:auto;font:500 13px/1.6 ui-monospace,"SF Mono",Menlo,Consolas,monospace;color:#bfe9a8}
+.codigo .k{color:var(--rosa)}.codigo .c{color:var(--gris)}
+
+/* Iteraciones */
+.iter{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 0}
+.iter div{border:1px solid var(--linea);border-radius:12px;padding:12px;background:var(--panel)}
+.iter b{font:800 26px var(--display);color:var(--rosa);font-variant-numeric:tabular-nums;display:block}
+.iter span{font:600 14px/1.2 var(--label);color:var(--gris)}
+@media (max-width:560px){.iter{grid-template-columns:1fr 1fr}}
+
+/* Films */
+.films{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.film{border:1px solid var(--linea);border-radius:14px;overflow:hidden;background:var(--panel);display:flex;flex-direction:column;min-width:0}
+.film img{aspect-ratio:16/9;object-fit:cover;width:100%}
+.film div{padding:16px 18px 18px}
+.film h3{margin-bottom:6px}
+.film p{margin:0 0 10px;color:#c6d3c1;font-size:15px}
+.rol{font:600 14px var(--label);letter-spacing:.06em;color:var(--cian)}
+@media (max-width:700px){.films{grid-template-columns:1fr}}
+
+/* Apps */
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.app{border:1px solid var(--linea);border-radius:14px;overflow:hidden;background:var(--panel);min-width:0}
+.app img{aspect-ratio:4/3;object-fit:cover;width:100%;background:#000}
+.app div{padding:12px 14px 14px}
+.app strong{font:800 15px var(--display);display:block;margin-bottom:4px}
+.app span{font-size:14px;color:var(--gris)}
+@media (max-width:860px){.apps{grid-template-columns:1fr 1fr}}
+
+/* Herramientas */
+.herr{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.herr div{border-left:3px solid var(--c);padding:4px 0 4px 14px;min-width:0}
+.herr small{font:600 13px var(--label);letter-spacing:.14em;text-transform:uppercase;color:var(--c);display:block;margin-bottom:4px}
+.herr p{margin:0;font-size:15px;color:#c6d3c1}
+@media (max-width:860px){.herr{grid-template-columns:1fr 1fr}}
+@media (max-width:460px){.herr{grid-template-columns:1fr}}
+
+/* Contacto */
+.contacto{padding-block:72px 48px;border-top:1px solid var(--linea)}
+.contacto h2{font-size:clamp(28px,4.4vw,52px);margin-bottom:16px}
+.contacto p{color:var(--gris);max-width:60ch;margin:0 0 22px}
+.datos{display:flex;flex-wrap:wrap;gap:10px 22px;margin:0 0 26px;font:600 18px var(--label);letter-spacing:.03em}
+.datos span{user-select:all}
+.copiar{font:600 13px var(--label);letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--verde);border:1px solid var(--linea);border-radius:999px;padding:3px 10px;cursor:pointer;margin-left:6px}
+footer{padding-block:24px 40px;color:var(--gris);font-size:13px;border-top:1px solid var(--linea)}
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="wrap">
+    <a class="marca" href="#inicio"><i></i>DC SYSTEM · Reel</a>
+    <nav aria-label="Secciones">
+      <a href="#modelado">3D</a><a href="#juegos">Juegos</a><a href="#post">Animación y post</a><a href="#codigo">Código</a><a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Portafolio 2026 · Guadalajara, Jalisco</p>
+        <h1><span>Diego</span><span>Chávez</span></h1>
+        <p class="verbos"><b>Programo</b>, <b>modelo</b>, <b>animo</b> y hago <b>post</b>.</p>
+        <p class="intro">Estudio Diseño, Arte y Tecnologías Interactivas en la Universidad de Guadalajara (8.º semestre). Me muevo entre el arte y el código: modelo personajes y escenarios en Blender, diseño y programo niveles en Godot, y cierro proyectos audiovisuales con edición, color y VFX.</p>
+        <div class="botones">
+          <a class="btn" href="#modelado">Ver trabajo</a>
+          <a class="btn ghost" href="../CV-Diego-Chavez-3D-Juegos.pdf" target="_blank" rel="noopener">Abrir CV</a>
+        </div>
+      </div>
+      <figure class="pantalla" style="margin:0">
+        <video src="../audiovisual/media/mechalince.mp4" poster="../audiovisual/media/mechalince-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="MechaLince, turntable del personaje"></video>
+        <figcaption>MechaLince · turntable</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="wrap pipeline">
+    <a class="cart" href="#modelado" style="--c:var(--ambar)"><small>Modelado</small><strong>Personajes y escenarios 3D</strong><span>Blender, Maya, Substance 3D Painter</span></a>
+    <a class="cart" href="#juegos" style="--c:var(--rosa)"><small>Programación</small><strong>Videojuegos en Godot</strong><span>GDScript: jugador, enemigos y jefe de Aura</span></a>
+    <a class="cart" href="#post" style="--c:var(--cian)"><small>Animación y VFX</small><strong>Cortos y comerciales</strong><span>Stop-motion, motion graphics, VFX</span></a>
+    <a class="cart" href="#post" style="--c:var(--verde)"><small>Postproducción</small><strong>Edición y color</strong><span>DaVinci Resolve, After Effects, Premiere</span></a>
+  </div>
+
+  <!-- 3D -->
+  <section class="sec" id="modelado" style="--c:var(--ambar)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="slot">3D</span>
+        <h2>Personajes y escenarios</h2>
+        <p>Modelado, topología lista para animar, texturizado, iluminación y render.</p>
+      </div>
+
+      <article class="obra">
+        <div class="media dos">
+          <figure style="--ar:1/1"><video src="../audiovisual/media/mechalince.mp4" poster="../audiovisual/media/mechalince-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="MechaLince render"></video><figcaption>Render</figcaption></figure>
+          <figure style="--ar:1/1"><video src="../audiovisual/media/mechalince-wireframe.mp4" poster="../audiovisual/media/mechalince-wireframe-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="MechaLince wireframe"></video><figcaption>Wireframe</figcaption></figure>
+        </div>
+        <div class="txt">
+          <p class="tipo">Personaje 3D</p>
+          <h3>MechaLince</h3>
+          <p>Un lince robótico modelado con topología limpia, pensada para rigging y animación. Lo presento en turntable con su shading final y en pase de wireframe para que se lea el flujo de aristas.</p>
+          <ul class="chips"><li>Diseño de personaje</li><li>Modelado</li><li>Topología</li><li>Shading</li></ul>
+        </div>
+      </article>
+
+      <article class="obra inv">
+        <div class="media tres">
+          <figure style="--ar:3/4"><img src="../audiovisual/media/boar-side.webp" alt="Jabalí mecánico de lado" loading="lazy"><figcaption>Lado</figcaption></figure>
+          <figure style="--ar:3/4"><img src="../audiovisual/media/boar-front.webp" alt="Jabalí mecánico en tres cuartos" loading="lazy"><figcaption>3/4</figcaption></figure>
+          <figure style="--ar:3/4"><img src="../audiovisual/media/boar-back.webp" alt="Jabalí mecánico de espaldas" loading="lazy"><figcaption>Espalda</figcaption></figure>
+        </div>
+        <div class="txt">
+          <p class="tipo">Personaje 3D · hard surface</p>
+          <h3>Jabalí mecha</h3>
+          <p>Un jabalí mecánico estilizado hecho de piezas hard surface: cuerpo blindado, patas articuladas y detalle en las uniones, con un flujo de aristas legible.</p>
+          <ul class="chips"><li>Modelado hard surface</li><li>Topología</li></ul>
+        </div>
+      </article>
+
+      <article class="obra">
+        <div class="media dos">
+          <figure class="ancha"><img src="../audiovisual/media/corner-textured.webp" alt="Esquina nocturna con neón y pavimento mojado" loading="lazy"><figcaption>Render final</figcaption></figure>
+          <figure><img src="../audiovisual/media/corner-clay.webp" alt="Render en clay de la esquina" loading="lazy"><figcaption>Clay</figcaption></figure>
+          <figure><img src="../audiovisual/media/tunnel-wireframe.webp" alt="Wireframe del túnel" loading="lazy"><figcaption>Túnel · wireframe</figcaption></figure>
+        </div>
+        <div class="txt">
+          <p class="tipo">Escenarios 3D · animación corta</p>
+          <h3>Block Drugs y Túnel nocturno</h3>
+          <p>Una esquina de ciudad de noche construida desde cero: fachada, anuncios de neón, señales y semáforos peatonales, con niebla y pavimento mojado para vender la atmósfera.</p>
+          <p>El túnel es un paso a desnivel hecho para un video animado corto con su propia sonorización: niebla volumétrica, luces prácticas y poca profundidad de campo.</p>
+          <ul class="chips"><li>Modelado</li><li>Texturizado</li><li>Iluminación</li><li>Cámara</li><li>Composición</li><li>Sonorización</li></ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Juegos -->
+  <section class="sec" id="juegos" style="--c:var(--rosa)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="slot">GAME</span>
+        <h2>Aura: diseño y programación</h2>
+        <p>Plataformas 2D en Godot con escenarios en 3D. Diseñé tres niveles y la primera fase del jefe final, y programé toda la lógica del jugador y del juego, excepto menús y créditos.</p>
+      </div>
+
+      <article class="obra">
+        <div class="media dos">
+          <figure class="ancha"><img src="../ux/assets/aura-hero.webp" alt="Aura, imagen principal del juego" loading="lazy"></figure>
+          <figure><img src="../games/assets/n1-sketch.webp" alt="Boceto del nivel 1" loading="lazy"><figcaption>Boceto</figcaption></figure>
+          <figure><img src="../games/assets/n1-blocking-color.webp" alt="Blocking del nivel 1 en Blender" loading="lazy"><figcaption>Blocking en Blender</figcaption></figure>
+          <figure><img src="../games/assets/n1-godot.webp" alt="Nivel 1 en Godot" loading="lazy"><figcaption>Prueba en Godot</figcaption></figure>
+          <figure><img src="../games/assets/n1-lit.webp" alt="Nivel 1 iluminado en juego" loading="lazy"><figcaption>En juego</figcaption></figure>
+        </div>
+        <div class="txt">
+          <p class="tipo">Pipeline de nivel</p>
+          <h3>Del boceto al nivel jugable</h3>
+          <p>Cada nivel sigue el mismo camino: lo dibujo a mano, lo construyo en volumen en Blender y lo implemento y pruebo en Godot hasta que jugarlo se siente bien y no frustra.</p>
+          <p>Los controles se enseñan dentro del escenario, con dibujos colgados en el cuarto de Aura, y cada mecánica se aprende, se refuerza y luego se pone a prueba.</p>
+          <div class="iter" aria-label="Iteraciones por nivel">
+            <div><b>3</b><span>Cuarto de Aura</span></div>
+            <div><b>~5</b><span>Castillo y Villa</span></div>
+            <div><b>2–3</b><span>Torre de Julieta</span></div>
+            <div><b>~6</b><span>Jefe Odile</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="obra inv">
+        <div class="media dos">
+          <figure class="ancha"><img src="../games/assets/n2-sheet.webp" alt="Hoja de personaje del cascanueces, versión pacífica y hostil" loading="lazy"><figcaption>Cascanueces · pacífico y hostil</figcaption></figure>
+          <figure><img src="../games/assets/odile-rojo.webp" alt="Escenario del jefe con luces rojas" loading="lazy"><figcaption>Odile · luces rojas</figcaption></figure>
+          <figure><img src="../games/assets/odile-antorchas.webp" alt="Antorchas que marcan la vida de Odile" loading="lazy"><figcaption>Antorchas = vida</figcaption></figure>
+        </div>
+        <div class="txt">
+          <p class="tipo">Programación de jugabilidad · GDScript</p>
+          <h3>Enemigos y jefe final</h3>
+          <p><strong>Cascanueces:</strong> patrullan sobre una nav mesh y tienen un radio de guardia. Si Aura entra, se tornan rojos y van hacia su posición. Cada golpe resta 1 de vida; al tercero, Aura reaparece en el checkpoint.</p>
+          <p><strong>Odile, fase 1:</strong> programé su desplazamiento, su animación de daño, la respuesta de las luces del escenario y la animación del saco, que aparece, rebota y desaparece al caer. El estado del combate se lee sin texto: luces rojas tras el golpe y una antorcha menos por cada vida.</p>
+<pre class="codigo"><span class="c"># Lógica simplificada del cascanueces</span>
+<span class="k">func</span> _physics_process(delta):
+    <span class="k">if</span> jugador_en_radio_de_guardia():
+        modular_color(ROJO)
+        agente.target_position = aura.global_position
+    <span class="k">else</span>:
+        patrullar(delta)</pre>
+          <ul class="chips"><li>Godot</li><li>GDScript</li><li>Nav mesh</li><li>Feedback con luz</li><li>Equilibrio de dificultad</li></ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Audiovisual -->
+  <section class="sec" id="post" style="--c:var(--cian)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="slot">REEL</span>
+        <h2>Animación, VFX y postproducción</h2>
+        <p>Cuatro producciones de 2025: dos cortometrajes y dos comerciales, uno de ellos en stop-motion.</p>
+      </div>
+      <div class="films">
+        <article class="film">
+          <img src="../audiovisual/media/tetris-cover.webp" alt="Fotograma del corto Tetris" loading="lazy">
+          <div>
+            <p class="tipo">Cortometraje · Kalypso</p>
+            <h3>Tetris</h3>
+            <p>Una persona encuentra una maquinita olvidada y, mientras juega, la estética y la lógica de Tetris invaden el mundo real. Dirigí el proyecto de principio a fin.</p>
+            <span class="rol">Director · Fotografía · Supervisor de VFX · Editor</span>
+          </div>
+        </article>
+        <article class="film">
+          <img src="../audiovisual/media/prozan-cover.webp" alt="Fotograma del comercial de Prozan" loading="lazy">
+          <div>
+            <p class="tipo">Comercial stop-motion · Prozan · remoto</p>
+            <h3>Prozan</h3>
+            <p>Animación cuadro por cuadro de producto. Limpié la pantalla verde, quité los rigs de animación de cada toma y hice el etalonaje final para unificar el look.</p>
+            <span class="rol">Postproductor · Limpieza de rigs · Colorista</span>
+          </div>
+        </article>
+        <article class="film">
+          <img src="../audiovisual/media/archivo-cover.webp" alt="Fotograma del corto Archivo Mental" loading="lazy">
+          <div>
+            <p class="tipo">Cortometraje · personal</p>
+            <h3>Archivo Mental</h3>
+            <p>La mente como una oficina donde se archivan pensamientos, hasta que uno rompe el orden y detona un episodio de ansiedad. Hice la fotografía, edición, color, VFX y el modelado y texturizado 3D.</p>
+            <span class="rol">Fotografía · Editor · Colorista · VFX · Líder 3D</span>
+          </div>
+        </article>
+        <article class="film">
+          <img src="../audiovisual/media/kicko-cover.webp" alt="Fotograma del comercial de Kicko" loading="lazy">
+          <div>
+            <p class="tipo">Comercial de app · ENACTUS</p>
+            <h3>Kicko</h3>
+            <p>Comercial de un asistente para vivir el Mundial. Dirigí el rodaje, hice motion graphics, edición y color, y usé IA generativa en algunas transiciones.</p>
+            <span class="rol">Director · Fotografía · Motion graphics · Editor · Colorista</span>
+          </div>
+        </article>
+      </div>
+      <p style="margin-top:22px"><a class="btn ghost" href="https://kxze.github.io/portfolio/audiovisual/" target="_blank" rel="noopener">Ver los videos completos</a></p>
+    </div>
+  </section>
+
+  <!-- Código -->
+  <section class="sec" id="codigo" style="--c:var(--verde)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="slot">CODE</span>
+        <h2>También construyo el software</h2>
+        <p>Apps en Swift y SwiftUI hechas en equipo, de la investigación al código. Aplico principios SOLID y Clean Code.</p>
+      </div>
+      <div class="apps">
+        <div class="app"><img src="../ux/assets/rendo-peek.webp" alt="Rendo" loading="lazy"><div><strong>Rendo</strong><span>Minijuegos en SpriteKit, base de puntuaciones y ranking.</span></div></div>
+        <div class="app"><img src="../ux/assets/kiko-peek.webp" alt="Kiko" loading="lazy"><div><strong>Kiko</strong><span>App compañera del Mundial. Lideré la interfaz.</span></div></div>
+        <div class="app"><img src="../ux/assets/huracan-peek.webp" alt="Mi Primer Huracán" loading="lazy"><div><strong>Mi Primer Huracán</strong><span>App educativa para niños: diseño y programación.</span></div></div>
+        <div class="app"><img src="../ux/assets/tixal-peek.webp" alt="Tixal" loading="lazy"><div><strong>Tixal</strong><span>Lideré los equipos de programación y diseño.</span></div></div>
+      </div>
+
+      <div class="herr">
+        <div style="--c:var(--ambar)"><small>3D</small><p>Blender, Maya, Substance 3D Painter</p></div>
+        <div style="--c:var(--rosa)"><small>Juegos</small><p>Godot, GDScript, C, C++, Swift, SpriteKit</p></div>
+        <div style="--c:var(--cian)"><small>Post y VFX</small><p>DaVinci Resolve, After Effects, Premiere Pro</p></div>
+        <div style="--c:var(--verde)"><small>Arte y diseño</small><p>Photoshop, Illustrator, Procreate, Figma</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contacto" id="contacto">
+    <div class="wrap">
+      <h2>¿Hacemos algo juntos?</h2>
+      <p>Busco prácticas en un estudio de animación y videojuegos en Guadalajara. Diplomado en VFX, postproducción y 3D (Taller del Chucho, POLAR STUDIO y ARDEN).</p>
+      <div class="datos">
+        <div><span id="mail">diego.gtz.chavez21@gmail.com</span><button class="copiar" type="button" data-copiar="mail">Copiar</button></div>
+        <div><span id="tel">+52 33 3250 6601</span><button class="copiar" type="button" data-copiar="tel">Copiar</button></div>
+      </div>
+      <div class="botones">
+        <a class="btn" href="../CV-Diego-Chavez-3D-Juegos.pdf" target="_blank" rel="noopener">Abrir CV</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/diego-cha" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://www.instagram.com/elkxze" target="_blank" rel="noopener">Instagram @elkxze</a>
+        <a class="btn ghost" href="https://github.com/Kxze" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© 2026 Diego Alejandro Chávez Gutiérrez · Guadalajara, Jalisco · Portafolios completos: <a href="https://kxze.github.io/portfolio/ux/">UX/UI</a> · <a href="https://kxze.github.io/portfolio/games/">Level &amp; Game Design</a> · <a href="https://kxze.github.io/portfolio/audiovisual/">Audiovisual y 3D</a></div></footer>
+
+<script>
+document.querySelectorAll('.copiar').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.copiar);var t=el.textContent;
+    var ok=function(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar'},1600)};
+    var sel=function(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)};
+    try{navigator.clipboard.writeText(t).then(ok,sel)}catch(e){sel()}
+  });
+});
+</script>
+</body>
+</html>
