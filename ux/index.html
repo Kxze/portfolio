@@ -312,6 +312,75 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
   ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
   .rv{opacity:1;transform:none}
 }
+
+/* ===== Home: iPhone home screen ===== */
+.hero{min-height:calc(100vh - 60px)}
+.home-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(32px,6vw,96px);align-items:center;padding-block:clamp(28px,4vw,48px)}
+.home-copy{display:grid;gap:14px;justify-items:start;text-align:left}
+.home-copy h1{font-size:clamp(48px,8vw,104px);font-weight:800;letter-spacing:-.04em}
+.home-copy .role{font:600 clamp(18px,2.2vw,26px)/1.3 var(--display);color:#d6d6de}
+.home-copy .loc{color:var(--night-muted)}
+.hint{display:flex;align-items:center;gap:10px;color:#b9b9c5;font-size:15px;margin-top:6px}
+.tap{width:10px;height:10px;border-radius:50%;background:#5aa6ff;box-shadow:0 0 0 0 rgba(90,166,255,.6);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 10px rgba(90,166,255,0)}100%{box-shadow:0 0 0 0 rgba(90,166,255,0)}}
+.iphone{--w:clamp(250px,min(27vw,calc((100vh - 140px) * 9 / 19.3)),330px);width:var(--w);aspect-ratio:9/19.3;padding:calc(var(--w)*.035);border-radius:calc(var(--w)*.17);
+  background:linear-gradient(145deg,#4a4a52,#1c1c20 30%,#2d2d33 70%,#5a5a62);box-shadow:0 0 0 1.5px #0d0d0f inset,0 50px 90px -30px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.08);position:relative}
+.iphone::before,.iphone::after{content:"";position:absolute;width:3px;border-radius:2px;background:#3a3a41;left:-3px}
+.iphone::before{top:18%;height:5%}.iphone::after{top:26%;height:9%}
+.screen{container-type:inline-size;position:relative;height:100%;border-radius:calc(var(--w)*.14);overflow:hidden;display:flex;flex-direction:column;color:#fff;
+  background:radial-gradient(80% 45% at 50% 38%,#1b2a4a 0%,#0e1424 55%,var(--night) 100%)}
+.status{display:flex;align-items:center;justify-content:space-between;padding:4.2cqw 7cqw 0;height:13cqw;font:600 4.4cqw/1 var(--body)}
+.island{position:absolute;left:50%;top:3.2cqw;translate:-50% 0;width:30cqw;height:8.6cqw;border-radius:99px;background:#000}
+.sys{display:flex;gap:1.4cqw;align-items:center}
+.sys i{display:block;background:#fff;border-radius:1cqw}
+.sig{width:4.6cqw;height:3cqw;clip-path:polygon(0 100%,100% 0,100% 100%)}
+.wifi{width:4.4cqw;height:3.2cqw;clip-path:polygon(50% 100%,0 25%,20% 0,80% 0,100% 25%)}
+.bat{width:6.6cqw;height:3.2cqw;border-radius:1cqw!important;box-shadow:inset 0 0 0 .35cqw #fff;background:linear-gradient(90deg,#fff 70%,transparent 70%)!important}
+.apps{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:min-content;gap:4.6cqw 3.4cqw;padding:5cqw 5.5cqw 0;flex:1;align-content:start}
+.app{display:grid;justify-items:center;gap:1.6cqw;text-decoration:none;color:#fff;-webkit-tap-highlight-color:transparent}
+.app .ic{width:15.6cqw;height:15.6cqw;border-radius:22.5%;overflow:hidden;display:grid;place-items:center;background:#fff;box-shadow:0 1.2cqw 3cqw -1cqw rgba(0,0,0,.45);transition:transform .18s cubic-bezier(.3,.7,.4,1.4),filter .18s}
+.app .ic img{width:100%;height:100%;object-fit:cover}
+.app .ic svg{width:58%;height:58%}
+.app .al{font:500 2.95cqw/1.1 var(--body);text-shadow:0 1px 3px rgba(0,0,0,.4);white-space:nowrap;max-width:20cqw;overflow:hidden;text-overflow:ellipsis}
+.app:hover .ic{transform:scale(1.07)}
+.app:active .ic{transform:scale(.9);filter:brightness(.85)}
+.app:focus-visible{outline:none}.app:focus-visible .ic{outline:2px solid #fff;outline-offset:2px}
+.t-about .ic img{object-position:50% 20%}
+.t-folder .ic{background:rgba(255,255,255,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.folder{display:grid;grid-template-columns:1fr 1fr;gap:1.3cqw;width:74%;height:74%}
+.folder img{border-radius:22%;width:100%;height:100%;object-fit:cover}
+.t-process .ic,.t-tools .ic,.t-awards .ic,.t-games .ic,.t-av .ic,.t-phone .ic,.t-li .ic,.t-gh .ic{
+  background:linear-gradient(160deg,#26262e,var(--night-2) 55%,#0d0d11);color:var(--night-fg);box-shadow:inset 0 0 0 .3cqw rgba(255,255,255,.08),0 1.2cqw 3cqw -1cqw rgba(0,0,0,.6)}
+.t-process .ic svg,.t-tools .ic svg,.t-awards .ic svg,.t-games .ic svg,.t-av .ic svg{color:#5aa6ff}
+.t-mail .ic{background:linear-gradient(160deg,#5aa6ff,#0a66d0);color:#fff}
+.t-li .li{font:800 8cqw/1 var(--display);letter-spacing:-.04em}
+.widget{grid-column:span 2;grid-row:span 2;align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end;gap:.6cqw;padding:4cqw;border-radius:6cqw;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1.2cqw 3cqw -1cqw rgba(0,0,0,.35);text-align:left;justify-items:start;transition:transform .18s}
+.widget:hover{transform:scale(1.03)}.widget:active{transform:scale(.96)}
+.w-top{display:flex;align-items:flex-start;justify-content:space-between;width:100%;margin-bottom:auto}
+.w-top img{width:11cqw;height:11cqw;border-radius:50%;object-fit:cover;object-position:50% 20%;border:.5cqw solid rgba(255,255,255,.7)}
+.w-status{display:flex;align-items:center;gap:1cqw;font:600 2.6cqw/1 var(--body);background:rgba(0,0,0,.25);padding:1.2cqw 1.8cqw;border-radius:99px}
+.w-status i{width:1.6cqw;height:1.6cqw;border-radius:50%;background:#5aa6ff}
+.w-name{font:700 4.6cqw/1.1 var(--display);color:var(--night-fg);letter-spacing:-.02em}
+.w-role{font:500 2.9cqw/1.2 var(--body);color:#5aa6ff}
+.w-loc{font:500 2.6cqw/1.2 var(--body);opacity:.7}
+.dots{display:flex;gap:1.6cqw;justify-content:center;padding:3cqw 0}
+.dots i{width:1.6cqw;height:1.6cqw;border-radius:50%;background:rgba(255,255,255,.4)}.dots i.on{background:#fff}
+.dock{display:grid;grid-template-columns:repeat(4,1fr);gap:3.4cqw;margin:0 3.2cqw 7cqw;padding:3.6cqw 3.2cqw;border-radius:9cqw;background:rgba(255,255,255,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.dock .al{display:none}
+.homebar{position:absolute;left:50%;bottom:2.2cqw;translate:-50% 0;width:34cqw;height:1.4cqw;border-radius:9px;background:#fff;opacity:.85}
+/* icons pop in when Home opens */
+.view.is-active:not(.no-pop) .app{animation:pop .55s cubic-bezier(.3,1.4,.5,1) both;animation-delay:calc(var(--i,0) * 35ms + 150ms)}
+@keyframes pop{from{opacity:0;transform:scale(.4)}}
+@media (max-width:820px){
+  .home-grid{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .home-copy{justify-items:center;text-align:center}
+  .iphone{--w:min(330px,86vw)}
+}
+/* App open / close overlay */
+.app-ov{position:fixed;z-index:90;pointer-events:none;overflow:hidden;display:grid;place-items:center}
+.app-ov img,.app-ov .glyph{width:100%;height:100%;object-fit:cover}
+@media (prefers-reduced-motion: reduce){.view.is-active .app{animation:none}.tap{animation:none}}
 </style>
 </head>
 <body>
@@ -355,24 +424,26 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
 
 <main id="top">
 <section class="hero view" id="home" data-view="home" aria-label="Introduction">
-  <div class="float f1" aria-hidden="true"><img src="assets/tool-swiftui.webp" alt=""></div>
-  <div class="float f2" aria-hidden="true"><img src="assets/tool-protopie.webp" alt=""></div>
-  <div class="float f3" aria-hidden="true"><img src="assets/tool-ps.webp" alt=""></div>
-  <div class="float f4" aria-hidden="true"><img src="assets/tool-ai.webp" alt=""></div>
-  <div class="float f5" aria-hidden="true"><img src="assets/tool-ae.webp" alt=""></div>
-  <div class="float f6" aria-hidden="true"><img src="assets/tool-figma.webp" alt=""></div>
-  <div class="wrap hero-in">
-    <p class="eyebrow">UX/UI Portfolio · 2026</p>
-    <h1>Diego Chávez</h1>
-    <p class="role">UX/UI Designer · Interactive Technologies</p>
-    <p class="loc">Guadalajara, Mexico</p>
-    <div class="hero-ctas">
-      <a class="btn btn-primary" href="#work">View projects</a>
-      <a class="btn btn-ghost" href="#contact">Contact</a>
+  <div class="wrap home-grid">
+    <div class="home-copy">
+      <p class="eyebrow">UX/UI Portfolio · 2026</p>
+      <h1>Diego Chávez</h1>
+      <p class="role">UX/UI Designer · Interactive Technologies</p>
+      <p class="loc">Guadalajara, Mexico</p>
+      <p class="hint"><span class="tap" aria-hidden="true"></span>Tap an app to open each section</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#work">View projects</a>
+        <a class="btn btn-ghost" href="#contact">Contact</a>
+      </div>
     </div>
-    <div class="hero-links">
-      <a href="https://www.linkedin.com/in/diego-cha" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a href="https://github.com/Kxze" target="_blank" rel="noopener">GitHub ↗</a>
+    <div class="iphone" role="group" aria-label="Portfolio home screen">
+      <div class="screen">
+        <div class="status"><span class="clock" id="clock">9:41</span><span class="island" aria-hidden="true"></span><span class="sys" aria-hidden="true"><i class="sig"></i><i class="wifi"></i><i class="bat"></i></span></div>
+        <nav class="apps" aria-label="Sections"><a class="widget app" href="#about" data-app="about"><span class="w-top"><img src="assets/diego.webp" alt=""><span class="w-status"><i></i>Open to work</span></span><span class="w-name">Diego Chávez</span><span class="w-role">UX/UI Designer · Developer</span><span class="w-loc">Guadalajara, MX</span></a><a class="app t-about" href="#about" data-app="about"><span class="ic"><img src="assets/diego.webp" alt=""></span><span class="al">About</span></a><a class="app t-folder" href="#work" data-app="work"><span class="ic"><span class="folder"><img src="assets/icon-kiko.webp" alt=""><img src="assets/icon-huracan.webp" alt=""><img src="assets/icon-tixal.webp" alt=""><img src="assets/icon-coppi.webp" alt=""></span></span><span class="al">Projects</span></a><a class="app t-process" href="#process"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="12" r="2.2"/><circle cx="5" cy="18" r="2.2"/><path d="M7.2 6h5a4 4 0 0 1 4 4v0M7.2 18h5a4 4 0 0 0 4-4"/></svg></span><span class="al">Process</span></a><a class="app t-tools" href="#tools"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 7-4 2-3 6-3-6-4-2z"/><circle cx="12" cy="11" r="1.6"/><path d="M12 18v3"/></svg></span><span class="al">Tools</span></a><a class="app " href="#kiko" data-app="kiko"><span class="ic"><img src="assets/icon-kiko.webp" alt=""></span><span class="al">Kiko</span></a><a class="app " href="#huracan" data-app="huracan"><span class="ic"><img src="assets/icon-huracan.webp" alt=""></span><span class="al">Huracán</span></a><a class="app " href="#tixal" data-app="tixal"><span class="ic"><img src="assets/icon-tixal.webp" alt=""></span><span class="al">Tixal</span></a><a class="app " href="#coppi" data-app="coppi"><span class="ic"><img src="assets/icon-coppi.webp" alt=""></span><span class="al">Coppi</span></a><a class="app " href="#rendo" data-app="rendo"><span class="ic"><img src="assets/icon-rendo.webp" alt=""></span><span class="al">Rendo</span></a><a class="app " href="#aura" data-app="aura"><span class="ic"><img src="assets/icon-aura.webp" alt=""></span><span class="al">Aura</span></a><a class="app t-awards" href="#recognition" data-app="recognition"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7M10 17h4"/></svg></span><span class="al">Awards</span></a><a class="app t-games" href="https://kxze.github.io/portfolio/games/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.5" r=".9" fill="currentColor"/><circle cx="17.8" cy="13.8" r=".9" fill="currentColor"/></svg></span><span class="al">Games</span></a><a class="app t-av" href="https://kxze.github.io/portfolio/audiovisual/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8l8 4.6v9.2l-8 4.6-8-4.6V7.4z"/><path d="M4 7.4l8 4.6 8-4.6M12 12v9.2"/></svg></span><span class="al">3D &amp; Video</span></a></nav>
+        <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div>
+        <nav class="dock" aria-label="Contact"><a class="app t-phone" href="tel:+523332506601"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.3a10 10 0 0 0 6.2 6.2l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z" fill="currentColor" stroke="none"/></svg></span><span class="al">Phone</span></a><a class="app t-mail" href="#contact" data-app="contact"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.8 7l8.2 6 8.2-6"/></svg></span><span class="al">Contact</span></a><a class="app t-li" href="https://www.linkedin.com/in/diego-cha" target="_blank" rel="noopener"><span class="ic"><b class="li">in</b></span><span class="al">LinkedIn</span></a><a class="app t-gh" href="https://github.com/Kxze" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 7.5L4 12l4.5 4.5M15.5 7.5L20 12l-4.5 4.5M13.2 5.5l-2.4 13"/></svg></span><span class="al">GitHub</span></a></nav>
+        <span class="homebar" aria-hidden="true"></span>
+      </div>
     </div>
   </div>
 </section>
@@ -757,7 +828,7 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
   let current=null;
 
   // Mark content blocks for the staggered reveal
-  const RV='.hero-in > *, .about-photo, .about-text > *, .stat, .sec-head, .step, .tool-card, .chip, .card, .case-band .wrap > *, .intro-text > *, .intro-img, .users-head, .persona, .flow > *, .case-nav, .rec-left > *, .part, .contact .wrap > *';
+  const RV='.home-copy > *, .about-photo, .about-text > *, .stat, .sec-head, .step, .tool-card, .chip, .card, .case-band .wrap > *, .intro-text > *, .intro-img, .users-head, .persona, .flow > *, .case-nav, .rec-left > *, .part, .contact .wrap > *';
   Object.values(views).forEach(v=>v.querySelectorAll(RV).forEach((el,i)=>{el.classList.add('rv');el.style.setProperty('--i',Math.min(i,14));}));
 
   function resolve(hash){
@@ -781,6 +852,7 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
     document.title=(id==='home'?'':(views[id].querySelector('h2,h1')?.textContent.replace(/\s+/g,' ').trim().slice(0,40)+' · '))+'Diego Chávez UX/UI Portfolio';
   }
   function swap(id,anchor){
+    if(current==='home'&&id!=='home') views.home.classList.remove('no-pop');
     if(current) views[current].classList.remove('is-active','enter');
     const v=views[id]; v.classList.add('is-active');
     // restart the reveal animation
@@ -789,7 +861,7 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
     const target=anchor&&document.getElementById(anchor);
     if(target&&target!==v) target.scrollIntoView({block:'start'}); else window.scrollTo(0,0);
   }
-  function go(hash,push){
+  function go(hash,push,src){
     const raw=(hash||'').replace('#','');
     const id=resolve(hash);
     if(id===current){ if(raw&&raw!==id&&document.getElementById(raw)) document.getElementById(raw).scrollIntoView({behavior:reduce.matches?'auto':'smooth'}); else window.scrollTo({top:0,behavior:reduce.matches?'auto':'smooth'}); return; }
@@ -798,6 +870,10 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
     document.documentElement.dataset.dir=back?'back':'fwd';
     const anchor=raw!==id?raw:null;
     if(!current||reduce.matches){swap(id,anchor);return;}
+    // iOS-style: open an app from the Home screen, or close back into its icon
+    const fromApp=current==='home'&&src&&src.closest('.app');
+    if(fromApp){openApp(fromApp,id,anchor);return;}
+    if(id==='home'){const ic=homeIcon(current); if(ic){closeApp(ic,id);return;}}
     nameCards(projects.includes(id)?id:null,projects.includes(current)?current:null);
     if(document.startViewTransition){
       document.startViewTransition(()=>swap(id,anchor));
@@ -818,7 +894,7 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
     const a=e.target.closest('a[href^="#"]'); if(!a||e.metaKey||e.ctrlKey||e.shiftKey) return;
     e.preventDefault();
     if(a.hasAttribute('data-top')){window.scrollTo({top:0,behavior:reduce.matches?'auto':'smooth'});return;}
-    go(a.getAttribute('href'),true);
+    go(a.getAttribute('href'),true,a);
   });
   addEventListener('popstate',()=>go(location.hash,false));
   addEventListener('resize',()=>current&&syncNav(current));
@@ -842,6 +918,74 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
     if(dx<0&&i<projects.length-1) go('#'+projects[i+1],true);
     if(dx>0&&i>0) go('#'+projects[i-1],true);
   },{passive:true});
+
+  // ---- Home screen: app open / close ----
+  const ease='cubic-bezier(.2,.9,.25,1)';
+  const night='#0b0b0e';
+  function viewColor(id){
+    if(id==='work'||id==='recognition') return getComputedStyle(document.body).backgroundColor;
+    if(id==='about'&&location.hash.match(/process|tools/)) return getComputedStyle(document.body).backgroundColor;
+    return night;
+  }
+  function homeIcon(id){
+    const map={kiko:'kiko',huracan:'huracan',tixal:'tixal',coppi:'coppi',rendo:'rendo',aura:'aura',about:'about',work:'work',recognition:'recognition',contact:'contact'};
+    const a=views.home.querySelector('.apps .app[data-app="'+map[id]+'"]:not(.widget), .dock .app[data-app="'+map[id]+'"]');
+    return a;
+  }
+  function makeOverlay(app,rect,color){
+    const ov=document.createElement('div'); ov.className='app-ov';
+    const ic=app.querySelector('.ic')||app;
+    const face=ic.cloneNode(true); face.removeAttribute('class'); face.style.cssText='width:100%;height:100%;display:grid;place-items:center;'+'background:'+getComputedStyle(ic).backgroundImage+','+getComputedStyle(ic).backgroundColor+';color:'+getComputedStyle(ic).color;
+    face.querySelectorAll('svg').forEach(x=>x.style.cssText='width:58%;height:58%');
+    face.querySelectorAll('.folder').forEach(x=>x.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:6%;width:74%;height:74%');
+    face.querySelectorAll('.folder img').forEach(x=>x.style.cssText='width:100%;height:100%;object-fit:cover;border-radius:22%');
+    face.querySelectorAll('b').forEach(x=>x.style.cssText='font:800 '+(rect.width*.5)+'px/1 var(--display);letter-spacing:-.04em');
+    const bg=document.createElement('div'); bg.style.cssText='position:absolute;inset:0;background:'+color;
+    ov.append(bg,face); face.style.position='absolute'; face.style.inset='0';
+    document.body.appendChild(ov);
+    return {ov,face,bg};
+  }
+  const full=()=>({left:'0px',top:'0px',width:innerWidth+'px',height:innerHeight+'px',borderRadius:'0px'});
+  const at=r=>({left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px',borderRadius:(r.width*.225)+'px'});
+  function openApp(app,id,anchor){
+    const ic=app.querySelector('.ic')||app, r=ic.getBoundingClientRect();
+    const {ov,face,bg}=makeOverlay(app,r,viewColor(id));
+    const phone=views.home.querySelector('.iphone');
+    phone.animate([{transform:'scale(1)'},{transform:'scale(1.06)',filter:'blur(2px)'}],{duration:420,easing:ease,fill:'forwards'});
+    bg.animate([{opacity:0},{opacity:0,offset:.25},{opacity:1}],{duration:440,easing:ease,fill:'forwards'});
+    face.animate([{opacity:1,transform:'scale(1)'},{opacity:0,transform:'scale(1.6)'}],{duration:300,easing:ease,fill:'forwards'});
+    const grow=ov.animate([at(r),full()],{duration:440,easing:ease,fill:'forwards'});
+    grow.onfinish=()=>{
+      phone.getAnimations().forEach(a=>a.cancel());
+      swap(id,anchor);
+      const fade=ov.animate([{opacity:1},{opacity:0}],{duration:260,easing:'ease-out',fill:'forwards'});
+      fade.onfinish=()=>ov.remove();
+    };
+  }
+  function closeApp(app,id){
+    const tmp=makeOverlay(app,{width:60},viewColor(current)); // provisional size, replaced after swap
+    tmp.ov.style.cssText+=';left:0;top:0;width:100vw;height:100vh;border-radius:0';
+    tmp.face.style.opacity=0;
+    const show=tmp.ov.animate([{opacity:0},{opacity:1}],{duration:160,easing:'ease-out',fill:'forwards'});
+    show.onfinish=()=>{
+      views.home.classList.add('no-pop');
+      swap(id,null);
+      const ic=app.querySelector('.ic')||app, r=ic.getBoundingClientRect();
+      tmp.face.querySelectorAll('b').forEach(x=>x.style.fontSize=(r.width*.5)+'px');
+      tmp.bg.animate([{opacity:1},{opacity:0}],{duration:420,easing:ease,fill:'forwards'});
+      tmp.face.animate([{opacity:0,transform:'scale(1.6)'},{opacity:1,transform:'scale(1)'}],{duration:420,easing:ease,fill:'forwards'});
+      const phone=views.home.querySelector('.iphone');
+      phone.animate([{transform:'scale(1.06)',filter:'blur(2px)'},{transform:'scale(1)',filter:'blur(0)'}],{duration:420,easing:ease});
+      const shrink=tmp.ov.animate([full(),at(r)],{duration:420,easing:ease,fill:'forwards'});
+      shrink.onfinish=()=>tmp.ov.animate([{opacity:1},{opacity:0}],{duration:120,fill:'forwards'}).onfinish=()=>tmp.ov.remove();
+    };
+  }
+  // stagger index for the icon pop-in
+  views.home.querySelectorAll('.app').forEach((a,i)=>a.style.setProperty('--i',i));
+  // live clock in the status bar
+  const clock=document.getElementById('clock');
+  const tick=()=>{const d=new Date();clock.textContent=d.getHours()%12||12;clock.textContent+=':'+String(d.getMinutes()).padStart(2,'0');};
+  tick(); setInterval(tick,15000);
 
   go(location.hash,false);
 })();
