@@ -424,6 +424,12 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
   .dev3d{opacity:1;transform:none;transition:none}
   .case-band .peek .dev{transition:none;transform:none}
 }
+
+/* Device images with transparent backgrounds: no card behind them */
+.intro-img,.flow-img{background:transparent!important;border-radius:0;overflow:visible}
+.intro-img img,.flow-img img{filter:drop-shadow(0 24px 34px rgba(0,0,0,.22))}
+.case-dark .intro-img img,.case-dark .flow-img img{filter:none}
+.intro-img img{max-height:620px;width:auto;max-width:100%;margin-inline:auto}
 </style>
 </head>
 <body>
