@@ -381,6 +381,19 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
 .app-ov{position:fixed;z-index:90;pointer-events:none;overflow:hidden;display:grid;place-items:center}
 .app-ov img,.app-ov .glyph{width:100%;height:100%;object-fit:cover}
 @media (prefers-reduced-motion: reduce){.view.is-active .app{animation:none}.tap{animation:none}}
+
+/* ===== Project launch screen (app splash) ===== */
+.launch{position:fixed;z-index:95;overflow:hidden;pointer-events:none;color:#fff;
+  background:radial-gradient(75% 55% at 50% 52%,var(--glow) 0%,#0b0b0e 75%)}
+.launch .l-in{position:absolute;inset:0;display:grid;place-items:center}
+.launch .l-icon{display:block;object-fit:cover;border-radius:22.5%;box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+.launch .l-name{position:absolute;left:0;right:0;top:calc(50% + 76px);text-align:center;font:800 clamp(28px,4vw,40px)/1.05 var(--display);letter-spacing:-.03em;
+  background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0}
+.launch .l-foot{position:absolute;left:0;right:0;bottom:calc(9% + env(safe-area-inset-bottom,0px));display:grid;justify-items:center;gap:14px;opacity:0}
+.launch .l-bar{width:150px;height:4px;border-radius:9px;background:rgba(255,255,255,.12);overflow:hidden}
+.launch .l-bar i{display:block;height:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--g2),var(--g3))}
+.launch .l-from{font:500 13px/1.3 var(--body);color:var(--night-muted);text-align:center}
+.launch .l-from b{display:block;font:700 15px/1.2 var(--display);color:var(--night-fg);letter-spacing:-.01em}
 </style>
 </head>
 <body>
@@ -862,6 +875,7 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
     if(target&&target!==v) target.scrollIntoView({block:'start'}); else window.scrollTo(0,0);
   }
   function go(hash,push,src){
+    if(typeof launching!=='undefined'&&launching) return;
     const raw=(hash||'').replace('#','');
     const id=resolve(hash);
     if(id===current){ if(raw&&raw!==id&&document.getElementById(raw)) document.getElementById(raw).scrollIntoView({behavior:reduce.matches?'auto':'smooth'}); else window.scrollTo({top:0,behavior:reduce.matches?'auto':'smooth'}); return; }
@@ -870,6 +884,11 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
     document.documentElement.dataset.dir=back?'back':'fwd';
     const anchor=raw!==id?raw:null;
     if(!current||reduce.matches){swap(id,anchor);return;}
+    // Projects open like an app: icon → splash/loading screen → case study
+    if(projects.includes(id)){
+      const ic=src&&((src.closest('.app')&&src.closest('.app').querySelector('.ic'))||(src.closest('.card')&&src.closest('.card').querySelector('img')));
+      launch(id,anchor,ic);return;
+    }
     // iOS-style: open an app from the Home screen, or close back into its icon
     const fromApp=current==='home'&&src&&src.closest('.app');
     if(fromApp){openApp(fromApp,id,anchor);return;}
@@ -978,6 +997,41 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
       phone.animate([{transform:'scale(1.06)',filter:'blur(2px)'},{transform:'scale(1)',filter:'blur(0)'}],{duration:420,easing:ease});
       const shrink=tmp.ov.animate([full(),at(r)],{duration:420,easing:ease,fill:'forwards'});
       shrink.onfinish=()=>tmp.ov.animate([{opacity:1},{opacity:0}],{duration:120,fill:'forwards'}).onfinish=()=>tmp.ov.remove();
+    };
+  }
+  const names={kiko:'Kiko',huracan:'Mi Primer Huracán',tixal:'Tixal',coppi:'Coppi',rendo:'Rendo',aura:'Aura'};
+  let launching=false;
+  function launch(id,anchor,srcIcon){
+    if(launching) return; launching=true;
+    const cs=getComputedStyle(views[id]), gv=n=>cs.getPropertyValue(n).trim();
+    const S=Math.min(116,innerWidth*.28);
+    const r=srcIcon?srcIcon.getBoundingClientRect():{left:innerWidth/2-S*.35,top:innerHeight/2-S*.35,width:S*.7,height:S*.7};
+    const ov=document.createElement('div'); ov.className='launch';
+    ['--glow','--g1','--g2','--g3'].forEach(n=>ov.style.setProperty(n,gv(n)));
+    ov.innerHTML='<div class="l-in"><img class="l-icon" alt="" src="assets/icon-'+id+'.webp"></div><p class="l-name"></p>'+
+      '<div class="l-foot"><span class="l-bar"><i></i></span><span class="l-from">from<b>Diego Chávez</b></span></div>';
+    ov.querySelector('.l-name').textContent=names[id];
+    document.body.appendChild(ov);
+    const icon=ov.querySelector('.l-icon'), name=ov.querySelector('.l-name'), foot=ov.querySelector('.l-foot'), bar=ov.querySelector('.l-bar i');
+    const dur=srcIcon?460:380;
+    // 1) the icon grows into the full-screen launch screen
+    const grow=ov.animate([at(r),full()],{duration:dur,easing:ease,fill:'forwards'});
+    if(srcIcon) icon.animate([{width:r.width+'px',height:r.height+'px',boxShadow:'none'},{width:S+'px',height:S+'px'}],{duration:dur,easing:ease,fill:'forwards'});
+    else{ icon.style.width=icon.style.height=S+'px'; ov.animate([{opacity:0},{opacity:1}],{duration:200,fill:'forwards'}); icon.animate([{transform:'scale(.6)',opacity:0},{transform:'scale(1)',opacity:1}],{duration:dur,easing:'cubic-bezier(.3,1.4,.5,1)',fill:'forwards'}); }
+    if(current==='home'){const ph=views.home.querySelector('.iphone'); ph.animate([{transform:'scale(1)'},{transform:'scale(1.06)',filter:'blur(2px)'}],{duration:dur,easing:ease,fill:'forwards'});}
+    grow.onfinish=()=>{
+      // 2) loading: name + progress bar, while the case study is mounted underneath
+      const ph=views.home.querySelector('.iphone'); ph.getAnimations().forEach(a=>a.cancel());
+      swap(id,anchor);
+      name.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:320,easing:ease,fill:'forwards'});
+      foot.animate([{opacity:0},{opacity:1}],{duration:260,delay:80,fill:'forwards'});
+      const load=bar.animate([{transform:'scaleX(0)'},{transform:'scaleX(.55)',offset:.45},{transform:'scaleX(.8)',offset:.75},{transform:'scaleX(1)'}],{duration:850,delay:120,easing:'ease-in-out',fill:'forwards'});
+      load.onfinish=()=>{
+        // 3) the launch screen dissolves into the app
+        ov.querySelector('.l-in').animate([{transform:'scale(1)',opacity:1},{transform:'scale(1.25)',opacity:0}],{duration:380,easing:ease,fill:'forwards'});
+        const out=ov.animate([{opacity:1},{opacity:0}],{duration:420,easing:'ease-out',fill:'forwards'});
+        out.onfinish=()=>{ov.remove();launching=false;};
+      };
     };
   }
   // stagger index for the icon pop-in
