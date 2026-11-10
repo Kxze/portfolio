@@ -254,22 +254,82 @@ footer a{color:var(--night-muted)}
 .lb .lb-close{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:calc(12px + env(safe-area-inset-right,0px))}
 .lb .lb-cap{position:absolute;left:0;right:0;bottom:calc(8px + env(safe-area-inset-bottom,0px));text-align:center;color:#bbb;font-size:13px}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));translate:-50% 0;background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;font-weight:600;z-index:120}
+
+/* ===== Tabs: one view at a time, animated between tabs ===== */
+.view{display:none}
+.view.is-active{display:block}
+main{min-height:calc(100vh - 60px)}
+.tabs{position:relative;display:flex;gap:2px;isolation:isolate}
+.tabs a,.subnav a{position:relative;z-index:1}
+.nav .tabs a.active{background:transparent}
+.pill{position:absolute;z-index:0;top:0;left:0;height:100%;width:0;border-radius:999px;background:rgba(255,255,255,.12);
+  transition:transform .45s cubic-bezier(.2,.8,.2,1),width .45s cubic-bezier(.2,.8,.2,1),opacity .2s;opacity:0;pointer-events:none}
+.pill.on{opacity:1}
+@media (max-width:960px){.tabs{flex-direction:column;align-items:stretch}.tabs .pill{display:none}.nav .tabs a.active{background:rgba(255,255,255,.1)}}
+
+/* Project sub-tabs */
+.subnav{position:sticky;top:calc(60px + env(safe-area-inset-top,0px));z-index:45;background:color-mix(in srgb,var(--bg) 82%,transparent);
+  backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+.subnav-in{position:relative;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:10px;isolation:isolate}
+.subnav-in::-webkit-scrollbar{display:none}
+.subnav a{flex:none;font-size:14px;font-weight:600;text-decoration:none;color:var(--muted);padding:8px 14px;border-radius:999px;white-space:nowrap;transition:color .25s}
+.subnav a:hover{color:var(--fg)}
+.subnav a.active{color:var(--bg)}
+.subnav .pill{background:var(--fg);top:10px;height:calc(100% - 20px)}
+
+/* Case icon (shared element with the project card) */
+.case-icon{width:84px;height:84px;border-radius:22%;object-fit:cover;box-shadow:0 10px 26px -12px rgba(0,0,0,.6)}
+
+/* Staggered reveal inside the tab that just opened */
+.rv{opacity:0;transform:translateY(18px)}
+.view.is-active .rv{animation:rise .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 55ms + 120ms)}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* View Transitions API: slide + fade + scale, direction-aware */
+@view-transition{navigation:none}
+main{view-transition-name:page}
+.site-head{view-transition-name:sitehead}
+.subnav{view-transition-name:subnav}
+::view-transition-old(sitehead){display:none}
+::view-transition-new(sitehead){animation:none}
+::view-transition-group(page){animation-duration:.55s;animation-timing-function:cubic-bezier(.2,.8,.2,1)}
+::view-transition-old(page){animation:.38s cubic-bezier(.4,0,1,1) both vt-out}
+::view-transition-new(page){animation:.55s cubic-bezier(.2,.8,.2,1) both vt-in}
+html[data-dir="back"]::view-transition-old(page){animation-name:vt-out-back}
+html[data-dir="back"]::view-transition-new(page){animation-name:vt-in-back}
+::view-transition-old(subnav),::view-transition-new(subnav){animation-duration:.3s}
+::view-transition-group(*){animation-duration:.55s;animation-timing-function:cubic-bezier(.2,.8,.2,1)}
+@keyframes vt-out{to{opacity:0;transform:translateX(-6%) scale(.97);filter:blur(4px)}}
+@keyframes vt-in{from{opacity:0;transform:translateX(8%) scale(.98);filter:blur(6px)}}
+@keyframes vt-out-back{to{opacity:0;transform:translateX(6%) scale(.97);filter:blur(4px)}}
+@keyframes vt-in-back{from{opacity:0;transform:translateX(-8%) scale(.98);filter:blur(6px)}}
+
+/* Fallback for browsers without View Transitions */
+.view.enter{animation:vt-in .55s cubic-bezier(.2,.8,.2,1) both}
+html[data-dir="back"] .view.enter{animation-name:vt-in-back}
+
+@media (prefers-reduced-motion: reduce){
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+  .rv{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
 <header class="site-head">
   <div class="wrap head-in">
-    <a class="brand" href="#top">Diego Chávez <span>UX/UI</span></a>
+    <a class="brand" href="#home">Diego Chávez <span>UX/UI</span></a>
     <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <nav class="nav" id="nav" aria-label="Main">
-      <a href="#about">About</a>
-      <a href="#process">Process</a>
-      <a href="#tools">Tools</a>
-      <a href="#work">Work</a>
-      <a href="#recognition">Recognition</a>
-      <a href="#contact">Contact</a>
+      <span class="tabs" id="tabs">
+        <span class="pill" id="pill" aria-hidden="true"></span>
+        <a href="#home" data-tab="home">Home</a>
+        <a href="#about" data-tab="about">About</a>
+        <a href="#work" data-tab="work">Work</a>
+        <a href="#recognition" data-tab="recognition">Recognition</a>
+        <a href="#contact" data-tab="contact">Contact</a>
+      </span>
       <span class="sep" aria-hidden="true"></span>
       <a class="ext" href="https://kxze.github.io/portfolio/games/">Games</a>
       <a class="ext" href="https://kxze.github.io/portfolio/audiovisual/">3D &amp; Audiovisual</a>
@@ -280,8 +340,21 @@ footer a{color:var(--night-muted)}
   </div>
 </header>
 
+<nav class="subnav" id="subnav" aria-label="Projects" hidden>
+  <div class="wrap subnav-in" id="subtabs">
+    <span class="pill" id="subpill" aria-hidden="true"></span>
+    <a href="#work" data-tab="work">All</a>
+    <a href="#kiko" data-tab="kiko">Kiko</a>
+    <a href="#huracan" data-tab="huracan">Mi Primer Huracán</a>
+    <a href="#tixal" data-tab="tixal">Tixal</a>
+    <a href="#coppi" data-tab="coppi">Coppi</a>
+    <a href="#rendo" data-tab="rendo">Rendo</a>
+    <a href="#aura" data-tab="aura">Aura</a>
+  </div>
+</nav>
+
 <main id="top">
-<section class="hero" aria-label="Introduction">
+<section class="hero view" id="home" data-view="home" aria-label="Introduction">
   <div class="float f1" aria-hidden="true"><img src="assets/tool-swiftui.webp" alt=""></div>
   <div class="float f2" aria-hidden="true"><img src="assets/tool-protopie.webp" alt=""></div>
   <div class="float f3" aria-hidden="true"><img src="assets/tool-ps.webp" alt=""></div>
@@ -304,6 +377,7 @@ footer a{color:var(--night-muted)}
   </div>
 </section>
 
+<div class="view" data-view="about">
 <section class="about section" id="about">
   <div class="wrap about-grid">
     <div class="about-photo"><img src="assets/diego.webp" alt="Portrait of Diego Chávez" width="560" height="761"></div>
@@ -314,7 +388,7 @@ footer a{color:var(--night-muted)}
       <div class="stats">
         <div class="stat"><b>8</b><span>hackathons and challenges since 2024</span></div>
         <div class="stat"><b>1st</b><span>place, CUAAD Hackathon 2025</span></div>
-        <div class="stat"><b>ES · EN</b><span>fluent Spanish and English</span></div>
+        <div class="stat"><b>ES · EN</b><span>native Spanish, conversational English</span></div>
       </div>
     </div>
   </div>
@@ -347,8 +421,9 @@ footer a{color:var(--night-muted)}
     </div>
   </div>
 </section>
+</div>
 
-<section class="section" id="work" style="padding-top:0">
+<section class="section view" id="work" data-view="work">
   <div class="wrap">
     <div class="sec-head"><p class="eyebrow">Projects</p><h2>Six projects. One way of thinking.</h2></div>
     <div class="filters" role="group" aria-label="Filter projects">
@@ -359,19 +434,20 @@ footer a{color:var(--night-muted)}
       <button class="chip" data-filter="impact" aria-pressed="false">Social impact</button>
     </div>
     <div class="cards" id="cards">
-      <a class="card" href="#kiko" data-tags="app"><img src="assets/icon-kiko.webp" alt=""><div><h3>Kiko</h3><p class="cat">iOS app · World Cup 2026</p></div><div class="go"><span class="tags"><span>UI lead</span><span>iOS</span></span>Case study →</div></a>
-      <a class="card" href="#huracan" data-tags="app play edu impact"><img src="assets/icon-huracan.webp" alt=""><div><h3>Mi Primer Huracán</h3><p class="cat">Educational app</p></div><div class="go"><span class="tags"><span>UI + dev</span><span>Kids</span></span>Case study →</div></a>
-      <a class="card" href="#tixal" data-tags="app"><img src="assets/icon-tixal.webp" alt=""><div><h3>Tixal</h3><p class="cat">Cultural tourism</p></div><div class="go"><span class="tags"><span>Team lead</span><span>Guadalajara</span></span>Case study →</div></a>
-      <a class="card" href="#coppi" data-tags="app impact"><img src="assets/icon-coppi.webp" alt=""><div><h3>Coppi</h3><p class="cat">Well-being</p></div><div class="go"><span class="tags"><span>Hackathon</span><span>UX research</span></span>Case study →</div></a>
-      <a class="card" href="#rendo" data-tags="app play edu impact"><img src="assets/icon-rendo.webp" alt=""><div><h3>Rendo</h3><p class="cat">Environmental education</p></div><div class="go"><span class="tags"><span>SpriteKit</span><span>Ranking</span></span>Case study →</div></a>
-      <a class="card" href="#aura" data-tags="play"><img src="assets/icon-aura.webp" alt=""><div><h3>Aura</h3><p class="cat">Video game</p></div><div class="go"><span class="tags"><span>Level design</span><span>Godot</span></span>Case study →</div></a>
+      <a class="card" href="#kiko" data-tags="app"><img src="assets/icon-kiko.webp" alt="" data-vt="icon-kiko"><div><h3>Kiko</h3><p class="cat">iOS app · World Cup 2026</p></div><div class="go"><span class="tags"><span>UI lead</span><span>iOS</span></span>Case study →</div></a>
+      <a class="card" href="#huracan" data-tags="app play edu impact"><img src="assets/icon-huracan.webp" alt="" data-vt="icon-huracan"><div><h3>Mi Primer Huracán</h3><p class="cat">Educational app</p></div><div class="go"><span class="tags"><span>UI + dev</span><span>Kids</span></span>Case study →</div></a>
+      <a class="card" href="#tixal" data-tags="app"><img src="assets/icon-tixal.webp" alt="" data-vt="icon-tixal"><div><h3>Tixal</h3><p class="cat">Cultural tourism</p></div><div class="go"><span class="tags"><span>Team lead</span><span>Guadalajara</span></span>Case study →</div></a>
+      <a class="card" href="#coppi" data-tags="app impact"><img src="assets/icon-coppi.webp" alt="" data-vt="icon-coppi"><div><h3>Coppi</h3><p class="cat">Well-being</p></div><div class="go"><span class="tags"><span>Hackathon</span><span>UX research</span></span>Case study →</div></a>
+      <a class="card" href="#rendo" data-tags="app play edu impact"><img src="assets/icon-rendo.webp" alt="" data-vt="icon-rendo"><div><h3>Rendo</h3><p class="cat">Environmental education</p></div><div class="go"><span class="tags"><span>SpriteKit</span><span>Ranking</span></span>Case study →</div></a>
+      <a class="card" href="#aura" data-tags="play"><img src="assets/icon-aura.webp" alt="" data-vt="icon-aura"><div><h3>Aura</h3><p class="cat">Video game</p></div><div class="go"><span class="tags"><span>Level design</span><span>Godot</span></span>Case study →</div></a>
     </div>
   </div>
 </section>
 
 <!-- 01 Kiko -->
-<article class="k" id="kiko" aria-labelledby="kiko-t">
+<article class="k view" id="kiko" data-view="kiko" aria-labelledby="kiko-t">
   <div class="case-band"><div class="wrap">
+    <img class="case-icon" src="assets/icon-kiko.webp" alt="" data-vt="icon-kiko" width="84" height="84">
     <p class="num">01 · Kiko</p>
     <h2 id="kiko-t"><span class="grad">The World Cup,</span><br><span class="dim">in your hand.</span></h2>
     <div class="peek"><img src="assets/kiko-peek.webp" alt="Kiko home screen with upcoming matches and the Zayu assistant" loading="lazy"></div>
@@ -404,8 +480,9 @@ footer a{color:var(--night-muted)}
 </article>
 
 <!-- 02 Mi Primer Huracán -->
-<article class="h" id="huracan" aria-labelledby="hur-t">
+<article class="h view" id="huracan" data-view="huracan" aria-labelledby="hur-t">
   <div class="case-band"><div class="wrap">
+    <img class="case-icon" src="assets/icon-huracan.webp" alt="" data-vt="icon-huracan" width="84" height="84">
     <p class="num">02 · Mi Primer Huracán</p>
     <h2 id="hur-t"><span class="grad">Learn</span><br><span class="dim">to stay safe.</span></h2>
     <div class="peek"><img src="assets/huracan-peek.webp" alt="Mi Primer Huracán start screen with a coastal town and a Play button" loading="lazy"></div>
@@ -438,8 +515,9 @@ footer a{color:var(--night-muted)}
 </article>
 
 <!-- 03 Tixal -->
-<article class="t" id="tixal" aria-labelledby="tix-t">
+<article class="t view" id="tixal" data-view="tixal" aria-labelledby="tix-t">
   <div class="case-band"><div class="wrap">
+    <img class="case-icon" src="assets/icon-tixal.webp" alt="" data-vt="icon-tixal" width="84" height="84">
     <p class="num">03 · Tixal</p>
     <h2 id="tix-t"><span class="grad">Your city,</span><br><span class="dim">your ticket.</span></h2>
     <div class="peek"><img src="assets/tixal-peek.webp" alt="Tixal route screen to Museo Hospicio Cabañas" loading="lazy"></div>
@@ -472,8 +550,9 @@ footer a{color:var(--night-muted)}
 </article>
 
 <!-- 04 Coppi -->
-<article class="c" id="coppi" aria-labelledby="cop-t">
+<article class="c view" id="coppi" data-view="coppi" aria-labelledby="cop-t">
   <div class="case-band"><div class="wrap">
+    <img class="case-icon" src="assets/icon-coppi.webp" alt="" data-vt="icon-coppi" width="84" height="84">
     <p class="num">04 · Coppi</p>
     <h2 id="cop-t"><span class="grad">A breather,</span><br><span class="dim">right on time.</span></h2>
     <div class="peek"><img src="assets/coppi-peek.webp" alt="Coppi breathing exercise screen reading Inhala" loading="lazy"></div>
@@ -506,8 +585,9 @@ footer a{color:var(--night-muted)}
 </article>
 
 <!-- 05 Rendo -->
-<article class="r" id="rendo" aria-labelledby="ren-t">
+<article class="r view" id="rendo" data-view="rendo" aria-labelledby="ren-t">
   <div class="case-band"><div class="wrap">
+    <img class="case-icon" src="assets/icon-rendo.webp" alt="" data-vt="icon-rendo" width="84" height="84">
     <p class="num">05 · Rendo</p>
     <h2 id="ren-t"><span class="grad">Play for</span><br><span class="dim">the planet.</span></h2>
     <div class="peek"><img src="assets/rendo-peek.webp" alt="Rendo missions screen with a low-poly planet" loading="lazy"></div>
@@ -540,8 +620,9 @@ footer a{color:var(--night-muted)}
 </article>
 
 <!-- 06 Aura -->
-<article class="a" id="aura" aria-labelledby="aur-t">
+<article class="a view" id="aura" data-view="aura" aria-labelledby="aur-t">
   <div class="case-band"><div class="wrap">
+    <img class="case-icon" src="assets/icon-aura.webp" alt="" data-vt="icon-aura" width="84" height="84">
     <p class="num">06 · Aura</p>
     <h2 id="aur-t"><span class="grad">Enter</span> <span class="dim">the dream.</span></h2>
     <div class="peek" style="width:min(760px,96%)"><img src="assets/aura-peek.webp" alt="Aura key art on a desktop monitor" loading="lazy"></div>
@@ -567,7 +648,7 @@ footer a{color:var(--night-muted)}
   </div>
 </article>
 
-<section class="section" id="recognition">
+<section class="section view" id="recognition" data-view="recognition">
   <div class="wrap rec-grid">
     <div class="rec-left">
       <p class="eyebrow">Recognition</p>
@@ -589,7 +670,7 @@ footer a{color:var(--night-muted)}
   </div>
 </section>
 
-<section class="contact" id="contact">
+<section class="contact view" id="contact" data-view="contact">
   <div class="wrap">
     <p class="eyebrow">Thank you</p>
     <h2>Let's design something together.</h2>
@@ -603,7 +684,7 @@ footer a{color:var(--night-muted)}
 </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 Diego Chávez · Guadalajara, Mexico</span><span><a href="#top">Back to top</a></span></div></footer>
+<footer><div class="wrap"><span>© 2026 Diego Chávez · Guadalajara, Mexico</span><span><a href="#top" data-top>Back to top</a></span></div></footer>
 
 <button class="totop" id="toTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 
@@ -630,17 +711,8 @@ footer a{color:var(--night-muted)}
   const nav=$('#nav'), mb=$('#menuBtn');
   mb.addEventListener('click',()=>{const o=nav.classList.toggle('open'); mb.setAttribute('aria-expanded',o); mb.setAttribute('aria-label',o?'Close menu':'Open menu');});
   nav.addEventListener('click',e=>{if(e.target.closest('a')){nav.classList.remove('open');mb.setAttribute('aria-expanded','false');}});
-  // Active section highlight
-  const links=$$('.nav a[href^="#"]');
-  const map={kiko:'work',huracan:'work',tixal:'work',coppi:'work',rendo:'work',aura:'work'};
-  const secs=['about','process','tools','work','kiko','huracan','tixal','coppi','rendo','aura','recognition','contact'].map(id=>document.getElementById(id));
-  function onScroll(){
-    const y=window.scrollY+120; let cur='';
-    for(const s of secs){ if(s && s.offsetTop<=y) cur=s.id; }
-    cur=map[cur]||cur;
-    links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
-    $('#toTop').classList.toggle('show',window.scrollY>700);
-  }
+  // Back-to-top visibility
+  function onScroll(){ $('#toTop').classList.toggle('show',window.scrollY>700); }
   addEventListener('scroll',onScroll,{passive:true}); onScroll();
   $('#toTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
   // Filters
@@ -657,10 +729,11 @@ footer a{color:var(--night-muted)}
     if(navigator.clipboard){navigator.clipboard.writeText(txt).then(()=>toast('Email copied'),sel);} else sel();
   });
   // Lightbox
-  const zs=$$('img[data-zoom]'); let idx=0; const lb=$('#lb'), li=$('#lbImg'), cap=$('#lbCap'); let last=null;
+  let zs=[]; let idx=0; const lb=$('#lb'), li=$('#lbImg'), cap=$('#lbCap'); let last=null;
+  const viewImgs=()=>[...document.querySelectorAll('.view.is-active img[data-zoom]')];
   function show(i){idx=(i+zs.length)%zs.length; li.src=zs[idx].currentSrc||zs[idx].src; li.alt=zs[idx].alt; cap.textContent=zs[idx].alt+'  ·  '+(idx+1)+' / '+zs.length;}
-  zs.forEach((im,i)=>{im.tabIndex=0; im.setAttribute('role','button');
-    const open=()=>{last=im;show(i);lb.hidden=false;document.body.style.overflow='hidden';$('#lbClose').focus();};
+  $$('img[data-zoom]').forEach(im=>{im.tabIndex=0; im.setAttribute('role','button');
+    const open=()=>{last=im;zs=viewImgs();show(zs.indexOf(im));lb.hidden=false;document.body.style.overflow='hidden';$('#lbClose').focus();};
     im.addEventListener('click',open); im.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});});
   function close(){lb.hidden=true;document.body.style.overflow='';last&&last.focus();}
   $('#lbClose').addEventListener('click',close);
@@ -668,6 +741,109 @@ footer a{color:var(--night-muted)}
   $('#lbNext').addEventListener('click',()=>show(idx+1));
   lb.addEventListener('click',e=>{if(e.target===lb)close();});
   addEventListener('keydown',e=>{if(lb.hidden)return; if(e.key==='Escape')close(); if(e.key==='ArrowLeft')show(idx-1); if(e.key==='ArrowRight')show(idx+1);});
+})();
+</script>
+
+<script>
+/* Tab router with animated transitions (View Transitions API + CSS fallback) */
+(function(){
+  const order=['home','about','work','kiko','huracan','tixal','coppi','rendo','aura','recognition','contact'];
+  const projects=['kiko','huracan','tixal','coppi','rendo','aura'];
+  const alias={top:'home',process:'about',tools:'about'};
+  const views={}; document.querySelectorAll('[data-view]').forEach(v=>views[v.dataset.view]=v);
+  const tabs=document.getElementById('tabs'), pill=document.getElementById('pill');
+  const subnav=document.getElementById('subnav'), subtabs=document.getElementById('subtabs'), subpill=document.getElementById('subpill');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+  let current=null;
+
+  // Mark content blocks for the staggered reveal
+  const RV='.hero-in > *, .about-photo, .about-text > *, .stat, .sec-head, .step, .tool-card, .chip, .card, .case-band .wrap > *, .intro-text > *, .intro-img, .users-head, .persona, .flow > *, .case-nav, .rec-left > *, .part, .contact .wrap > *';
+  Object.values(views).forEach(v=>v.querySelectorAll(RV).forEach((el,i)=>{el.classList.add('rv');el.style.setProperty('--i',Math.min(i,14));}));
+
+  function resolve(hash){
+    let id=(hash||'').replace('#','')||'home';
+    id=alias[id]||id;
+    return views[id]?id:'home';
+  }
+  function movePill(container,p,id){
+    const a=container.querySelector('a[data-tab="'+id+'"]');
+    container.querySelectorAll('a[data-tab]').forEach(x=>{const on=x===a;x.classList.toggle('active',on);on?x.setAttribute('aria-current','page'):x.removeAttribute('aria-current');});
+    if(!a){p.classList.remove('on');return;}
+    p.style.width=a.offsetWidth+'px'; p.style.transform='translateX('+a.offsetLeft+'px)'; p.classList.add('on');
+    if(container===subtabs){const l=a.offsetLeft-container.clientWidth/2+a.offsetWidth/2;container.scrollTo({left:l,behavior:reduce.matches?'auto':'smooth'});}
+  }
+  function syncNav(id){
+    const top=projects.includes(id)?'work':id;
+    movePill(tabs,pill,top);
+    const inWork=id==='work'||projects.includes(id);
+    subnav.hidden=!inWork;
+    if(inWork) movePill(subtabs,subpill,id);
+    document.title=(id==='home'?'':(views[id].querySelector('h2,h1')?.textContent.replace(/\s+/g,' ').trim().slice(0,40)+' · '))+'Diego Chávez UX/UI Portfolio';
+  }
+  function swap(id,anchor){
+    if(current) views[current].classList.remove('is-active','enter');
+    const v=views[id]; v.classList.add('is-active');
+    // restart the reveal animation
+    v.querySelectorAll('.rv').forEach(el=>{el.style.animation='none';void el.offsetWidth;el.style.animation='';});
+    current=id; syncNav(id);
+    const target=anchor&&document.getElementById(anchor);
+    if(target&&target!==v) target.scrollIntoView({block:'start'}); else window.scrollTo(0,0);
+  }
+  function go(hash,push){
+    const raw=(hash||'').replace('#','');
+    const id=resolve(hash);
+    if(id===current){ if(raw&&raw!==id&&document.getElementById(raw)) document.getElementById(raw).scrollIntoView({behavior:reduce.matches?'auto':'smooth'}); else window.scrollTo({top:0,behavior:reduce.matches?'auto':'smooth'}); return; }
+    if(push) history.pushState(null,'','#'+(raw||id));
+    const back=current&&order.indexOf(id)<order.indexOf(current);
+    document.documentElement.dataset.dir=back?'back':'fwd';
+    const anchor=raw!==id?raw:null;
+    if(!current||reduce.matches){swap(id,anchor);return;}
+    nameCards(projects.includes(id)?id:null,projects.includes(current)?current:null);
+    if(document.startViewTransition){
+      document.startViewTransition(()=>swap(id,anchor));
+    }else{
+      swap(id,anchor); views[id].classList.add('enter');
+    }
+  }
+  // Shared element names: card icon ↔ case icon of the same project
+  // Only the project being opened/closed morphs, so the other icons fade with the page
+  document.querySelectorAll('.case-icon[data-vt]').forEach(el=>el.style.viewTransitionName=el.dataset.vt);
+  function nameCards(a,b){
+    document.querySelectorAll('.card img[data-vt]').forEach(el=>{
+      const p=el.dataset.vt.slice(5); el.style.viewTransitionName=(p===a||p===b)?el.dataset.vt:'none';
+    });
+  }
+
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a[href^="#"]'); if(!a||e.metaKey||e.ctrlKey||e.shiftKey) return;
+    e.preventDefault();
+    if(a.hasAttribute('data-top')){window.scrollTo({top:0,behavior:reduce.matches?'auto':'smooth'});return;}
+    go(a.getAttribute('href'),true);
+  });
+  addEventListener('popstate',()=>go(location.hash,false));
+  addEventListener('resize',()=>current&&syncNav(current));
+  document.fonts&&document.fonts.ready.then(()=>current&&syncNav(current));
+
+  // ← / → move between projects
+  addEventListener('keydown',e=>{
+    if(!projects.includes(current)||!document.getElementById('lb').hidden||e.target.closest('input,textarea')) return;
+    const i=projects.indexOf(current);
+    if(e.key==='ArrowRight'&&i<projects.length-1) go('#'+projects[i+1],true);
+    if(e.key==='ArrowLeft'&&i>0) go('#'+projects[i-1],true);
+  });
+  // Swipe between projects on touch screens
+  let sx=null,sy=null;
+  addEventListener('touchstart',e=>{const t=e.touches[0];sx=t.clientX;sy=t.clientY;},{passive:true});
+  addEventListener('touchend',e=>{
+    if(sx===null||!projects.includes(current)) return;
+    const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy; sx=null;
+    if(Math.abs(dx)<70||Math.abs(dy)>Math.abs(dx)*.6) return;
+    const i=projects.indexOf(current);
+    if(dx<0&&i<projects.length-1) go('#'+projects[i+1],true);
+    if(dx>0&&i>0) go('#'+projects[i-1],true);
+  },{passive:true});
+
+  go(location.hash,false);
 })();
 </script>
 </body>
