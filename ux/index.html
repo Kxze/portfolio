@@ -430,6 +430,24 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
 .intro-img img,.flow-img img{filter:drop-shadow(0 24px 34px rgba(0,0,0,.22))}
 .case-dark .intro-img img,.case-dark .flow-img img{filter:none}
 .intro-img img{max-height:620px;width:auto;max-width:100%;margin-inline:auto}
+
+/* ===== Posters ===== */
+.posters{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:clamp(20px,3vw,36px);justify-items:center}
+.poster{margin:0;display:grid;gap:14px;width:100%;max-width:400px;perspective:1200px}
+.poster-frame{appearance:none;border:0;padding:0;background:none;cursor:zoom-in;border-radius:14px;display:block;
+  transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .3s;
+  box-shadow:0 30px 60px -28px rgba(0,0,0,.6)}
+.poster-frame img{border-radius:14px;width:100%;height:auto;cursor:zoom-in}
+.poster-frame:hover{box-shadow:0 40px 70px -26px rgba(0,0,0,.7)}
+.poster figcaption{display:grid;gap:2px}
+.poster figcaption b{font:700 20px/1.2 var(--display);letter-spacing:-.02em}
+.poster figcaption span{color:var(--muted);font-size:14px}
+.poster-frame video{display:block;width:100%;height:auto;border-radius:14px;background:#000;cursor:pointer}
+.poster-frame.is-video{cursor:pointer;position:relative}
+.poster-frame .badge{position:absolute;top:12px;left:12px;font:600 12px/1 var(--body);color:#fff;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:7px 10px;border-radius:99px;letter-spacing:.02em}
+.poster-frame.paused .badge::after{content:" · paused"}
+.t-posters .ic{background:#000}
+.t-posters .ic img{object-fit:cover;object-position:50% 30%}
 </style>
 </head>
 <body>
@@ -445,6 +463,7 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
         <a href="#home" data-tab="home">Home</a>
         <a href="#about" data-tab="about">About</a>
         <a href="#work" data-tab="work">Work</a>
+        <a href="#posters" data-tab="posters">Posters</a>
         <a href="#recognition" data-tab="recognition">Recognition</a>
         <a href="#contact" data-tab="contact">Contact</a>
       </span>
@@ -488,7 +507,7 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
     <div class="iphone" role="group" aria-label="Portfolio home screen">
       <div class="screen">
         <div class="status"><span class="clock" id="clock">9:41</span><span class="island" aria-hidden="true"></span><span class="sys" aria-hidden="true"><i class="sig"></i><i class="wifi"></i><i class="bat"></i></span></div>
-        <nav class="apps" aria-label="Sections"><a class="widget app" href="#about" data-app="about"><span class="w-top"><img src="assets/diego.webp?v=b33061c8" alt=""><span class="w-status"><i></i>Open to work</span></span><span class="w-name">Diego Chávez</span><span class="w-role">UX/UI Designer · Developer</span><span class="w-loc">Guadalajara, MX</span></a><a class="app t-about" href="#about" data-app="about"><span class="ic"><img src="assets/diego.webp?v=b33061c8" alt=""></span><span class="al">About</span></a><a class="app t-folder" href="#work" data-app="work"><span class="ic"><span class="folder"><img src="assets/icon-kiko.webp?v=5ef0bf1e" alt=""><img src="assets/icon-huracan.webp?v=33b0c92d" alt=""><img src="assets/icon-tixal.webp?v=3eabf5e6" alt=""><img src="assets/icon-coppi.webp?v=e3782ac7" alt=""></span></span><span class="al">Projects</span></a><a class="app t-process" href="#process"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="12" r="2.2"/><circle cx="5" cy="18" r="2.2"/><path d="M7.2 6h5a4 4 0 0 1 4 4v0M7.2 18h5a4 4 0 0 0 4-4"/></svg></span><span class="al">Process</span></a><a class="app t-tools" href="#tools"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 7-4 2-3 6-3-6-4-2z"/><circle cx="12" cy="11" r="1.6"/><path d="M12 18v3"/></svg></span><span class="al">Tools</span></a><a class="app " href="#kiko" data-app="kiko"><span class="ic"><img src="assets/icon-kiko.webp?v=5ef0bf1e" alt=""></span><span class="al">Kiko</span></a><a class="app " href="#huracan" data-app="huracan"><span class="ic"><img src="assets/icon-huracan.webp?v=33b0c92d" alt=""></span><span class="al">Huracán</span></a><a class="app " href="#tixal" data-app="tixal"><span class="ic"><img src="assets/icon-tixal.webp?v=3eabf5e6" alt=""></span><span class="al">Tixal</span></a><a class="app " href="#coppi" data-app="coppi"><span class="ic"><img src="assets/icon-coppi.webp?v=e3782ac7" alt=""></span><span class="al">Coppi</span></a><a class="app " href="#rendo" data-app="rendo"><span class="ic"><img src="assets/icon-rendo.webp?v=2082717d" alt=""></span><span class="al">Rendo</span></a><a class="app " href="#aura" data-app="aura"><span class="ic"><img src="assets/icon-aura.webp?v=d1adc533" alt=""></span><span class="al">Aura</span></a><a class="app t-awards" href="#recognition" data-app="recognition"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7M10 17h4"/></svg></span><span class="al">Awards</span></a><a class="app t-games" href="https://kxze.github.io/portfolio/games/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.5" r=".9" fill="currentColor"/><circle cx="17.8" cy="13.8" r=".9" fill="currentColor"/></svg></span><span class="al">Games</span></a><a class="app t-av" href="https://kxze.github.io/portfolio/audiovisual/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8l8 4.6v9.2l-8 4.6-8-4.6V7.4z"/><path d="M4 7.4l8 4.6 8-4.6M12 12v9.2"/></svg></span><span class="al">3D &amp; Video</span></a></nav>
+        <nav class="apps" aria-label="Sections"><a class="widget app" href="#about" data-app="about"><span class="w-top"><img src="assets/diego.webp?v=b33061c8" alt=""><span class="w-status"><i></i>Open to work</span></span><span class="w-name">Diego Chávez</span><span class="w-role">UX/UI Designer · Developer</span><span class="w-loc">Guadalajara, MX</span></a><a class="app t-about" href="#about" data-app="about"><span class="ic"><img src="assets/diego.webp?v=b33061c8" alt=""></span><span class="al">About</span></a><a class="app t-folder" href="#work" data-app="work"><span class="ic"><span class="folder"><img src="assets/icon-kiko.webp?v=5ef0bf1e" alt=""><img src="assets/icon-huracan.webp?v=33b0c92d" alt=""><img src="assets/icon-tixal.webp?v=3eabf5e6" alt=""><img src="assets/icon-coppi.webp?v=e3782ac7" alt=""></span></span><span class="al">Projects</span></a><a class="app t-process" href="#process"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="12" r="2.2"/><circle cx="5" cy="18" r="2.2"/><path d="M7.2 6h5a4 4 0 0 1 4 4v0M7.2 18h5a4 4 0 0 0 4-4"/></svg></span><span class="al">Process</span></a><a class="app t-tools" href="#tools"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 7-4 2-3 6-3-6-4-2z"/><circle cx="12" cy="11" r="1.6"/><path d="M12 18v3"/></svg></span><span class="al">Tools</span></a><a class="app " href="#kiko" data-app="kiko"><span class="ic"><img src="assets/icon-kiko.webp?v=5ef0bf1e" alt=""></span><span class="al">Kiko</span></a><a class="app " href="#huracan" data-app="huracan"><span class="ic"><img src="assets/icon-huracan.webp?v=33b0c92d" alt=""></span><span class="al">Huracán</span></a><a class="app " href="#tixal" data-app="tixal"><span class="ic"><img src="assets/icon-tixal.webp?v=3eabf5e6" alt=""></span><span class="al">Tixal</span></a><a class="app " href="#coppi" data-app="coppi"><span class="ic"><img src="assets/icon-coppi.webp?v=e3782ac7" alt=""></span><span class="al">Coppi</span></a><a class="app " href="#rendo" data-app="rendo"><span class="ic"><img src="assets/icon-rendo.webp?v=2082717d" alt=""></span><span class="al">Rendo</span></a><a class="app " href="#aura" data-app="aura"><span class="ic"><img src="assets/icon-aura.webp?v=d1adc533" alt=""></span><span class="al">Aura</span></a><a class="app t-awards" href="#recognition" data-app="recognition"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7M10 17h4"/></svg></span><span class="al">Awards</span></a><a class="app t-posters" href="#posters" data-app="posters"><span class="ic"><img src="assets/poster-swiftday-thumb.webp?v=78cdc2ae" alt=""></span><span class="al">Posters</span></a><a class="app t-games" href="https://kxze.github.io/portfolio/games/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.5" r=".9" fill="currentColor"/><circle cx="17.8" cy="13.8" r=".9" fill="currentColor"/></svg></span><span class="al">Games</span></a><a class="app t-av" href="https://kxze.github.io/portfolio/audiovisual/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8l8 4.6v9.2l-8 4.6-8-4.6V7.4z"/><path d="M4 7.4l8 4.6 8-4.6M12 12v9.2"/></svg></span><span class="al">3D &amp; Video</span></a></nav>
         <div class="dots" aria-hidden="true"><i class="on"></i><i></i></div>
         <nav class="dock" aria-label="Contact"><a class="app t-phone" href="tel:+523332506601"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.3a10 10 0 0 0 6.2 6.2l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z" fill="currentColor" stroke="none"/></svg></span><span class="al">Phone</span></a><a class="app t-mail" href="#contact" data-app="contact"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.8 7l8.2 6 8.2-6"/></svg></span><span class="al">Contact</span></a><a class="app t-li" href="https://www.linkedin.com/in/diego-cha" target="_blank" rel="noopener"><span class="ic"><b class="li">in</b></span><span class="al">LinkedIn</span></a><a class="app t-gh" href="https://github.com/Kxze" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 7.5L4 12l4.5 4.5M15.5 7.5L20 12l-4.5 4.5M13.2 5.5l-2.4 13"/></svg></span><span class="al">GitHub</span></a></nav>
         <span class="homebar" aria-hidden="true"></span>
@@ -768,6 +787,22 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
   </div>
 </article>
 
+<section class="section view" id="posters" data-view="posters" aria-labelledby="posters-t">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Graphic design</p><h2 id="posters-t">Posters.</h2><p>Editorial and event posters: typography, hierarchy and 3D art direction.</p></div>
+    <div class="posters">
+      <figure class="poster">
+        <button class="poster-frame" type="button" aria-label="Open Swiftday poster"><img src="assets/poster-swiftday.webp?v=12a388cc" alt="Swiftday poster: chrome 3D shape on a black background with UX keywords, title Swiftday conferences and workshops, speakers Michelle Ayala and Paul Contreras" width="900" height="1600" loading="lazy" data-zoom></button>
+        <figcaption><b>Swiftday</b><span>Conferences &amp; workshops poster · 3D, typography</span></figcaption>
+      </figure>
+      <figure class="poster">
+        <button class="poster-frame is-video" type="button" aria-label="Pause or play the Swiftday motion poster"><video src="assets/poster-swiftday-motion.mp4?v=b364487d" poster="assets/poster-swiftday-motion.webp?v=ece96bad" width="480" height="848" autoplay muted loop playsinline preload="metadata" aria-label="Swiftday animated poster: glitch typography revealing the event date, CUAAD 20/03/26, and the talks"></video><span class="badge">Motion</span></button>
+        <figcaption><b>Swiftday · Motion poster</b><span>Animated version for social media · kinetic typography, glitch</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section class="section view" id="recognition" data-view="recognition">
   <div class="wrap rec-grid">
     <div class="rec-left">
@@ -867,7 +902,7 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
 <script>
 /* Tab router with animated transitions (View Transitions API + CSS fallback) */
 (function(){
-  const order=['home','about','work','kiko','huracan','tixal','coppi','rendo','aura','recognition','contact'];
+  const order=['home','about','work','kiko','huracan','tixal','coppi','rendo','aura','posters','recognition','contact'];
   const projects=['kiko','huracan','tixal','coppi','rendo','aura'];
   const alias={top:'home',process:'about',tools:'about'};
   const views={}; document.querySelectorAll('[data-view]').forEach(v=>views[v.dataset.view]=v);
@@ -877,7 +912,7 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
   let current=null;
 
   // Mark content blocks for the staggered reveal
-  const RV='.home-copy > *, .about-photo, .about-text > *, .stat, .sec-head, .step, .tool-card, .chip, .card, .case-band .wrap > *:not(.peek), .intro-text > *, .users-head, .persona, .flow > *:not(.flow-img), .case-nav, .rec-left > *, .part, .contact .wrap > *';
+  const RV='.home-copy > *, .poster, .about-photo, .about-text > *, .stat, .sec-head, .step, .tool-card, .chip, .card, .case-band .wrap > *:not(.peek), .intro-text > *, .users-head, .persona, .flow > *:not(.flow-img), .case-nav, .rec-left > *, .part, .contact .wrap > *';
   Object.values(views).forEach(v=>v.querySelectorAll(RV).forEach((el,i)=>{el.classList.add('rv');el.style.setProperty('--i',Math.min(i,14));}));
 
   function resolve(hash){
@@ -907,6 +942,7 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
     // restart the reveal animation
     v.querySelectorAll('.rv').forEach(el=>{el.style.animation='none';void el.offsetWidth;el.style.animation='';});
     current=id; syncNav(id);
+    document.querySelectorAll('.poster video').forEach(vd=>{ if(id==='posters'&&!vd.closest('.paused')){vd.play().catch(()=>{});} else vd.pause(); });
     const pk=v.querySelector('.case-band .peek .dev'); if(pk) ['--lean','--ly','--ls'].forEach(p=>pk.style.removeProperty(p));
     if(typeof io!=='undefined'&&io) v.querySelectorAll('.dev3d').forEach(el=>{el.classList.remove('in');io.observe(el);});
     const target=anchor&&document.getElementById(anchor);
@@ -980,12 +1016,12 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
   const ease='cubic-bezier(.2,.9,.25,1)';
   const night='#0b0b0e';
   function viewColor(id){
-    if(id==='work'||id==='recognition') return getComputedStyle(document.body).backgroundColor;
+    if(id==='work'||id==='recognition'||id==='posters') return getComputedStyle(document.body).backgroundColor;
     if(id==='about'&&location.hash.match(/process|tools/)) return getComputedStyle(document.body).backgroundColor;
     return night;
   }
   function homeIcon(id){
-    const map={kiko:'kiko',huracan:'huracan',tixal:'tixal',coppi:'coppi',rendo:'rendo',aura:'aura',about:'about',work:'work',recognition:'recognition',contact:'contact'};
+    const map={kiko:'kiko',huracan:'huracan',tixal:'tixal',coppi:'coppi',rendo:'rendo',aura:'aura',about:'about',work:'work',posters:'posters',recognition:'recognition',contact:'contact'};
     const a=views.home.querySelector('.apps .app[data-app="'+map[id]+'"]:not(.widget), .dock .app[data-app="'+map[id]+'"]');
     return a;
   }
@@ -1098,6 +1134,19 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
   },{passive:true});
   const io=('IntersectionObserver' in window)?new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}}),{threshold:.18}):null;
   document.querySelectorAll('.intro-img, .flow-img').forEach(el=>{el.classList.add('dev3d'); io?io.observe(el):el.classList.add('in');});
+
+  // posters tilt with the cursor
+  document.querySelectorAll('.poster-frame').forEach(f=>{
+    f.addEventListener('pointermove',e=>{ if(!fine.matches||reduce.matches) return;
+      const r=f.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      f.style.setProperty('--ry',((x-.5)*12).toFixed(2)+'deg'); f.style.setProperty('--rx',((.5-y)*10).toFixed(2)+'deg');});
+    f.addEventListener('pointerleave',()=>{f.style.setProperty('--rx','0deg');f.style.setProperty('--ry','0deg');});
+    f.addEventListener('click',()=>{
+      const v=f.querySelector('video');
+      if(v){ v.paused?v.play():v.pause(); f.classList.toggle('paused',v.paused); return; }
+      f.querySelector('img').click();
+    });
+  });
 
   // stagger index for the icon pop-in
   views.home.querySelectorAll('.app').forEach((a,i)=>a.style.setProperty('--i',i));
