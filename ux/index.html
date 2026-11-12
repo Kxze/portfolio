@@ -432,8 +432,8 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
 .intro-img img{max-height:620px;width:auto;max-width:100%;margin-inline:auto}
 
 /* ===== Posters ===== */
-.posters{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:clamp(20px,3vw,36px);justify-items:center}
-.poster{margin:0;display:grid;gap:14px;width:100%;max-width:400px;perspective:1200px}
+.posters{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:clamp(28px,4vw,48px) clamp(20px,3vw,40px)}
+.poster{margin:0;display:grid;gap:14px;width:min(100%,360px);perspective:1200px}
 .poster-frame{appearance:none;border:0;padding:0;background:none;cursor:zoom-in;border-radius:14px;display:block;
   transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .3s;
   box-shadow:0 30px 60px -28px rgba(0,0,0,.6)}
@@ -446,6 +446,7 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
 .poster-frame.is-video{cursor:pointer;position:relative}
 .poster-frame .badge{position:absolute;top:12px;left:12px;font:600 12px/1 var(--body);color:#fff;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:7px 10px;border-radius:99px;letter-spacing:.02em}
 .poster-frame.paused .badge::after{content:" · paused"}
+.poster.wide{width:min(100%,960px);flex-basis:100%;max-width:960px}
 .t-posters .ic{background:#000}
 .t-posters .ic img{object-fit:cover;object-position:50% 30%}
 </style>
@@ -791,6 +792,10 @@ html[data-dir="back"] .view.enter{animation-name:vt-in-back}
   <div class="wrap">
     <div class="sec-head"><p class="eyebrow">Graphic design</p><h2 id="posters-t">Posters.</h2><p>Editorial and event posters: typography, hierarchy and 3D art direction.</p></div>
     <div class="posters">
+      <figure class="poster wide">
+        <button class="poster-frame" type="button" aria-label="Open Design, Art and Interactive Tech poster"><img src="assets/poster-interactive.webp?v=badcbb67" alt="Horizontal poster: a pink-to-blue 3D tube knotted across a grainy gray background, with the words Interactive, Design, Art and Tech set along its curves" width="1920" height="1080" loading="lazy" data-zoom></button>
+        <figcaption><b>Design · Art · Interactive Tech</b><span>Horizontal key visual · 3D, typography along a path</span></figcaption>
+      </figure>
       <figure class="poster">
         <button class="poster-frame" type="button" aria-label="Open Swiftday poster"><img src="assets/poster-swiftday.webp?v=12a388cc" alt="Swiftday poster: chrome 3D shape on a black background with UX keywords, title Swiftday conferences and workshops, speakers Michelle Ayala and Paul Contreras" width="900" height="1600" loading="lazy" data-zoom></button>
         <figcaption><b>Swiftday</b><span>Conferences &amp; workshops poster · 3D, typography</span></figcaption>
